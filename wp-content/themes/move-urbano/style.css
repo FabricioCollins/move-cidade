@@ -615,10 +615,10 @@ html {
     box-shadow: 4px 4px 0 0 #808080
 }
 .main .cardboard .col .descricao {
-    display: none
+    display: none;
 }
 .main .cardboard .col.cor-1 a {
-    background: #35cbeb
+    background: #35cbeb;
 }
 .main .cardboard .col.cor-1 a:hover,
 .main .cardboard .col.cor-1 a:focus {

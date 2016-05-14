@@ -11,34 +11,28 @@
     $.fn.idecCardBoard = function(selector, settings){
         // settings
         var config = {
-            width: "100%"
+            
         };
         if ( settings ){$.extend(config, settings);}
 
         // variables
         var obj = $(selector);
 
-        // Methods
-        this.shuffle = function() {
-            var el=this.find(".col");
-            console.log(el);
-            var i = el.length, j, tempi, tempj;
-            if ( i == 0 ) return el;
-            while ( --i ) {
-                j       = Math.floor( Math.random() * ( i + 1 ) );
-                tempi   = el[i];
-                tempj   = el[j];
-                el[i]   = tempj;
-                el[j]   = tempi;
-            }
-
-            this.render(el);
-        };
-
         // Make search based in data-category attribute value
         this.filterByCategory = function(param) {
-            this.find("div[data-category]").each(function(){
-                if( ($(this).data('category')==param) || (param==null || param=="") )
+            this.find("div[data-category]").each(function(){                
+                if( ($(this).data('category').indexOf(param) > -1) || (param==null || param=="") )
+                    $(this).show("explode");
+                else 
+                    $(this).hide("explode");
+            });
+        };
+
+        // Make search based in element dynamic content
+        this.filterByContent = function(param) {
+            this.find(".col").each(function(){ 
+                var content=$(this).find("a").html().toLowerCase() + " " + $(this).find("p").html().toLowerCase();
+                if( (param==null || param=="") || (content.indexOf(param.toLowerCase()) > -1) )
                     $(this).show("explode");
                 else 
                     $(this).hide("explode");
@@ -46,7 +40,8 @@
         };
 
         this.resetFilter = function() {
-
+            this.filterByCategory();
+            this.filterByContent();
         };
 
         this.render = function(obj) {

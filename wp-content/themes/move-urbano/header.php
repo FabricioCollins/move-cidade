@@ -38,19 +38,15 @@
 				$(this).toggleClass('ativo').find('i').toggleClass('fa-times').toggleClass('fa-bus');
 			});
 
-			// Faz animação do menu superior interagindo com o scroll
-			/*var menu_lock=false;
-			$(window).scroll(function (event) {
-    			var scroll = $(window).scrollTop();    			    			
-			    if(scroll >= 270 && menu_lock==false) {
-			    	$(".categories").addClass( "nav-categories-fixed", 1000 );			    	
-			    	menu_lock=true;
-			    }
-			    else if(scroll < 270 && menu_lock==true) {
-			    	$(".categories").removeClass( "nav-categories-fixed", 1000 );
-			    	menu_lock=false;
-			    }
-			});*/
+			// Make search on key press after 0.5 second
+			var searchEventContainer=null;
+			$(".search-input").keyup(function(){
+				if(searchEventContainer!=null) clearTimeout(searchEventContainer);
+
+				searchEventContainer=setTimeout(function() {
+					$(".cardboard").idecCardBoard().filterByContent($(".search-input").val());
+				}, 500);
+			});
 
 		});	
 	</script>
@@ -77,11 +73,11 @@
 				<div class="nav-filter">
 					<div class="nav-categories">
 						<ul class="menu">
-							<li class="menu-item"><a href="#blog">Mobilidade e cidade</a></li>
-							<li class="menu-item"><a href="#blog">Mobilidade e cotidiano</a></li>
-							<li class="menu-item"><a href="#blog">Entenda seus direitos</a></li>
-							<li class="menu-item"><a href="#blog">Sem carro pela cidade</a></li>
-							<li class="menu-item"><a href="#blog">Novidades</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="#blog">Mobilidade e cidade</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="#blog">Mobilidade e cotidiano</a></li>
+							<li class="menu-item" data-target="entenda_seus_direitos"><a href="#blog">Entenda seus direitos</a></li>
+							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="#blog">Sem carro pela cidade</a></li>
+							<li class="menu-item" data-target="novidades"><a href="#blog">Novidades</a></li>
 						</ul>
 					</div>
 

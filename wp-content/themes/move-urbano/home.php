@@ -94,12 +94,22 @@ get_header(); ?>
 					}						
 					
 
+					// Get the post tags to use by category
+					$posttags = '';					
+					if (get_the_tags()) {
+					  	foreach(get_the_tags() as $tag) {
+					    	$posttags.= $tag->name .= ' '; 
+					  }
+					}
 
-						echo '<div class="col ' . $curr_item_class . '">';
-							echo '<h2 class="title"><a href="#">' . get_the_title() . '</a></h2>';
-							echo '<p class="descricao"></p>';
-						echo '</div>'; // card item
-					
+
+					// ########### THE CARD ITEM ###########
+					echo '<div class="col ' . $curr_item_class . '" data-category="' . $posttags . '">';
+						echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+						echo '<p class="descricao">' . get_the_excerpt() . '</p>';
+					echo '</div>'; // card item
+					// ########### THE CARD ITEM ###########
+
 
 					// Make sure it is the first item and disables this validated
 					if($first_item) {
@@ -138,6 +148,13 @@ get_header(); ?>
 		$('.cardboard .col').each(function(index, el) {
 			$(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
 		});			
+
+		// Atribui a categoria dos menus aos conteúdos
+		$('.nav-categories').find("li[data-target]").each(function(index, el){
+            $(this).click(function() {
+            	$(".cardboard").idecCardBoard().filterByCategory($(this).data("target"));
+            });
+        });
 
 	});	
 </script>
