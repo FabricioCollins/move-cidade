@@ -12,12 +12,50 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+	<title>MOVE CIDADE</title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<link rel="stylesheet" type="text/css" media="all" href="http://move.localhost/wp-content/themes/move-urbano/css/main.css" />
+
+	<!-- JS LIBS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>	
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
+	<script>
+		$( document ).ready(function() {
+
+			// Controle as expansão do menu lateral
+			$('.nav-toggle a').click(function(event) {
+				$('.nav-main').toggleClass('open');
+			});
+
+			// Controla o componente de cadastro de email
+			$('.cadastro .toggle').click(function(event) {
+				$('.cadastro .form-wrapper').animate({
+					// opacity: "toggle",
+					height: "toggle",
+					width: "toggle",
+				}, 300);
+				$(this).toggleClass('ativo').find('i').toggleClass('fa-times').toggleClass('fa-bus');
+			});
+
+			// Faz animação do menu superior interagindo com o scroll
+			/*var menu_lock=false;
+			$(window).scroll(function (event) {
+    			var scroll = $(window).scrollTop();    			    			
+			    if(scroll >= 270 && menu_lock==false) {
+			    	$(".categories").addClass( "nav-categories-fixed", 1000 );			    	
+			    	menu_lock=true;
+			    }
+			    else if(scroll < 270 && menu_lock==true) {
+			    	$(".categories").removeClass( "nav-categories-fixed", 1000 );
+			    	menu_lock=false;
+			    }
+			});*/
+
+		});	
+	</script>
+
+	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>	
 	<?php endif; ?>
 	<?php wp_head(); ?>
 </head>
@@ -25,7 +63,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<div class="site-inner">
-		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
+		<!--<a class="skip-link screen-reader-text" href="#content">< ? php _e( 'Skip to content', 'twentysixteen' ); ?></a>-->
 
 		<div class="wrapper">
 			<div class="header">
@@ -57,3 +95,28 @@
 				</div>
 
 			</div>
+
+
+			<div class="nav-main">
+				<div class="menu nav-toggle">
+					<div class="menu-item">
+						<a href="javascript:void(0);">
+							<i class="icon fa fa-arrow-right" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+				<ul class="menu menu-nav">
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span></a></li>
+				</ul>
+				<ul class="menu menu-social">
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-facebook" aria-hidden="true"></i><span class="descricao">Facebook</span></a></li>
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-twitter" aria-hidden="true"></i><span class="descricao">Twitter</span></a></li>
+					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-youtube" aria-hidden="true"></i><span class="descricao">Youtube</span></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>

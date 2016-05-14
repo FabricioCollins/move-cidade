@@ -60,7 +60,7 @@ get_header(); ?>
 
 
 		echo '<div class="main">';
-			echo '<div class="index-menu">';
+			echo '<div class="cardboard">';
 
 			if ( $merged_queried_post->have_posts() ) {
 
@@ -72,7 +72,7 @@ get_header(); ?>
 
 
 					// This is provisional for tests
-					if (in_array( $it_count, array(5, 8, 12, 15, 19, 23) ))
+					if (in_array( $it_count, array(5, 8, 12, 15, 19, 23, 27, 31) ))
 						$is_write_section=true;
 
 
@@ -119,7 +119,7 @@ get_header(); ?>
 
 			}
 
-			echo '</div>'; // DIV index-menu	
+			echo '</div>'; // DIV cardboard	
 		echo '</div>'; // DIV main
 
 		/* Restore original Post Data */
@@ -127,6 +127,20 @@ get_header(); ?>
 	?>
 
 </div>	
+
+<script>
+	$( document ).ready(function() {
+
+		// Inicializa o plugin cardboard
+		$(".cardboard").idecCardBoard();	
+
+		// Distribui cores aleatórias aos cards
+		$('.cardboard .col').each(function(index, el) {
+			$(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
+		});			
+
+	});	
+</script>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
