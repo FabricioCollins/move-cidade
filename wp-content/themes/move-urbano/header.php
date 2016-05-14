@@ -73,17 +73,17 @@
 				<div class="nav-filter">
 					<div class="nav-categories">
 						<ul class="menu">
-							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="#blog">Mobilidade e cidade</a></li>
-							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="#blog">Mobilidade e cotidiano</a></li>
-							<li class="menu-item" data-target="entenda_seus_direitos"><a href="#blog">Entenda seus direitos</a></li>
-							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="#blog">Sem carro pela cidade</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="#">Mobilidade e cidade</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="#">Mobilidade e cotidiano</a></li>
+							<li class="menu-item" data-target="entenda_seus_direitos"><a href="#">Entenda seus direitos</a></li>
+							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="#">Sem carro pela cidade</a></li>
 							<li class="menu-item" data-target="novidades"><a href="#blog">Novidades</a></li>
 						</ul>
 					</div>
 
 					<div class="search">
-						<form action="" class="search-form">
-							<input class="search-input" type="text" name="pesquisa" placeholder="Pesquisar" value="">
+						<form action="http://localhost/move-cidade/" class="search-form" method="get" role="search">
+							<input class="search-input" type="search" name="s" placeholder="Pesquisar" value="">
 							<button class="search-submit" type="submit" value="Pesquisar" aria-label="Pesquisar no site"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</form>
 					</div>

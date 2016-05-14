@@ -23,14 +23,14 @@ get_header(); ?>
 
 		// Query on Notices
 		$args = array(
-		    'category_name' => 'noticias',
+		    'category_name' => 'blog',
 		    'posts_per_page', 3
 		);
 		$blog_result = new WP_Query( $args );
 
 		// Query on fixed content
 		$args = array(
-		    'category_name' => 'fixa',
+		    'category_name' => 'conteudo',
 		    'posts_per_page', 3
 		);
 		$page_result = new WP_Query( $args );
