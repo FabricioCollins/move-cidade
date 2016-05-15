@@ -638,6 +638,10 @@ html {
 .main .cardboard .col.cor-3 a:focus {
     box-shadow: 4px 4px 0 0 #c8335c
 }
+.main .cardboard .col.cor-3 a:hover,
+.main .cardboard .col.cor-3 a:focus {
+    box-shadow: 4px 4px 0 0 #00B1CD
+}
 .cadastro {
     position: absolute;
     top: 0;
@@ -857,27 +861,77 @@ html {
 
 /* SEARCH PAGE */
 .search-area .site-main article {  
-    border: solid 4px #666;  
+    border: solid 3px #666;  
+    display: table;
     width: 100%;
-    height: 200px;
+    height: 150px;
+    margin-bottom: 10px;
 }
 
 .search-area .site-main .search-thumbnail {
-    border: solid 4px #666;
-    background-color: #666;
-    height: 100%;
+    display: table-cell;
+    border-right: solid 3px #666;
+    height: 100px;    
+    width: 200px;
 }
 
 .search-area .site-main .entry-header {
-    width: 80%;
+    display: table-cell;
+    vertical-align: middle;
     padding-left: 20px;
+    padding-right: 20px;
     color: #666;
     font-size: 12pt;
 }
 
+.search-area .site-main .entry-header .entry-summary p {
+   text-overflow: ellipsis;
+   height: 90px;
+}
+
 .search-area .site-main .search-thumbnail img {
-    width: 180px;
-    height: 180px;    
+    display: block;
+    width: 100%;
+}
+
+.search-area .site-main .cor-1 .search-thumbnail, .search-area .site-main .cor-1 {
+    border: 3px solid #35cbeb;        
+}
+.search-area .site-main .cor-1 .search-thumbnail {    
+    background-color: #35cbeb;
+}
+.search-area .site-main .cor-1 a {    
+    color: #35cbeb;
+}
+
+.search-area .site-main .cor-2 .search-thumbnail, .search-area .site-main .cor-2 {
+    border: 3px solid #47deca;    
+}
+.search-area .site-main .cor-2 .search-thumbnail {    
+    background-color: #47deca;
+}
+.search-area .site-main .cor-2 a {    
+    color: #47deca;
+}
+
+.search-area .site-main .cor-3 .search-thumbnail, .search-area .site-main .cor-3 {
+    border: 3px solid #f63869;    
+}
+.search-area .site-main .cor-3 .search-thumbnail {    
+    background-color: #f63869;
+}
+.search-area .site-main .cor-3 a {    
+    color: #f63869;
+}
+
+.search-area .site-main .cor-4 .search-thumbnail, .search-area .site-main .cor-4 {
+    border: 3px solid #00B1CD; 
+}
+.search-area .site-main .cor-4 .search-thumbnail {    
+    background-color: #00B1CD;
+}
+.search-area .site-main .cor-4 a {    
+    color: #00B1CD;
 }
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

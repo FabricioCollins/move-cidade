@@ -9,6 +9,9 @@
 
 (function($){
     $.fn.idecCardBoard = function(selector, settings){
+
+        var self = this;
+
         // settings
         var config = {
             
@@ -32,16 +35,32 @@
         this.filterByContent = function(param) {
             this.find(".col").each(function(){ 
                 var content=$(this).find("a").html().toLowerCase() + " " + $(this).find("p").html().toLowerCase();
-                if( (param==null || param=="") || (content.indexOf(param.toLowerCase()) > -1) )
+                if( (param==null || param=="") || (self.removeAccent(content).indexOf(self.removeAccent(param).toLowerCase()) > -1) )
                     $(this).show("explode");
                 else 
                     $(this).hide("explode");
             });
         };
 
+        // Remove filter and reset component to initial state
         this.resetFilter = function() {
             this.filterByCategory();
             this.filterByContent();
+        };
+
+        // This function is used by remove accents in a word or text
+        this.removeAccent = function(str) {
+            var output="";
+            var str_accent= "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";  
+            var str_without_accent = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";                
+            for (var i = 0; i < str.length; i++) {
+                if (str_accent.indexOf(str.charAt(i)) != -1) {
+                    output+=str_without_accent.substr(str_accent.search(str.substr(i,1)),1);
+                } else {
+                    output+=str.substr(i,1);
+                }
+            }
+            return output;  
         };
 
         this.render = function(obj) {

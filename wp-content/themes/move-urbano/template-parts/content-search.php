@@ -10,11 +10,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="search-thumbnail col span_1_of_4">
-		<?php twentysixteen_post_thumbnail(); ?>
+	<div class="search-thumbnail">
+		<!--< ?php twentysixteen_post_thumbnail(); ?>-->
 	</div>
 
-	<div class="entry-header col span_3_of_4">
+	<div class="entry-header">
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		<?php twentysixteen_excerpt(); ?>
 	</div><!-- .entry-header -->	
@@ -22,3 +22,9 @@
 
 </article><!-- #post-## -->
 
+<script>
+	// Distribui cores aleatórias aos cards
+	$('.search-area .site-main article').each(function(index, el) {
+		$(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
+	});	
+</script>
