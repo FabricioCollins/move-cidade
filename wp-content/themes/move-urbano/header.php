@@ -59,9 +59,18 @@
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>	
 	<?php endif; ?>
 	<?php wp_head(); ?>
+
+	<?php
+		$actionNav='#';
+		if(!is_home()) {
+			$actionNav=$_SERVER["HOST_NAME"] . '/move-cidade/#';			
+		}
+	?>
+
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="site">
 	<div class="site-inner">
 		<!--<a class="skip-link screen-reader-text" href="#content">< ? php _e( 'Skip to content', 'twentysixteen' ); ?></a>-->
@@ -78,16 +87,16 @@
 				<div class="nav-filter">
 					<div class="nav-categories">
 						<ul class="menu">
-							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="#">Mobilidade e cidade</a></li>
-							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="#">Mobilidade e cotidiano</a></li>
-							<li class="menu-item" data-target="entenda_seus_direitos"><a href="#">Entenda seus direitos</a></li>
-							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="#">Sem carro pela cidade</a></li>
-							<li class="menu-item" data-target="novidades"><a href="#blog">Novidades</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="<?php echo $actionNav ?>mobilidade_e_cidade">Mobilidade e cidade</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">Mobilidade e cotidiano</a></li>
+							<li class="menu-item" data-target="entenda_seus_direitos"><a href="<?php echo $actionNav ?>entenda_seus_direitos">Entenda seus direitos</a></li>
+							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="<?php echo $actionNav ?>sem_carro_pela_cidade">Sem carro pela cidade</a></li>
+							<li class="menu-item" data-target="novidades"><a href="<?php echo $actionNav ?>novidades">Novidades</a></li>
 						</ul>
 					</div>
 
 					<div class="search">
-						<form action="http://localhost/move-cidade/" class="search-form" method="get" role="search">
+						<form action="<?php $_SERVER['HOST_NAME']?>/move-cidade/" class="search-form" method="get" role="search">
 							<input class="search-input" type="search" name="s" placeholder="Pesquisar" value="">
 							<button class="search-submit" type="submit" value="Pesquisar" aria-label="Pesquisar no site"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</form>
