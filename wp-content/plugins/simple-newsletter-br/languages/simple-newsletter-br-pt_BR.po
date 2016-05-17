@@ -1,0 +1,240 @@
+# Copyright (C) 2015 Simple Newsletter
+# This file is distributed under the same license as the Simple Newsletter package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Newsletter 0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-newsletter-br\n"
+"POT-Creation-Date: 2015-07-06 13:21:46+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-07-06 10:31-0300\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 1.7.5\n"
+
+#: class_newsletter.php:114
+msgid "Click here to confirm your email"
+msgstr "Clique aqui para confirmar seu email"
+
+#: class_newsletter.php:150
+msgid "Email Confirmation"
+msgstr "Confirmação de email"
+
+#: class_newsletter.php:162
+msgid "Blank name is not allowed"
+msgstr "Preencha um nome"
+
+#: class_newsletter.php:167
+msgid "Please inform a valid email"
+msgstr "Informe um email válido"
+
+#: simple-newsletter.php:212
+msgid "Add the subscription form on widget area"
+msgstr "Adicionar o formulário de inscrição na área da widgets"
+
+#: simple-newsletter.php:233
+msgid "New title"
+msgstr "Título Novo"
+
+#: simple-newsletter.php:234
+msgid "Box Text"
+msgstr "Texto da caixa"
+
+#: simple-newsletter.php:237
+msgid "Title:"
+msgstr "Título:"
+
+#: simple-newsletter.php:239
+msgid "Box Text:"
+msgstr "Texto da Caixa"
+
+#: views/admin_form.php:17
+msgid "Implementation"
+msgstr "Implementação"
+
+#: views/admin_form.php:19
+msgid "Use the shortcode below where you want to show the subscription form."
+msgstr "Use o shortcode abaixo onde você quer mostrar o formulário de inscrição."
+
+#: views/admin_form.php:21
+msgid "The rest , set in the form here below."
+msgstr "O restante, configure no formulário abaixo."
+
+#: views/admin_form.php:27
+msgid "Configurations"
+msgstr "Configurações"
+
+#: views/admin_form.php:33
+msgid "Double Opt-in (Confirmation)"
+msgstr "Double Opt-in (Confirmação)"
+
+#: views/admin_form.php:36
+msgid "Activated"
+msgstr "Ativado"
+
+#: views/admin_form.php:37
+msgid "Deactivated"
+msgstr "Desativado"
+
+#: views/admin_form.php:43
+msgid "Logo ( Full URL )"
+msgstr "Logo (URL Completa)"
+
+#: views/admin_form.php:50
+msgid "Show field \"Name\" ?"
+msgstr "Exibir campo \"Nome\"?"
+
+#: views/admin_form.php:53
+msgid "Yes"
+msgstr "Sim"
+
+#: views/admin_form.php:54
+msgid "No"
+msgstr "Não"
+
+#: views/admin_form.php:60
+msgid "Success Message"
+msgstr "Mensagem de Sucesso"
+
+#: views/admin_form.php:66
+msgid "Message to be displayed after confirmation"
+msgstr "Mensagem que será exibida após a confirmação"
+
+#: views/admin_form.php:73
+msgid "Body`s email text"
+msgstr "Texto do Email"
+
+#: views/admin_form.php:80
+msgid "Show Message"
+msgstr "Exibir Mensagem"
+
+#: views/admin_form.php:83
+msgid "Above subscription form"
+msgstr "Acima do Formulário"
+
+#: views/admin_form.php:84
+msgid "Below subscription form"
+msgstr "Abaixo do Formulário"
+
+#: views/admin_form.php:85
+msgid "Replace form"
+msgstr "Substituir Formulário"
+
+#: views/admin_form.php:96
+msgid "Doing your own mail template"
+msgstr "Fazendo seu próprio template de email"
+
+#: views/admin_form.php:98
+msgid ""
+"You can make your own html mail template and place the HTML file named "
+"'email_template.html' on root of your theme."
+msgstr ""
+"Você pode fazer seu próprio template HTML, somente coloque o arquivo com o nome "
+"'email_template.html' na raiz do seu tema."
+
+#: views/admin_form.php:99
+msgid "Use the bellow markups to show the data:"
+msgstr "Use as marcações abaixo para mostrar os dados:"
+
+#: views/admin_form.php:101
+msgid "Site Logo:"
+msgstr "Logotipo:"
+
+#: views/admin_form.php:102
+msgid "Name of subscriber:"
+msgstr "Nome do Assinante:"
+
+#: views/admin_form.php:103
+msgid "Email Text ( Configured on form above ):"
+msgstr "Texto do email ( Configurado no formulário acima ):"
+
+#: views/admin_form.php:104
+msgid "Confirmation Link:"
+msgstr "Link de Confirmação: "
+
+#: views/admin_form.php:105
+msgid "Site Link:"
+msgstr "Link do Site: "
+
+#: views/admin_form.php:106
+msgid "Site Name:"
+msgstr "Nome do Site: "
+
+#: views/admin_grid.php:6
+msgid "Last %d subscriptions"
+msgstr "Últimos %d assinantes"
+
+#: views/admin_grid.php:11 views/admin_grid.php:13
+msgid "Export"
+msgstr "Exportar"
+
+#: views/admin_grid.php:14
+msgid "All"
+msgstr "Todos"
+
+#: views/admin_grid.php:15 views/admin_grid.php:36 views/admin_grid.php:79
+msgid "Confirmed"
+msgstr "Confirmados"
+
+#: views/admin_grid.php:17
+msgid "Download"
+msgstr "Download"
+
+#: views/admin_grid.php:33 views/user_form.php:9
+msgid "Name"
+msgstr "Nome"
+
+#: views/admin_grid.php:34 views/user_form.php:14
+msgid "Email"
+msgstr "Email"
+
+#: views/admin_grid.php:35
+msgid "Subscription date"
+msgstr "Data"
+
+#: views/admin_grid.php:60
+msgid "No one subscriber found"
+msgstr "Nenhum assinante encontrado"
+
+#: views/admin_grid.php:75
+msgid "Status"
+msgstr "Status"
+
+#: views/admin_grid.php:80
+msgid "Not confirmed"
+msgstr "Não Confirmados"
+
+#: views/admin_grid.php:82
+msgid "Today"
+msgstr "Hoje"
+
+#: views/admin_grid.php:83
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: views/admin_grid.php:84
+msgid "Last Week"
+msgstr "Durante a semana"
+
+#: views/admin_grid.php:85
+msgid "All Time"
+msgstr "Todos"
+
+#: views/user_form.php:16
+msgid "Send"
+msgstr "Enviar"
+
+#. Plugin Name of the plugin/theme
+msgid "Simple Newsletter"
+msgstr "Simple Newsletter"
+
+#. Description of the plugin/theme
+msgid "Plugin de Newsletter com Double Opt-in"
+msgstr "Plugin de Newsletter com Double Opt-in"
+
+#. Author of the plugin/theme
+msgid "Robson Miranda"
+msgstr "Robson Miranda"
