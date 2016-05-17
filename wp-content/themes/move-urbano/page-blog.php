@@ -15,8 +15,7 @@ get_header(); ?>
 			// Query on Notices
 		$args = array(
 		    'category_name' => 'blog',
-		    'posts_per_page' => 3,
-
+		    'posts_per_page' => 3
 		);
 		$blog_result = new WP_Query( $args );
 
