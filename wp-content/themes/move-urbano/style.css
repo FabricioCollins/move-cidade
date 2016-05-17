@@ -638,9 +638,13 @@ html {
 .main .cardboard .col.cor-3 a:focus {
     box-shadow: 4px 4px 0 0 #c8335c
 }
-.main .cardboard .col.cor-3 a:hover,
-.main .cardboard .col.cor-3 a:focus {
-    box-shadow: 4px 4px 0 0 #00B1CD
+
+.main .cardboard .col.cor-4 a {
+    background: #00B1CD;
+}
+.main .cardboard .col.cor-4 a:hover,
+.main .cardboard .col.cor-4 a:focus {
+    box-shadow: 4px 4px 0 0 #0BA0B7
 }
 .cadastro {
     position: absolute;
