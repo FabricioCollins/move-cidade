@@ -25,7 +25,7 @@ get_header(); ?>
 			while ( $blog_result->have_posts() ) {
 				$blog_result->the_post();	
 
-				echo '<div class="blog-index-item">';  
+				echo '<div class="blog-index-item border-bottom">';  
 					echo '<span class="post-date">' . get_the_date() . '</span>';
 					echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
 					echo '<p class="description">' . get_the_excerpt() . '</p>';

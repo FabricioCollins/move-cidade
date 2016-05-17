@@ -850,7 +850,6 @@ html {
     text-align: center;
     text-transform: uppercase;
     font-size: 40px;
-    border-bottom: 1px solid #ccc;
 }
 
 .content-area .site-main .page-header h1 {
@@ -937,8 +936,7 @@ html {
 /* SEARCH PAGE */
 .blog-index-item {
     width: 100%;
-    height: 200px;
-    border-bottom: solid 2px #E6E6E6;   
+    height: 200px;  
     margin-left: 10%;
     width: 80%; 
     margin-bottom: 10px;
@@ -972,6 +970,25 @@ html {
     padding-right: 42px;
     text-align: left;
     width: 350px;
+}
+
+/* INTERNAL PAGES */
+.content-social {
+    clear: both;
+    height: 45px;
+}
+
+.content-social a, .content-social span {
+    float: right;
+    padding-top: 10px;
+    color: #CCCCCC;
+    margin-right: 10px;
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+.border-bottom {
+    border-bottom: solid 2px #E6E6E6;
 }
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
