@@ -78,9 +78,9 @@
 		<div class="wrapper">
 			<div class="header">
 				<div class="title">
-					<h1><a href="javascript:void(0);"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_web_cor.png" alt="Move Cidade"></a></h1>
+					<h1><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_web_cor.png" alt="Move Cidade"></a></h1>
 					<div class="logo-idec">
-						<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png">
+						<a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png"></a>
 					</div>
 				</div>
 			
@@ -116,8 +116,8 @@
 					</div>
 				</div>
 				<ul class="menu menu-nav">
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
+					<li class="menu-item"><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
+					<li class="menu-item"><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/blog"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
 					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span></a></li>
 				</ul>
 				<ul class="menu menu-social">

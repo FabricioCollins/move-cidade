@@ -9,19 +9,22 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php _e( 'Nothing Found', 'twentysixteen' ); ?></h1>
-	</header><!-- .page-header -->
-
-	<div class="page-content">
+	
+	<div class="no-results page-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
 			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'twentysixteen' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 		<?php elseif ( is_search() ) : ?>
 
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentysixteen' ); ?></p>
-			<?php get_search_form(); ?>
+			<p><b>Não foi encontrado nenhum resultado que contenha os termos: </b><span><?php the_search_query(); ?></span></p>
+			<p>Teste outros termos ou use o menu acima para navegar pelo conteúdo.</p>
+			
+			<form action="<?php $_SERVER['HOST_NAME']?>/move-cidade/" class="search-form" method="get" role="search">
+				<label>
+					<input type="search" name="s" value="" placeholder="" class="search search-field form-control">
+				</label>
+			</form>
 
 		<?php else : ?>
 

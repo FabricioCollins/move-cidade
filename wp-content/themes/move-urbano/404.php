@@ -13,14 +13,18 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentysixteen' ); ?></h1>
-				</header><!-- .page-header -->
-
+				
+				<h1 class="page-title"><?php _e( 'Não encontramos a página que você procura =(', 'twentysixteen' ); ?></h1>
+				
 				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentysixteen' ); ?></p>
+					<p><?php _e( 'Ela pode ter sido removida ou mudado de endereço. <br/> Tente usar nossa busca para encontra-la.', 'twentysixteen' ); ?></p>
 
-					<?php get_search_form(); ?>
+					<form action="<?php $_SERVER['HOST_NAME']?>/move-cidade/" class="search-form" method="get" role="search">
+						<label>
+							<input type="search" name="s" value="" placeholder="" class="search search-field form-control">
+						</label>
+					</form>
+
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
