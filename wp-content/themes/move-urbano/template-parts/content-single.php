@@ -10,13 +10,13 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header border-bottom">
-		<?php the_title( '<h1 class="entry-title border-bottom">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<section class="content-social border-bottom">		
-		<a href="#">@</a>
-		<a href="#">@</a>
-		<a href="#">@</a>
+		<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+		<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		<a href="#"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>		
 		<a href="#">@</a>
 		<span>Compartilhar</span>
 	</section>

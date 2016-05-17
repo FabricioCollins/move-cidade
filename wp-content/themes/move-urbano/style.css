@@ -840,6 +840,7 @@ html {
 .content-area .site-main article .entry-content {
     line-height: 2;
     margin: 40px 0;
+    font-style: italic;
 }
 
 .content-area .site-main article header h1 {
@@ -850,6 +851,7 @@ html {
     text-align: center;
     text-transform: uppercase;
     font-size: 40px;
+    font-weight: bold;    
 }
 
 .content-area .site-main .page-header h1 {
@@ -857,6 +859,21 @@ html {
     font-size: 13pt;
     padding: 20px 0 20px 0;
 }
+
+.content-social {
+    clear: both;
+    height: 45px;
+}
+
+.content-social a, .content-social span {
+    float: right;
+    padding-top: 10px;
+    color: #CCCCCC;
+    margin-right: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
 
 /* SEARCH PAGE */
 .search-area .site-main article {  
@@ -972,23 +989,9 @@ html {
     width: 350px;
 }
 
-/* INTERNAL PAGES */
-.content-social {
-    clear: both;
-    height: 45px;
-}
-
-.content-social a, .content-social span {
-    float: right;
-    padding-top: 10px;
-    color: #CCCCCC;
-    margin-right: 10px;
-    font-size: 11pt;
-    font-weight: bold;
-}
 
 .border-bottom {
-    border-bottom: solid 2px #E6E6E6;
+    border-bottom: solid 3px #E6E6E6;
 }
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
