@@ -27,4 +27,44 @@
 		?>
 	</div><!-- .entry-content -->
 
+	<?php 
+		global $posts; 
+		$b = 0;
+		$args = array( 'posts_per_page' => 10 );
+		$loop = new WP_Query( $args );
+	?>
+
+	<div class="carousel-items-wrapper">			
+		<ul class="bxslider slideshow responsive carousel-items">
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
+				<li>
+					<a href="<?php get_permalink();?>"><?php twentysixteen_post_thumbnail(); ?></a>
+				</li>
+			<?php endwhile ?>
+		</ul>
+	</div><!-- The Carousel -->
+
 </article><!-- #post-## -->
+
+
+<script>		
+	$('.bxslider').bxSlider({
+		// Slider 
+		prevText : '<a href="#" class="carousel-previous"></a>',
+		nextText: '<a href="#" class="carousel-next"></a>',
+		slideWidth : 240,
+		minSlides : 1,
+		maxSlides : 5,
+		slideMargin: 5,
+		infiniteLoop : false,
+		speed : 400,
+		pager : false,
+		hideControlOnEnd: false,		
+		// Responsive
+		responsive : true,
+		touchEnabled : true,
+		preventDefaultSwipeX: true, 
+		preventDefaultSwipeY: false
+		
+	});
+</script>

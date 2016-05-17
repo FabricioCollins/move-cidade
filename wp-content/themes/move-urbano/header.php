@@ -25,6 +25,9 @@
 	<!-- CSS LIBS -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
+	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+
 	<script>
 		$( document ).ready(function() {
 
@@ -63,7 +66,7 @@
 	<?php
 		$actionNav='#';
 		if(!is_home()) {
-			$actionNav=$_SERVER["HOST_NAME"] . '/move-cidade/#';			
+			$actionNav=get_site_url() . '/#';			
 		}
 	?>
 
@@ -78,9 +81,9 @@
 		<div class="wrapper">
 			<div class="header">
 				<div class="title">
-					<h1><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_web_cor.png" alt="Move Cidade"></a></h1>
+					<h1><a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_web_cor.png" alt="Move Cidade"></a></h1>
 					<div class="logo-idec">
-						<a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png"></a>
+						<a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png"></a>
 					</div>
 				</div>
 			
@@ -96,7 +99,7 @@
 					</div>
 
 					<div class="search">
-						<form action="<?php $_SERVER['HOST_NAME']?>/move-cidade/" class="search-form" method="get" role="search">
+						<form action="<?php echo get_site_url(); ?>" class="search-form" method="get" role="search">
 							<input class="search-input" type="search" name="s" placeholder="Pesquisar" value="">
 							<button class="search-submit" type="submit" value="Pesquisar" aria-label="Pesquisar no site"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</form>
@@ -116,8 +119,8 @@
 					</div>
 				</div>
 				<ul class="menu menu-nav">
-					<li class="menu-item"><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
-					<li class="menu-item"><a href="<?php $_SERVER['HOST_NAME']?>/move-cidade/blog"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
+					<li class="menu-item"><a href="<?php echo get_permalink(get_page_by_path('Home'));?>"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
+					<li class="menu-item"><a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
 					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span></a></li>
 				</ul>
 				<ul class="menu menu-social">

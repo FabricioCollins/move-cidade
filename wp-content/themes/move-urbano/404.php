@@ -19,7 +19,7 @@ get_header(); ?>
 				<div class="page-content">
 					<p><?php _e( 'Ela pode ter sido removida ou mudado de endereço. <br/> Tente usar nossa busca para encontra-la.', 'twentysixteen' ); ?></p>
 
-					<form action="<?php $_SERVER['HOST_NAME']?>/move-cidade/" class="search-form" method="get" role="search">
+					<form action="<?php echo get_site_url(); ?>" class="search-form" method="get" role="search">
 						<label>
 							<input type="search" name="s" value="" placeholder="" class="search search-field form-control">
 						</label>

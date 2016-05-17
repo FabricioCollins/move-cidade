@@ -993,9 +993,89 @@ html {
     width: 350px;
 }
 
+.wp-paginate {
+    text-align: center;
+}
+
+.wp-paginate a, .wp-paginate .current {    
+    color: #B3B3B3 !important;
+    background-color: #fff !important;
+    border: none !important; 
+    padding: 0 !important;
+}
+
+.wp-paginate .current {
+    color: #F63869 !important;
+}
 
 .border-bottom {
-    border-bottom: solid 3px #E6E6E6;
+    border-bottom: solid 2px #E6E6E6;
+}
+
+/* CAROUSEL */
+.carousel-items-wrapper {
+    position: relative;
+    min-height: 150px;
+    text-align: center;
+}
+
+.carousel-items-frame {
+    width: 732px;
+}
+
+.carousel-items-multi {
+    float: left;
+}
+
+.bxslider li {
+    height: 140px;
+    width: 180px !important;
+    background: #47deca;
+}
+
+.bx-wrapper {
+    max-width: 1105px !important;
+    float: none;
+}
+
+.bxslider > li > a > div > img, .bxslider > li > a > .post-thumbnail {
+    height: 100%;
+}
+
+.carousel-previous {
+    background: rgba(0, 0, 0, 0) url("img/nav_left-32.png") no-repeat scroll center center;
+}
+
+.carousel-next {
+    background: rgba(0, 0, 0, 0) url("img/nav_right-32.png") no-repeat scroll center center;
+}
+
+.carousel-previous, .carousel-next {
+    position: absolute;
+    top: 0;
+    bottom: 60px;
+    margin: auto -30px;
+    display: inline-block;
+    width: 48px;
+    height: 64px;
+    z-index: 1;
+    color: #9c182f !important;
+    font-family: 'icomoon';
+    font-size: 18px;
+    line-height: 1em;
+    padding: 13px 0;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.carousel-previous {
+    right: 100%;
+    left: -10px;
+}
+
+.carousel-next {
+    left: 100%;
+    margin: auto -15px;
 }
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
