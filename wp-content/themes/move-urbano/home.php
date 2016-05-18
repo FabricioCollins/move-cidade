@@ -52,10 +52,10 @@ get_header(); ?>
 		$is_write_section=false;
 
 		// CSS class of itens
-		$curr_item_class="span_6_of_12 row_span_2_of_2";
-		$class1='span_6_of_12 row_span_2_of_2';
-		$class2='span_3_of_12';
-		$class3='span_4_of_12';
+		$curr_item_class="span_4_of_10 row_span_2_of_2";
+		$class1='span_4_of_10 row_span_2_of_2';
+		$class2='span_2_of_10';
+		$class3='span_3_of_12';
 		$temp_class=$class3;
 
 
@@ -72,7 +72,7 @@ get_header(); ?>
 
 
 					// This is provisional for tests
-					if (in_array( $it_count, array(5, 8, 12, 15, 19, 23, 27, 31) ))
+					if (in_array( $it_count, array(7, 11, 16, 20, 25, 29, 34, 38, 43) ))
 						$is_write_section=true;
 
 

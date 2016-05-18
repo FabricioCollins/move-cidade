@@ -30,7 +30,13 @@
 	<?php 
 		global $posts; 
 		$b = 0;
-		$args = array( 'posts_per_page' => 10 );
+
+		$caegory_name='conteudo';
+		if (strpos(get_permalink(), '/'.'blog') !== false) {
+			$caegory_name='blog';
+		}
+
+		$args = array( 'posts_per_page' => 10, 'category_name' => $caegory_name );
 		$loop = new WP_Query( $args );
 	?>
 

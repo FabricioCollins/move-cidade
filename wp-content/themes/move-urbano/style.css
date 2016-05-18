@@ -3,7 +3,6 @@
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic');
-@import url('https://fonts.googleapis.com/css?family=Signika:400,700,600,300');
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,300,700');
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
@@ -291,19 +290,44 @@ textarea {
     width: 8.333333333333334%;
     width: calc(8.333333333333334%)
 }
-.gradient-bg-45-rosa {
-    background: #f63869;
-    background: -webkit-linear-gradient(-45deg, #f63869, #fb5352);
-    background: -o-linear-gradient(-45deg, #f63869, #fb5352);
-    background: -moz-linear-gradient(-45deg, #f63869, #fb5352);
-    background: linear-gradient(-45deg, #f63869, #fb5352)
+.span_10_of_10 {
+    width: 100%
 }
-.gradient-bg-45-azul {
-    background: #f63869;
-    background: -webkit-linear-gradient(-45deg, #35cbeb, #47deca);
-    background: -o-linear-gradient(-45deg, #35cbeb, #47deca);
-    background: -moz-linear-gradient(-45deg, #35cbeb, #47deca);
-    background: linear-gradient(-45deg, #35cbeb)
+.span_9_of_10 {
+    width: 90%;
+    width: calc(90%)
+}
+.span_8_of_10 {
+    width: 80%;
+    width: calc(80%)
+}
+.span_7_of_10 {
+    width: 70%;
+    width: calc(70%)
+}
+.span_6_of_10 {
+    width: 60%;
+    width: calc(60%)
+}
+.span_5_of_10 {
+    width: 50%;
+    width: calc(50%)
+}
+.span_4_of_10 {
+    width: 40%;
+    width: calc(40%)
+}
+.span_3_of_10 {
+    width: 30%;
+    width: calc(30%)
+}
+.span_2_of_10 {
+    width: 20%;
+    width: calc(20%)
+}
+.span_1_of_10 {
+    width: 10%;
+    width: calc(10%)
 }
 a,
 input[type='submit'],
@@ -346,7 +370,7 @@ h4 {
 }
 p,
 li {
-    font-size: 2rem
+    font-size: 1.6rem
 }
 html {
     font-size: 62.5%;
@@ -363,7 +387,8 @@ html {
     padding: 0
 }
 .header {
-    position: relative
+    position: relative;
+    margin-bottom: 1em
 }
 .header .title {
     text-align: center;
@@ -371,32 +396,36 @@ html {
     padding: 3% 0
 }
 .header .title h1 {
-    margin: 0
-}
-.header .title .logo-idec {
-    position: absolute;
-    background: #35cbeb;
-    top: 0;
-    left: 0;
-    padding: .8%
+    margin: 0;
+    padding: 0
 }
 .header .nav-filter {
-    overflow: hidden;
-    padding: 4px;
+    padding: 0 4px;
     display: table;
     width: 100%;
-    max-width: 100%;
-    margin-bottom: 1em
+    max-width: 100%
 }
 .header .nav-filter .search-input,
 .header .nav-filter .search-submit,
-.header .nav-filter .menu-item a {
-    padding: .4em .6em;
+.header .nav-filter .menu-item a,
+.header .nav-filter .logo {
+    padding: 0 .6rem;
     font-size: 1.3rem;
-    line-height: 1.8em
+    line-height: 36px;
+    height: 36px
 }
-.header .nav-filter .search {
+.header .nav-filter .search,
+.header .nav-filter .nav-categories,
+.header .nav-filter .logo {
     display: table-cell
+}
+.header .nav-filter .logo {
+    background: #f63869;
+    text-align: center;
+    padding: 0;
+    width: 2px;
+    overflow: hidden;
+    transition: width .3s
 }
 .header .nav-filter .search .search-form {
     max-width: 360px;
@@ -471,9 +500,6 @@ html {
 .header .nav-filter .search .search-form .search-submit:focus {
     text-shadow: 0 0 8px #fff
 }
-.header .nav-filter .nav-categories {
-    display: table-cell
-}
 .header .nav-filter .nav-categories .menu {
     text-align: center;
     display: table;
@@ -493,8 +519,24 @@ html {
 }
 .header .nav-filter .nav-categories .menu .menu-item a:hover,
 .header .nav-filter .nav-categories .menu .menu-item a:focus {
-    background: #47deca;
-    color: #215859
+    background: #6ee3b2;
+    color: #2c5a51
+}
+.header.nav-fixed {
+    padding-bottom: 36px
+}
+.header.nav-fixed .nav-filter {
+    box-shadow: 0 4px 0 0 rgba(16, 31, 40, .1), 0 2px 0 0 rgba(16, 31, 40, .1);
+    padding: 0;
+    z-index: 998;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 5%;
+    width: 95%
+}
+.header.nav-fixed .nav-filter .logo {
+    width: 36px
 }
 .nav-main {
     position: fixed;
@@ -546,7 +588,7 @@ html {
     transition: transform ease-out .3s
 }
 .nav-main.open {
-    box-shadow: 4px 0 0 rgba(0, 0, 0, .1), 2px 0 0 rgba(0, 0, 0, .1)
+    box-shadow: 4px 0 0 rgba(16, 31, 40, .1), 2px 0 0 rgba(16, 31, 40, .1)
 }
 .nav-main.open .menu .menu-item {
     width: 18rem
@@ -581,12 +623,12 @@ html {
     color: #fb5352
 }
 .main .cardboard .col {
-    padding-top: 18%;
+    padding-top: 16%;
     overflow: hidden;
     position: relative
 }
 .main .cardboard .col.row_span_2_of_2 {
-    padding-top: 36%
+    padding-top: 32%
 }
 .main .cardboard .col .title {
     position: absolute;
@@ -607,7 +649,10 @@ html {
     margin: 4px;
     color: #fff;
     transition: all .1s;
-    background: #b3b3b3
+    background: #b3b3b3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14pt;
 }
 .main .cardboard .col .title a:hover,
 .main .cardboard .col .title a:focus {
@@ -615,21 +660,21 @@ html {
     box-shadow: 4px 4px 0 0 #808080
 }
 .main .cardboard .col .descricao {
-    display: none;
+    display: none
 }
 .main .cardboard .col.cor-1 a {
-    background: #35cbeb;
+    background: #35cbeb
 }
 .main .cardboard .col.cor-1 a:hover,
 .main .cardboard .col.cor-1 a:focus {
     box-shadow: 4px 4px 0 0 #2ea9c4
 }
 .main .cardboard .col.cor-2 a {
-    background: #47deca
+    background: #6ee3b2
 }
 .main .cardboard .col.cor-2 a:hover,
 .main .cardboard .col.cor-2 a:focus {
-    box-shadow: 4px 4px 0 0 #3cb8aa
+    box-shadow: 4px 4px 0 0 #5bbc96
 }
 .main .cardboard .col.cor-3 a {
     background: #f63869
@@ -638,13 +683,36 @@ html {
 .main .cardboard .col.cor-3 a:focus {
     box-shadow: 4px 4px 0 0 #c8335c
 }
-
-.main .cardboard .col.cor-4 a {
-    background: #00B1CD;
+.footer {
+    margin: 8% 0 0 0;
+    text-align: right;
+    width: 100%;
+    position: relative;
+    padding-top: 43%
 }
-.main .cardboard .col.cor-4 a:hover,
-.main .cardboard .col.cor-4 a:focus {
-    box-shadow: 4px 4px 0 0 #0BA0B7
+.footer .desenho {
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+}
+.footer .desenho img {
+    /*min-width: 800px;*/
+    width: 100%
+}
+.footer .logotipo {
+    position: absolute;
+    z-index: 1001;
+    bottom: 0;
+    width: 100%
+}
+.footer .logotipo img {
+    max-height: 60px;
+    max-width: 25%;
+    display: inline-block;
+    margin-right: 2%;
+    margin-bottom: 2%
 }
 .cadastro {
     position: absolute;
@@ -656,76 +724,62 @@ html {
     position: absolute;
     top: 0;
     right: 0;
-    background: #ffea55;
+    border-radius: 50%;
     width: 2em;
     height: 2em;
     text-align: center;
     cursor: pointer;
     transition: all .1s;
     color: #fff;
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 2em;
-    transition: all .4s
+    transition: all .4s;
+    background: #f63869 url('../img/icone_mailing_carta.png') no-repeat 2em center
 }
 .cadastro .toggle.ativo {
-    background: #f63869;
-    box-shadow: 0 0 0 3px #fff
+    background-color: #f63869;
+    background-position: center center;
+    box-shadow: 0 0 0 3px #fff;
+    font-size: 3rem
 }
 .cadastro .form-wrapper {
     position: absolute;
     right: 0;
     top: 0;
     background: #ffea55;
-    padding: 2rem;
-    box-shadow: 0 0 0 3px #fff, -5px 5px 0 0 rgba(0, 0, 0, .1), -7px 7px 0 0 rgba(0, 0, 0, .1)
-}
-.cadastro .form-wrapper h3 {
-    white-space: nowrap;
-    font-size: 1.6rem;
-    margin: 0
+    padding: 1rem 3rem 1rem 1rem;
+    margin-top: .8rem;
+    margin-right: 1.6rem;
+    box-shadow: -2px 2px 0 0 rgba(0, 0, 0, .1), -4px 4px 0 0 rgba(0, 0, 0, .1)
 }
 .cadastro .form-wrapper p {
     font-size: 1.2rem;
-    margin: .8rem 0;
-    font-style: italic
+    margin: 0 0 .6em 0;
+    font-style: italic;
+    float: left;
+    text-align: left;
+    white-space: nowrap
 }
 .cadastro .form-wrapper form {
-    white-space: nowrap
+    white-space: nowrap;
+    float: left
 }
 .cadastro .form-wrapper form input {
     border: 0;
-    padding: .6rem;
-    font-size: 1.2rem
+    padding: .4em .6em;
+    font-size: 1.2rem;
+    line-height: 1.6em
 }
 .cadastro .form-wrapper form input[type="submit"] {
-    background: #f63869;
+    background: #6ee3b2;
     color: #fff;
-    font-weight: 700
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Quicksand', sans-serif
 }
 .cadastro .form-wrapper form input[type="submit"]:hover,
 .cadastro .form-wrapper form input[type="submit"]:focus {
-    background: #e34776
-}
-.footer {
-    position: absolute;
-    z-index: 1000;
-    margin: 10% 0 0 0;
-    text-align: center;
-    width: 100%
-}
-.footer .desenho {
-    overflow: hidden
-}
-.footer .desenho img {
-    /*min-width: 800px*/
-    width: 100%;
-}
-.footer .logotipo {
-    line-height: 200px;
-    bottom: 0;
-    width: 100%;
-    background: #101f28;
-    box-shadow: 0 -4px 0 0 #101f28
+    background: #65cfa4
 }
 .hidden {
     display: none!important
@@ -759,6 +813,14 @@ html {
 }
 .clearfix:after {
     clear: both
+}
+@media only screen and (max-width: 1200px) {
+    .header .nav-filter .nav-categories .menu .search-input,
+    .header .nav-filter .nav-categories .menu .search-submit,
+    .header .nav-filter .nav-categories .menu .menu-item a,
+    .header .nav-filter .nav-categories .menu .logo a {
+        font-size: 1rem
+    }
 }
 @media only screen and (max-width: 480px) {
     .main .cardboard .col {
@@ -833,6 +895,11 @@ html {
         page-break-after: avoid
     }
 }
+
+
+/*
+* CUSTOM
+*/
 
 /* PAGES */
 

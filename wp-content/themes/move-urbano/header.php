@@ -18,46 +18,17 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
 	<!-- JS LIBS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>	
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>		
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
+
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
 
 	<!-- CSS LIBS -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
 	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
 
-	<script>
-		$( document ).ready(function() {
-
-			// Controle as expansão do menu lateral
-			$('.nav-toggle a').click(function(event) {
-				$('.nav-main').toggleClass('open');
-			});
-
-			// Controla o componente de cadastro de email
-			$('.cadastro .toggle').click(function(event) {
-				$('.cadastro .form-wrapper').animate({
-					// opacity: "toggle",
-					height: "toggle",
-					width: "toggle",
-				}, 300);
-				$(this).toggleClass('ativo').find('i').toggleClass('fa-times').toggleClass('fa-bus');
-			});
-
-			// Make search on key press after 0.5 second
-			var searchEventContainer=null;
-			$(".search-input").keyup(function(){
-				if(searchEventContainer!=null) clearTimeout(searchEventContainer);
-
-				searchEventContainer=setTimeout(function() {
-					$(".cardboard").idecCardBoard().filterByContent($(".search-input").val());
-				}, 500);
-			});
-
-		});	
-	</script>
 
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>	
 	<?php endif; ?>
@@ -74,38 +45,75 @@
 
 <body <?php body_class(); ?>>
 
+<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
 <div id="page" class="site">
 	<div class="site-inner">
 		<!--<a class="skip-link screen-reader-text" href="#content">< ? php _e( 'Skip to content', 'twentysixteen' ); ?></a>-->
 
 		<div class="wrapper">
 			<div class="header">
-				<div class="title">
-					<h1><a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_web_cor.png" alt="Move Cidade"></a></h1>
-					<div class="logo-idec">
-						<a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png"></a>
+
+				<div class="title section">
+					<div class="logo-idec col span_2_of_12">
+						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+							<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_verde.png">
+						</a>
 					</div>
+
+					<h1 class="col span_8_of_12">
+						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+							
+							<?php 
+								$logo_name='logotipo_cor-flat.png';
+								if (strpos(get_permalink(), '/'.'blog') !== false) {
+									$logo_name='logotipo_cor-flat-blog.png';
+								}
+
+							?>
+
+							<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/<?php echo $logo_name ?>" alt="Move Cidade">
+																					
+						</a>
+					</h1>
 				</div>
-			
+
 				<div class="nav-filter">
+					<div class="logo"><a href="#blog"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_branco.png"></a></div>
+
 					<div class="nav-categories">
 						<ul class="menu">
-							<li class="menu-item" data-target="mobilidade_e_cidade"><a href="<?php echo $actionNav ?>mobilidade_e_cidade">Mobilidade e cidade</a></li>
-							<li class="menu-item" data-target="mobilidade_e_cotidiano"><a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">Mobilidade e cotidiano</a></li>
-							<li class="menu-item" data-target="entenda_seus_direitos"><a href="<?php echo $actionNav ?>entenda_seus_direitos">Entenda seus direitos</a></li>
-							<li class="menu-item" data-target="sem_carro_pela_cidade"><a href="<?php echo $actionNav ?>sem_carro_pela_cidade">Sem carro pela cidade</a></li>
-							<li class="menu-item" data-target="novidades"><a href="<?php echo $actionNav ?>novidades">Novidades</a></li>
+							<li class="menu-item" data-target="mobilidade_e_cidade">
+								<a href="<?php echo $actionNav ?>mobilidade_e_cidade">Mobilidade e cidade</a>
+							</li>
+							<li class="menu-item" data-target="mobilidade_e_cotidiano">
+								<a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">Mobilidade e cotidiano</a>
+							</li>
+							<li class="menu-item" data-target="entenda_seus_direitos">
+								<a href="<?php echo $actionNav ?>entenda_seus_direitos">Entenda seus direitos</a>
+							</li>
+							<li class="menu-item" data-target="sem_carro_pela_cidade">
+								<a href="<?php echo $actionNav ?>sem_carro_pela_cidade">Sem carro pela cidade</a>
+							</li>
+							<li class="menu-item" data-target="novidades">
+								<a href="<?php echo $actionNav ?>novidades">Novidades</a>
+							</li>
 						</ul>
 					</div>
 
 					<div class="search">
 						<form action="<?php echo get_site_url(); ?>" class="search-form" method="get" role="search">
-							<input class="search-input" type="search" name="s" placeholder="Pesquisar" value="">
-							<button class="search-submit" type="submit" value="Pesquisar" aria-label="Pesquisar no site"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<input class="search-input" type="text" name="s" placeholder="Pesquisar" value="">
+							<button class="search-submit" type="submit" value="Pesquisar" aria-label="Pesquisar no site">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
 						</form>
 					</div>
+
 					
-				</div>
+				</div>			
 
 			</div>
 
