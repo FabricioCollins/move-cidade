@@ -11,7 +11,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="search-thumbnail">
-		<!--< ?php twentysixteen_post_thumbnail(); ?>-->
+		<?php twentysixteen_post_thumbnail(); ?>
 	</div>
 
 	<div class="entry-header">

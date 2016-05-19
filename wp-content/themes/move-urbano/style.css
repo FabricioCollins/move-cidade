@@ -683,6 +683,14 @@ html {
 .main .cardboard .col.cor-3 a:focus {
     box-shadow: 4px 4px 0 0 #c8335c
 }
+.main .cardboard .col.cor-4 a {
+    background: #00B1CD
+}
+.main .cardboard .col.cor-4 a:hover,
+.main .cardboard .col.cor-4 a:focus {
+    box-shadow: 4px 4px 0 0 #007D91
+}
+
 .footer {
     margin: 8% 0 0 0;
     text-align: right;
@@ -957,8 +965,7 @@ html {
 
 .search-area .site-main .search-thumbnail {
     display: table-cell;
-    border-right: solid 3px #666;
-    height: 100px;    
+    border-right: solid 3px #666;      
     width: 200px;
 }
 
@@ -978,44 +985,49 @@ html {
 
 .search-area .site-main .search-thumbnail img {
     display: block;
+    max-height: 180px;
     width: 100%;
 }
 
-.search-area .site-main .cor-1 .search-thumbnail, .search-area .site-main .cor-1 {
+.search-area .site-main .cor-1 {
     border: 3px solid #35cbeb;        
 }
 .search-area .site-main .cor-1 .search-thumbnail {    
     background-color: #35cbeb;
+    border-right: 3px solid #35cbeb;
 }
 .search-area .site-main .cor-1 a {    
     color: #35cbeb;
 }
 
-.search-area .site-main .cor-2 .search-thumbnail, .search-area .site-main .cor-2 {
+.search-area .site-main .cor-2 {
     border: 3px solid #47deca;    
 }
 .search-area .site-main .cor-2 .search-thumbnail {    
     background-color: #47deca;
+    border: 3px solid #47deca;
 }
 .search-area .site-main .cor-2 a {    
-    color: #47deca;
+    color: #47deca;    
 }
 
-.search-area .site-main .cor-3 .search-thumbnail, .search-area .site-main .cor-3 {
+.search-area .site-main .cor-3 {
     border: 3px solid #f63869;    
 }
 .search-area .site-main .cor-3 .search-thumbnail {    
     background-color: #f63869;
+    border-right: 3px solid #f63869;
 }
 .search-area .site-main .cor-3 a {    
     color: #f63869;
 }
 
-.search-area .site-main .cor-4 .search-thumbnail, .search-area .site-main .cor-4 {
+.search-area .site-main .cor-4 {
     border: 3px solid #00B1CD; 
 }
 .search-area .site-main .cor-4 .search-thumbnail {    
     background-color: #00B1CD;
+    border-right: 3px solid #00B1CD; 
 }
 .search-area .site-main .cor-4 a {    
     color: #00B1CD;

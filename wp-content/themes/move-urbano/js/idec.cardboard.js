@@ -14,7 +14,7 @@
 
         // settings
         var config = {
-            
+            'menuSelector': '.nav-categories'
         };
         if ( settings ){$.extend(config, settings);}
 
@@ -44,8 +44,8 @@
 
         // Remove filter and reset component to initial state
         this.resetFilter = function() {
-            this.filterByCategory();
-            this.filterByContent();
+            self.filterByCategory();
+            self.filterByContent();
         };
 
         // This function is used by remove accents in a word or text
@@ -63,21 +63,38 @@
             return output;  
         };
 
+        // Distribui cores aleatórias aos cards
+        this.setCarsRandomColours = function() {
+            this.find('.col').each(function(index, el) {
+                $(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
+            });
+        };
+
+        // Atribui a categoria dos menus aos conteúdos
+        this.joinMenuCardCategories = function() {
+            $(config.menuSelector).find("li[data-target]").each(function(index, el){
+                $(this).click(function() {
+                    self.filterByCategory($(this).data("target"));
+                });
+            });
+        };
+
         this.render = function(obj) {
             this.html(obj);
         }; 
 
         // Main code
         this.main = function() {
-
+            self.setCarsRandomColours();
+            self.joinMenuCardCategories();
         }; 
 
         // Contructor
         this.init = function(){
-            this.main();
+            self.main();
         };        
 
-        this.init();
+        self.init();
 
         return this;
     };

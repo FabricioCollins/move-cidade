@@ -140,22 +140,8 @@ get_header(); ?>
 
 <script>
 	$( document ).ready(function() {
-
 		// Inicializa o plugin cardboard
-		$(".cardboard").idecCardBoard();	
-
-		// Distribui cores aleatórias aos cards
-		$('.cardboard .col').each(function(index, el) {
-			$(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
-		});			
-
-		// Atribui a categoria dos menus aos conteúdos
-		$('.nav-categories').find("li[data-target]").each(function(index, el){
-            $(this).click(function() {
-            	$(".cardboard").idecCardBoard().filterByCategory($(this).data("target"));
-            });
-        });
-
+		$(".cardboard").idecCardBoard();
 	});	
 </script>
 

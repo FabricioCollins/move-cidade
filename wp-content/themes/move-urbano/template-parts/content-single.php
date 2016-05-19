@@ -14,10 +14,10 @@
 	</header><!-- .entry-header -->
 
 	<section class="content-social border-bottom">		
-		<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-		<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-		<a href="#"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>		
-		<a href="#">@</a>
+		<a class="addthis_button_pinterest_share" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+		<a class="addthis_button_twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		<a class="addthis_button_facebook" href="#"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>		
+		<a class="addthis_button_email" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 		<span>Compartilhar</span>
 	</section>
 
