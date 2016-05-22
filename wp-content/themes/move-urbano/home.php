@@ -144,6 +144,13 @@ get_header(); ?>
 		var cardboard = $(".cardboard").idecCardBoard();
 		cardboard.setCardsRandomColours();
         cardboard.joinMenuCardCategories();
+
+        $(".idec-logo-nav").click(function() {
+        	cardboard.resetFilter();
+        });
+
+        var urlParam=getUrlParameter();
+        cardboard.filterByCategory(urlParam);
 	});	
 </script>
 

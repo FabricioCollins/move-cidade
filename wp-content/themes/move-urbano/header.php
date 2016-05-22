@@ -8,11 +8,25 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
+$pagename = get_query_var('pagename');  
+if ( !$pagename ) {  
+    // If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object  
+    $post = $wp_query->get_queried_object();  
+    $pagename = $post->post_name;  
+}
+
+if($pagename) {
+	$pagetitle = str_replace("-", " ", $pagename);
+	$pagetitle=$pagetitle." | MOVE CIDADE";
+}
+else 
+	$pagetitle="MOVE CIDADE";
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-	<title>MOVE CIDADE</title>
+
+	<title><?php echo strtoupper ($pagetitle); ?></title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -82,7 +96,9 @@
 				</div>
 
 				<div class="nav-filter">
-					<div class="logo"><a href="#blog"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_branco.png"></a></div>
+					<div class="logo idec-logo-nav">
+						<a href="#"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_branco.png"></a>
+					</div>
 
 					<div class="nav-categories">
 						<ul class="menu">

@@ -47,3 +47,9 @@ $( document ).ready(function() {
 	});
 
 });	
+
+function getUrlParameter() {
+	var url=document.URL;
+	if(url.indexOf("#") != -1)
+	return url.substring(url.indexOf("#")+1, url.length-1);
+}
