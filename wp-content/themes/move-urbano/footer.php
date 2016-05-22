@@ -26,10 +26,7 @@
 	<div class="cadastro">
 		<div class="form-wrapper">
 			<p>Receba novidades sobre campanhas de mobilidade</p>
-			<form>
-				<input type="text" value="" placeholder="Digite seu email">
-				<input type="submit" value="Cadastrar">
-			</form>
+			<?php do_shortcode("[simplenewsletter]"); ?>
 		</div>
 		<div class="toggle">
 			<i class="fa fa-times" aria-hidden="true"></i>

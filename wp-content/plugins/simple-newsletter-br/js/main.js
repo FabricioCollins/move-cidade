@@ -1,4 +1,4 @@
-$ = jQuery;
+//$ = jQuery;
 function initSimpleNewsletter(element)
 {
 	$(function() {

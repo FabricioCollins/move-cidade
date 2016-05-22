@@ -1,4 +1,4 @@
-$ = jQuery;
+//$ = jQuery;
 $(function(){
 	$('#doExport').click(function(event) {
 		event.preventDefault();

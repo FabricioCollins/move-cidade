@@ -64,7 +64,7 @@
         };
 
         // Distribui cores aleatórias aos cards
-        this.setCarsRandomColours = function() {
+        this.setCardsRandomColours = function() {
             this.find('.col').each(function(index, el) {
                 $(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
             });
@@ -83,15 +83,9 @@
             this.html(obj);
         }; 
 
-        // Main code
-        this.main = function() {
-            self.setCarsRandomColours();
-            self.joinMenuCardCategories();
-        }; 
-
         // Contructor
         this.init = function(){
-            self.main();
+            
         };        
 
         self.init();

@@ -141,7 +141,9 @@ get_header(); ?>
 <script>
 	$( document ).ready(function() {
 		// Inicializa o plugin cardboard
-		$(".cardboard").idecCardBoard();
+		var cardboard = $(".cardboard").idecCardBoard();
+		cardboard.setCardsRandomColours();
+        cardboard.joinMenuCardCategories();
 	});	
 </script>
 

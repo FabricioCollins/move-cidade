@@ -6,14 +6,14 @@
 		{
 			?>
 			<fieldset class='simplenewsleter-field simplenewsleter-field-name'>
-				<input name='simplenewsletter[name]' type='text' placeholder='<?php echo __("Name", 'simple-newsletter-br') ?>'/>
+				<input name='simplenewsletter[name]' type='text' placeholder='<?php echo __("Digite seu nome", 'simple-newsletter-br') ?>'/>
 			</fieldset>
 			<?php 
 		} ?>
 		<fieldset class='simplenewsleter-field simplenewsleter-field-email'>
-			<input name='simplenewsletter[email]' type='email' placeholder='<?php echo __("Email", 'simple-newsletter-br') ?>' />
-		</fieldset>
-		<input type="submit" value="<?php echo __("Send", 'simple-newsletter-br') ?>" class='simplenewsleter-field-submit' />
+			<input name='simplenewsletter[email]' type='email' placeholder='Digite seu email' />			
+			<input type="submit" value="Cadastrar" class='simplenewsleter-field-submit' />
+		</fieldset>				
 	</form>
 	<div class="simplenewsletter_spinner" style="display:none;">
 		<img src="<?php echo plugins_url('../images/loading_spinner.gif', __FILE__) ?>" style="margin-left:45%;">

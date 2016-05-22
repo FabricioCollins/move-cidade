@@ -68,7 +68,7 @@
 							
 							<?php 
 								$logo_name='logotipo_cor-flat.png';
-								if (strpos(get_permalink(), '/'.'blog') !== false) {
+								if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false) {
 									$logo_name='logotipo_cor-flat-blog.png';
 								}
 
