@@ -722,6 +722,13 @@ html {
     margin-right: 2%;
     margin-bottom: 2%
 }
+
+@media only screen and (max-width: 720px) {
+    .footer .logotipo img {
+        max-width: 12%;
+    }
+}
+
 .cadastro {
     position: absolute;
     top: 0;
@@ -830,7 +837,7 @@ html {
         font-size: 1rem
     }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 720px) {
     .main .cardboard .col {
         padding-top: 30%
     }
@@ -991,8 +998,9 @@ html {
 }
 
 .search-area .site-main .entry-header .entry-summary p {
-   text-overflow: ellipsis;
-   height: 90px;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .search-area .site-main .search-thumbnail img {
@@ -1081,7 +1089,7 @@ html {
     padding-left: 10px;
     padding-right: 42px;
     text-align: left;
-    width: 350px;
+    width: 100%;
 }
 
 .wp-paginate {
