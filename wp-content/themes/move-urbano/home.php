@@ -47,51 +47,47 @@ get_header(); ?>
 		/*
 		*  Mounts page Cardboard
 		*/
-		$first_item=true;
 		$it_count=0;
-		$is_write_section=false;
+		$it_round_count=0;
 
 		// CSS class of itens
-		$curr_item_class="span_4_of_10 row_span_2_of_2";
-		$class1='span_4_of_10 row_span_2_of_2';
-		$class2='span_2_of_10';
-		$class3='span_3_of_12';
+		$curr_item_class="";
+		$class0='span_4_of_10 row_span_2_of_2';		
+		$class1='span_2_of_10';
+		$class2='span_4_of_10';
 		$temp_class=$class3;
 
 
-		echo '<div class="main">';
+		echo '<div class="main clearfix">';
 			echo '<div class="cardboard">';
 
 			if ( $merged_queried_post->have_posts() ) {
-
-				echo '<div class="section">';
-
+				
 				while ( $merged_queried_post->have_posts() ) {
 					$merged_queried_post->the_post();
+			
 
-
-
-					// This is provisional for tests
-					if (in_array( $it_count, array(7, 11, 16, 20, 25, 29, 34, 38, 43) ))
-						$is_write_section=true;
-
-
-
-					// Define when write section tag
-					if($is_write_section) {
-						echo '</div>'; // DIV section
-						echo '<div class="section">'; // DIV section
+					// Define css used class
+					if($it_count==0) {
+						$curr_item_class=$class0;
 					}
+					else if($it_count==1) {
+						$curr_item_class=$class2;
+					}
+					else if($it_count <= 5) {
+						$curr_item_class=$class1;	
+					}
+					else {
 
-
-
-					// Define current css item class
-					// if create new section, change class
-					if($is_write_section) {
-						$tmp=$curr_item_class;
-						$curr_item_class=$temp_class;
-						$temp_class=$tmp;
-					}						
+						if($it_round_count==3) {
+							$curr_item_class=$class2;
+							$it_round_count=0;
+						}
+						else {
+							$curr_item_class=$class1;
+							$it_round_count++;
+						}						
+					}
 					
 
 					// Get the post tags to use by category
@@ -104,28 +100,22 @@ get_header(); ?>
 
 
 					// ########### THE CARD ITEM ###########
-					echo '<div class="col ' . $curr_item_class . '" data-category="' . $posttags . '">';
+					echo '<div class="card-item col ' . $curr_item_class . '" data-category="' . $posttags . '">';
 						echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-						echo '<p class="descricao">' . get_the_excerpt() . '</p>';
+						echo '<p class="description">' . get_the_excerpt() . '</p>';
 					echo '</div>'; // card item
 					// ########### THE CARD ITEM ###########
 
 
 					// Make sure it is the first item and disables this validated
-					if($first_item) {
+					if($it_count_round) {
 						$curr_item_class=$class2;
 						$first_item=false;
 					}
 
-
-					// Desable this control variable
-					// Its have actvate after the section is complete again
-					$is_write_section=false;
-
 					$it_count++;
 
 				}
-				echo '</div>'; // Close last DIV section
 
 			}
 

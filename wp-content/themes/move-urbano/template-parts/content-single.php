@@ -81,6 +81,6 @@
 
 	// Distribui cores aleatórias aos cards
 	$('.carousel-items-wrapper .bxslider li').each(function(index, el) {
-		$(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
+		$(this).addClass('cor-' + Math.floor((Math.random() * 3) + 1));
 	});	
 </script>

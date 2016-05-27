@@ -66,7 +66,7 @@
         // Distribui cores aleatórias aos cards
         this.setCardsRandomColours = function() {
             this.find('.col').each(function(index, el) {
-                $(this).addClass('cor-' + Math.floor((Math.random() * 4) + 1));
+                $(this).addClass('cor-' + Math.floor((Math.random() * 3) + 1));
             });
         };
 

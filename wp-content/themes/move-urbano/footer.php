@@ -11,12 +11,10 @@
 ?>
 	
 </div><!-- .site -->
+
 	<div class="footer">
-		<div class="desenho">
-			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/rodape-01.png">
-		</div>
-		<div class="logotipo section">
-			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-lateral_branco.png">
+		<div class="logotipo">
+			<a href="index.html"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-lateral_branco.png"></a>
 			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_branco.png">
 			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-ics-branco.png">
 			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_led.png">

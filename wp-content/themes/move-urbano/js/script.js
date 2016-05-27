@@ -13,15 +13,17 @@ $( document ).ready(function() {
 		$('.nav-main').toggleClass('open');
 	});
 
-	// Controla o componente de cadastro de email
-	$('.cadastro .toggle').click(function(event) {
-		$('.cadastro .form-wrapper').animate({
-			opacity: "toggle",
-			height: "toggle",
-			width: "toggle",
-		}, 300);
-		$(this).toggleClass('ativo').find('i').toggleClass('fa-times').toggleClass('fa-bus');
+	// Show/Hide responsive category
+	$('.menu-toggle a').click(function(event) {
+		$(this).parent().toggleClass('ativo').siblings('.menu').toggleClass('open');
 	});
+
+	// Controla o componente de cadastro de email	
+	$('.cadastro .toggle').click(function(event) {
+		toggleCadastro($(this));
+	});
+	if($(window).width() < 1024) 
+		toggleCadastro($('.cadastro .toggle'), 500);
 
 	// Make search on key press after 0.5 second
 	var searchEventContainer=null;
@@ -39,12 +41,16 @@ $( document ).ready(function() {
 	yinit = 0; //navH;
 
 	$(window).scroll(function() {
-		if($(window).scrollTop() > $('.header .title').innerHeight()) {
+		// fixar o menu no topo
+		if($(window).scrollTop() > $('.header .title').innerHeight() && $(window).width() > 480) {
 			$nav.parent().addClass('nav-fixed');
 		} else {
 			$nav.parent().removeClass('nav-fixed');
 		}
-	});
+
+		// fechar cadastro
+		if(!$('.cadastro .toggle').hasClass('ativo')) toggleCadastro($('.cadastro .toggle'));
+	}); 
 
 });	
 
@@ -52,4 +58,13 @@ function getUrlParameter() {
 	var url=document.URL;
 	if(url.indexOf("#") != -1)
 	return url.substring(url.indexOf("#")+1, url.length-1);
+}
+
+function toggleCadastro($this, duration = 300) {
+	$('.cadastro .form-wrapper').animate({
+		opacity: "toggle",
+		height: "toggle",
+		width: "toggle",
+	}, duration);
+	$this.toggleClass('ativo').find('i').toggleClass('fa-times');
 }

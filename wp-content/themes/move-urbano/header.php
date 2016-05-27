@@ -33,8 +33,7 @@ else
 	<link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' );?>/img/favicon.ico" type="image/x-icon">
 
 	<!-- JS LIBS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>		
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>	
 	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
 
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
@@ -79,43 +78,50 @@ else
 					</div>
 
 					<h1 class="col span_8_of_12">
-						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
-							
-							<?php 
-								$logo_name='logotipo_cor-flat.png';
-								if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false) {
-									$logo_name='logotipo_cor-flat-blog.png';
-								}
-
-							?>
-
-							<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/<?php echo $logo_name ?>" alt="Move Cidade">
-																					
+						<?php 
+							$logo_name='home';
+							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false) {
+								$logo_name='blog';
+							}
+						?>
+						<a class="logo-<?php echo $logo_name ?>" href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+							<span class="visuallyhidden">Move Cidade</span>
 						</a>
 					</h1>
 				</div>
 
-				<div class="nav-filter">
-					<div class="logo idec-logo-nav">
+				<div class="nav-filter">					
+					<div class="logo">
 						<a href="#"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_branco.png"></a>
 					</div>
 
 					<div class="nav-categories">
+						<div class="responsivo-show menu-toggle"><a href="javascript:void(0);">Seções</a></div>
 						<ul class="menu">
 							<li class="menu-item" data-target="mobilidade_e_cidade">
-								<a href="<?php echo $actionNav ?>mobilidade_e_cidade">Mobilidade e cidade</a>
+								<a href="<?php echo $actionNav ?>mobilidade_e_cidade">
+									<span class="responsivo-hide">Mobilidade e </span>cidade</a>
+								</a>
 							</li>
 							<li class="menu-item" data-target="mobilidade_e_cotidiano">
-								<a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">Mobilidade e cotidiano</a>
+								<a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">
+									<span class="responsivo-hide">Mobilidade e </span>cotidiano</a>
+								</a>
 							</li>
 							<li class="menu-item" data-target="entenda_seus_direitos">
-								<a href="<?php echo $actionNav ?>entenda_seus_direitos">Entenda seus direitos</a>
+								<a href="<?php echo $actionNav ?>entenda_seus_direitos">
+									<span class="responsivo-hide">Entenda </span>seus direitos</a>
+								</a>
 							</li>
 							<li class="menu-item" data-target="sem_carro_pela_cidade">
-								<a href="<?php echo $actionNav ?>sem_carro_pela_cidade">Sem carro pela cidade</a>
+								<a href="<?php echo $actionNav ?>sem_carro_pela_cidade">
+									Sem carro<span class="responsivo-hide"> pela cidade</span></a>
+								</a>
 							</li>
 							<li class="menu-item" data-target="novidades">
-								<a href="<?php echo $actionNav ?>novidades">Novidades</a>
+								<a href="<?php echo $actionNav ?>novidades">
+									Novidades
+								</a>
 							</li>
 						</ul>
 					</div>
