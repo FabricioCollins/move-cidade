@@ -8,19 +8,8 @@
  */
 ?>
 
-<article class="border-bottom" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header border-bottom">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<section class="content-social border-bottom">		
-		<a class="addthis_button_pinterest_share" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-		<a class="addthis_button_twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-		<a class="addthis_button_facebook" href="#"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>		
-		<a class="addthis_button_email" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-		<span>Compartilhar</span>
-	</section>
-
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
 	<div class="entry-content">
 		<?php
 			the_content();
@@ -40,22 +29,24 @@
 		$loop = new WP_Query( $args );
 	?>	
 
-</article><!-- #post-## -->
 
-<div class="carousel-items-wrapper">			
-	<ul class="bxslider slideshow responsive carousel-items">
-		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
-			<li>
-				<a href="<?php echo get_permalink();?>">
-					<div class="content">
-						<p><?php echo get_the_title();?></p>
-						<!--< ? php twentysixteen_post_thumbnail(); ?> -->
-					</div>				
-				</a>
-			</li>
-		<?php endwhile ?>
-	</ul>
-</div><!-- The Carousel -->
+
+	<div class="carousel-items-wrapper">			
+		<ul class="bxslider slideshow responsive carousel-items">
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
+				<li>
+					<a href="<?php echo get_permalink();?>">
+						<div class="content">
+							<p><?php echo get_the_title();?></p>
+							<!--< ? php twentysixteen_post_thumbnail(); ?> -->
+						</div>				
+					</a>
+				</li>
+			<?php endwhile ?>
+		</ul>
+	</div><!-- The Carousel -->
+
+</article><!-- #post-## -->
 
 
 <script>		

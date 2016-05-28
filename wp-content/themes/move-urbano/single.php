@@ -9,8 +9,23 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
+<div id="primary" class="main conteudo wrapper">
 	<main id="main" class="site-main" role="main">
+
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+		<div class="meta">
+			<div class="compartilhar">
+				<h3>Compartilhar</h3>
+				<ul>
+					<li><a class="addthis_button_email email" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+					<li><a class="addthis_button_facebook facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a class="addthis_button_twittertwitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a class="addthis_button_pinterest_share pinterest" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
 		<?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();

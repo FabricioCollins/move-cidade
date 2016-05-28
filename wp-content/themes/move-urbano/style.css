@@ -1453,10 +1453,15 @@ html {
     margin-left: 10%;
 }
 
-.content-area .site-main article .entry-content {
-    line-height: 2;
-    margin: 40px 0;
-    font-style: italic;
+.wrapper .site-main article {
+    margin: 0 auto;
+    padding: 5%;
+}
+
+.wrapper .site-main article p {
+    font-size: 2rem;
+    line-height: 2em;
+    padding-bottom: 5%;
 }
 
 .content-area .site-main article header h1 {
