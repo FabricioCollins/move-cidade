@@ -24,14 +24,15 @@ get_header(); ?>
 		// Query on Notices
 		$args = array(
 		    'category_name' => 'blog',
-		    'posts_per_page', 3
+		    'posts_per_page' => 3,
+		    'orderby' => 'date', 
+		    'order' => 'DESC'
 		);
 		$blog_result = new WP_Query( $args );
 
 		// Query on fixed content
 		$args = array(
-		    'category_name' => 'conteudo',
-		    'posts_per_page', 3
+		    'category_name' => 'conteudo'
 		);
 		$page_result = new WP_Query( $args );
 
@@ -101,8 +102,15 @@ get_header(); ?>
 
 					// ########### THE CARD ITEM ###########
 					echo '<div class="card-item col ' . $curr_item_class . '" data-category="' . $posttags . '">';
-						echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-						echo '<p class="description">' . get_the_excerpt() . '</p>';
+						echo '<h2 style="background-image: url('. wp_get_attachment_url(get_post_thumbnail_id())  . ');" class="title">';
+						echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+						try {
+							if(get_the_category()[0]->cat_name == "Blog")
+								echo '<span class="tag-blog">Blog</span>';
+						}
+						catch(Exception $e) {}		
+						
+						echo '</h2><p class="description">' . get_the_excerpt() . '</p>';
 					echo '</div>'; // card item
 					// ########### THE CARD ITEM ###########
 

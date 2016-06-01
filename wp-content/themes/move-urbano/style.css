@@ -49,8 +49,7 @@ a {
 }
 a:active,
 a:hover {
-    outline: 0;
-    text-decoration: none;
+    outline: 0
 }
 abbr[title] {
     border-bottom: 1px dotted
@@ -389,9 +388,10 @@ html {
     font-family: 'Open Sans', sans-serif
 }
 .wrapper {
-    width: 96%;
+    max-width: 1280px;
+    width: 92%;
     margin: 0 auto;
-    padding-left: 5rem
+    padding: 0 5rem
 }
 .menu {
     list-style: none;
@@ -413,22 +413,17 @@ html {
 }
 .header .title h1 a {
     margin: 0 auto;
-    width: 479px;
+    max-width: 508px;
+    width: 90%;
     height: 83px;
     display: block;
+    background-size: 100% auto
 }
-.header .title h1 .logo-home {
-    background: url('img/logotipo_cor-flat.png') no-repeat center center
-}
-.header .title h1 .logo-blog {
-    background: url('img/logotipo_cor-flat-blog.png') no-repeat center center
-}
-
 .header .nav-filter {
     display: table;
     width: 100%;
     max-width: 100%;
-    background: #ffea55;
+    background: #ffe224;
     box-shadow: 0 18px 0 0 rgba(255, 255, 255, .3) inset
 }
 .header .nav-filter .responsivo-show {
@@ -450,15 +445,15 @@ html {
     display: table-cell
 }
 .header .nav-filter .logo {
-    background: #e7d651;
+    background: #e7cf24;
     text-align: center;
     padding: 0;
     width: 1px;
     overflow: hidden;
-    transition: width .3s
+    transition: width .3s, background .6s
 }
 .header .nav-filter .search {
-    background: #f63869;
+    background: #f31338;
     width: 20px
 }
 .header .nav-filter .search .search-form {
@@ -503,7 +498,7 @@ html {
 }
 .header .nav-filter .search .search-form .search-input:hover,
 .header .nav-filter .search .search-form .search-input:focus {
-    background: #f86087
+    background: #f54260
 }
 .header .nav-filter .search .search-form .search-input:hover .search-placeholder-hover,
 .header .nav-filter .search .search-form .search-input:focus .search-placeholder-hover {
@@ -543,15 +538,16 @@ html {
     text-transform: uppercase;
     font-weight: 700;
     font-family: 'Quicksand', sans-serif;
-    color: #88853f;
+    color: #888126;
     display: block;
     outline: 0;
     overflow: hidden
 }
 .header .nav-filter .nav-categories a:hover,
 .header .nav-filter .nav-categories a:focus {
-    background: #6ee3b2;
-    color: #2c5a51
+    background: #35cbeb;
+    color: #101f28;
+    text-decoration: none;
 }
 .header .nav-filter .nav-categories .menu {
     text-align: center;
@@ -567,15 +563,15 @@ html {
 .header.nav-fixed .nav-filter {
     box-shadow: 0 18px 0 0 rgba(255, 255, 255, .3) inset, 0 4px 0 0 rgba(16, 31, 40, .1), 0 2px 0 0 rgba(16, 31, 40, .1);
     padding: 0;
-    z-index: 998;
+    z-index: 999;
     position: fixed;
     top: 0;
     right: 0;
-    left: 5%;
-    width: 95%
+    left: 0;
+    width: 100%
 }
 .header.nav-fixed .nav-filter .logo {
-    background: #f63869;
+    background: #f31338;
     width: 36px
 }
 .nav-main {
@@ -586,7 +582,11 @@ html {
     background: #fff;
     padding: 0 1rem;
     transition: all ease-out .3s;
-    z-index: 999
+    z-index: 998;
+    transition: padding .2s
+}
+.nav-main.ajustar {
+    padding-top: 36px
 }
 .nav-main .menu {
     padding: 1rem 0;
@@ -626,11 +626,11 @@ html {
 }
 .nav-main .nav-toggle .icon {
     transition: transform ease-out .3s;
-    color: #f63869
+    color: #f31338
 }
 .nav-main .nav-toggle .icon:hover,
 .nav-main .nav-toggle .icon:focus {
-    color: #f86087
+    color: #f54260
 }
 .nav-main.open {
     box-shadow: 4px 0 0 rgba(16, 31, 40, .1), 2px 0 0 rgba(16, 31, 40, .1);
@@ -658,16 +658,11 @@ html {
 }
 .main h1 {
     text-align: center;
-    color: #fff;
     text-transform: uppercase;
-    margin: 0;
+    margin: 6rem 0 1rem 0;
     font-size: 4rem;
-    padding: 1em;
-    background: #6ee3b2;
-    background: -webkit-linear-gradient(45deg, #6ee3b2, #35cbeb);
-    background: -o-linear-gradient(45deg, #6ee3b2, #35cbeb);
-    background: -moz-linear-gradient(45deg, #6ee3b2, #35cbeb);
-    background: linear-gradient(45deg, #6ee3b2, #35cbeb)
+    padding: 0 2rem;
+    font-weight: bold;
 }
 .main .cardboard {
     margin-top: 1rem
@@ -683,10 +678,18 @@ html {
     left: 0;
     bottom: 0;
     right: 0;
-    font-size: 1.4rem;
-    margin: 0
+    margin: 4px;
+    transition: all .1s;
+    background-color: #b3b3b3;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
 }
 .main .cardboard .col .title a {
+    font-size: 1.4rem;
     display: block;
     position: absolute;
     top: 0;
@@ -694,49 +697,70 @@ html {
     bottom: 0;
     right: 0;
     padding: 8%;
-    margin: 4px;
     color: #fff;
-    transition: all .1s;
-    background: #b3b3b3;
-    font-size: 1.2em;
+    text-decoration: none;
+    transition: background .5s;
     font-weight: bold;
 }
-.main .cardboard .col .title a:hover,
-.main .cardboard .col .title a:focus {
+.main .cardboard .col .title .tag-blog {
+    box-shadow: 1px 1px 2px rgba(16, 31, 40, .1) inset;
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(16, 31, 40, .5);
+    padding: 5px 8px;
+    border-radius: 1em
+}
+.main .cardboard .col .title:hover,
+.main .cardboard .col .title:focus {
     margin: 0 8px 8px 0;
     box-shadow: 4px 4px 0 0 #808080
 }
-.main .cardboard .col.span_4_of_10 .title {
+.main .cardboard .col.span_4_of_10 .title a {
     font-size: 1.6rem
 }
 .main .cardboard .col.row_span_2_of_2 {
     padding-top: 31.984%
 }
-.main .cardboard .col.row_span_2_of_2 .title {
+.main .cardboard .col.row_span_2_of_2 .title a {
     font-size: 1.8rem
 }
-.main .cardboard .col.cor-1 a, .bxslider .cor-1 {
-    background: #35cbeb
+.main .cardboard .col.cor-1 .title a, .bxslider .cor-1 {
+    background-color: rgba(53, 203, 235, .7)
 }
-.main .cardboard .col.cor-1 a:hover,
-.main .cardboard .col.cor-1 a:focus {
+.main .cardboard .col.cor-1 .title:hover,
+.main .cardboard .col.cor-1 .title:focus {
     box-shadow: 4px 4px 0 0 #2ea9c4
 }
-.main .cardboard .col.cor-2 a, .bxslider .cor-2 {
-    background: #6ee3b2
+.main .cardboard .col.cor-1 .title:hover a,
+.main .cardboard .col.cor-1 .title:focus a {
+    background-color: #35cbeb
 }
-.main .cardboard .col.cor-2 a:hover,
-.main .cardboard .col.cor-2 a:focus {
-    box-shadow: 4px 4px 0 0 #5bbc96
+.main .cardboard .col.cor-2 .title a, .bxslider .cor-2 {
+    background-color: rgba(35, 140, 169, .7)
 }
-.main .cardboard .col.cor-3 a, .bxslider .cor-3 {
-    background: #f63869
+.main .cardboard .col.cor-2 .title:hover,
+.main .cardboard .col.cor-2 .title:focus {
+    box-shadow: 4px 4px 0 0 #1f768f
 }
-.main .cardboard .col.cor-3 a:hover,
-.main .cardboard .col.cor-3 a:focus {
-    box-shadow: 4px 4px 0 0 #c8335c
+.main .cardboard .col.cor-2 .title:hover a,
+.main .cardboard .col.cor-2 .title:focus a {
+    background-color: #238ca9
 }
-
+.main .cardboard .col.cor-3 .title a, .bxslider .cor-3 {
+    background-color: rgba(243, 19, 56, .7)
+}
+.main .cardboard .col.cor-3 .title:hover,
+.main .cardboard .col.cor-3 .title:focus {
+    box-shadow: 4px 4px 0 0 #c61535
+}
+.main .cardboard .col.cor-3 .title:hover a,
+.main .cardboard .col.cor-3 .title:focus a {
+    background-color: #f31338
+}
 .footer {
     position: relative;
     margin: 4% 0 0 0;
@@ -782,10 +806,10 @@ html {
     font-size: 2rem;
     line-height: 2em;
     transition: all .4s;
-    background: #f63869 url('img/icone_mailing_carta-bus.png') no-repeat 2em center
+    background: #f31338 url('img/icone_mailing_carta-bus.png') no-repeat 2em center
 }
 .cadastro .toggle.ativo {
-    background-color: #f63869;
+    background-color: #35cbeb;
     background-position: center center;
     box-shadow: 0 0 0 3px #fff;
     font-size: 3rem
@@ -794,7 +818,7 @@ html {
     position: absolute;
     right: 0;
     top: 0;
-    background: #ffea55;
+    background: #ffe224;
     padding: 1rem 3rem 1rem 1rem;
     margin-top: .8rem;
     margin-right: 1.6rem;
@@ -823,7 +847,7 @@ html {
 }
 .cadastro .form-wrapper form input[type="submit"] {
     float: left;
-    background: #6ee3b2;
+    background: #238ca9;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
@@ -831,23 +855,56 @@ html {
 }
 .cadastro .form-wrapper form input[type="submit"]:hover,
 .cadastro .form-wrapper form input[type="submit"]:focus {
-    background: #65cfa4
+    background: #21819c
+}
+.conteudo,
+.blog {
+    margin: 0 auto
+}
+.conteudo h2,
+.blog h2 {
+    text-align: center;
+    margin: 1rem auto 2rem auto;
+    max-width: 800px;
+    padding: 0 2rem;
+    color: #888f94
 }
 .conteudo p,
 .blog p {
     line-height: 2em
 }
+.conteudo a,
+.blog a {
+    color: #35cbeb
+}
+.conteudo a:hover,
+.blog a:hover {
+    text-decoration: underline
+}
+.conteudo .resumo,
+.blog .resumo {
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 6px solid #e7e9ea;
+    padding-bottom: 6rem;
+    margin: 4rem auto 6rem auto
+}
+.conteudo .resumo p,
+.blog .resumo p {
+    margin: 0;
+    font-size: 1.8rem
+}
 .conteudo .meta,
 .blog .meta {
-    background: #101f28;
-    color: #70797e;
-    overflow: hidden
+    background: #e7e9ea;
+    color: #101f28;
+    overflow: hidden;
+    margin: 4rem 0 0 0
 }
 .conteudo .meta .data,
 .blog .meta .data,
-.conteudo .meta .compartilhar h3,
-.blog .meta .compartilhar h3 {
-    text-transform: uppercase;
+.conteudo .meta .compartilhar h4,
+.blog .meta .compartilhar h4 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     margin: 0;
@@ -856,8 +913,8 @@ html {
 }
 .conteudo .meta .data,
 .blog .meta .data,
-.conteudo .meta .compartilhar h3,
-.blog .meta .compartilhar h3,
+.conteudo .meta .compartilhar h4,
+.blog .meta .compartilhar h4,
 .conteudo .meta .compartilhar li a,
 .blog .meta .compartilhar li a {
     line-height: 3.5rem
@@ -865,14 +922,14 @@ html {
 .conteudo .meta .data,
 .blog .meta .data {
     float: left;
-    margin-left: 10px
+    margin-left: 1rem
 }
 .conteudo .meta .compartilhar,
 .blog .meta .compartilhar {
     float: right
 }
-.conteudo .meta .compartilhar h3,
-.blog .meta .compartilhar h3 {
+.conteudo .meta .compartilhar h4,
+.blog .meta .compartilhar h4 {
     margin-right: 10px
 }
 .conteudo .meta .compartilhar ul,
@@ -885,35 +942,35 @@ html {
 .conteudo .meta .compartilhar ul li,
 .blog .meta .compartilhar ul li {
     float: left;
-    text-align: center
+    width: 3.5rem
 }
 .conteudo .meta .compartilhar ul li a,
 .blog .meta .compartilhar ul li a {
     font-size: 1.6rem;
     display: block;
-    width: 3.5rem;
+    text-align: center;
     color: #fff;
     transition: all .2s
 }
 .conteudo .meta .compartilhar ul li a.email,
 .blog .meta .compartilhar ul li a.email {
-    background: #6ee3b2
+    background: #c3c7c9
 }
 .conteudo .meta .compartilhar ul li a.email:hover,
 .blog .meta .compartilhar ul li a.email:hover,
 .conteudo .meta .compartilhar ul li a.email:focus,
 .blog .meta .compartilhar ul li a.email:focus {
-    background: #9aebc9
+    background: #abb1b4
 }
 .conteudo .meta .compartilhar ul li a.facebook,
 .blog .meta .compartilhar ul li a.facebook {
-    background: #23758a
+    background: #238ca9
 }
 .conteudo .meta .compartilhar ul li a.facebook:hover,
 .blog .meta .compartilhar ul li a.facebook:hover,
 .conteudo .meta .compartilhar ul li a.facebook:focus,
 .blog .meta .compartilhar ul li a.facebook:focus {
-    background: #2ea9c4
+    background: #1d6b82
 }
 .conteudo .meta .compartilhar ul li a.twitter,
 .blog .meta .compartilhar ul li a.twitter {
@@ -923,34 +980,90 @@ html {
 .blog .meta .compartilhar ul li a.twitter:hover,
 .conteudo .meta .compartilhar ul li a.twitter:focus,
 .blog .meta .compartilhar ul li a.twitter:focus {
-    background: #72dbf1
+    background: #2fb1ce
 }
 .conteudo .meta .compartilhar ul li a.pinterest,
 .blog .meta .compartilhar ul li a.pinterest {
-    background: #f63869
+    background: #f31338
 }
 .conteudo .meta .compartilhar ul li a.pinterest:hover,
 .blog .meta .compartilhar ul li a.pinterest:hover,
 .conteudo .meta .compartilhar ul li a.pinterest:focus,
 .blog .meta .compartilhar ul li a.pinterest:focus {
-    background: #f97496
+    background: #d11536
 }
-.conteudo {
-    text-align: justify
+.conteudo .conteudo03 .responsivo-show {
+    display: none
 }
-.conteudo .resumo {
-    margin: 0 auto;
-    padding: 5%
+.conteudo .conteudo03 .galeria-wrapper {
+    position: relative;
+    width: 100%
 }
-.conteudo .resumo p {
-    font-size: 2rem
-}
-.conteudo .conteudo05 h2 {
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
     font-size: 3rem;
-    text-transform: uppercase
+    color: #fff;
+    text-shadow: 1px 0 0 #101f28, 0 1px 0 #101f28, -1px 0 0 #101f28, 0 -1px 0 #101f28
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link .galeria-nav-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -1em
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link.galeria-nav-next {
+    right: 0;
+    text-align: right
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link.galeria-nav-next .galeria-nav-icon {
+    right: 0
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link.galeria-nav-prev {
+    left: 0;
+    text-align: left
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link.galeria-nav-prev .galeria-nav-icon {
+    left: 0
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria-nav-link.disabled {
+    display: none
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria li {
+    width: 100%;
+    clear: both
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria li img.limit {
+    max-height: 200px;
+    display: block;
+    margin: 0 auto
+}
+.conteudo .conteudo03 .galeria-wrapper .galeria li .box {
+    padding: 1rem 0;
+    background: #ffe224;
+    max-width: 200px;
+    margin: 0 auto;
+    border-radius: 2rem
 }
 .conteudo .conteudo05 img {
     max-height: 250px
+}
+.conteudo .conteudo05 .corpo .section {
+    margin-bottom: 2%
+}
+.conteudo .conteudo05 .corpo h3 {
+    vertical-align: bottom;
+    font-size: 3rem;
+    text-transform: uppercase
+}
+.conteudo .conteudo05 .corpo .titulo-uniao {
+    margin-top: 0
 }
 .conteudo .conteudo05 .corpo ul {
     text-align: left
@@ -959,7 +1072,7 @@ html {
     margin-bottom: .5em
 }
 .conteudo .conteudo05 .corpo .box {
-    margin: 40px;
+    margin: 30px;
     border-radius: 60px;
     padding: 2%
 }
@@ -968,30 +1081,47 @@ html {
     box-shadow: 0 0 20px 10px #6ee3b2
 }
 .conteudo .conteudo05 .corpo .boxamarelo {
-    background: #ffea55;
-    box-shadow: 0 0 20px 10px #ffea55
+    background: #ffe224;
+    box-shadow: 0 0 20px 10px #ffe224
 }
 .conteudo .conteudo05 .corpo .boxazul {
     background: #35cbeb;
     box-shadow: 0 0 20px 10px #35cbeb
 }
+.conteudo .conteudo07 .resumo {
+    border-bottom: 0;
+    padding-bottom: 0
+}
+.conteudo .conteudo07 .resumo .cell img {
+    max-height: 160px
+}
 .conteudo .conteudo07 .table {
-    display: table
+    display: table;
+    margin-bottom: 10%
 }
 .conteudo .conteudo07 .table .cell {
     vertical-align: middle;
-    display: table-cell;
-    padding-right: 5%
+    display: table-cell
 }
-.conteudo .conteudo07 .table .cell:last-child {
-    padding-right: 0
+.conteudo .conteudo07 .table .cell img {
+    float: left;
+    max-width: 200px;
+    margin: 0 5% 0 0
+}
+.conteudo .conteudo07 .table .cell img.float-right {
+    float: right;
+    margin: 0 0 0 5%
+}
+.conteudo .conteudo07 .table .cell p {
+    overflow: auto;
+    margin: 0
 }
 .conteudo .conteudo07 .abas,
 .conteudo .conteudo07 .abas-menu {
     margin: 0 auto
 }
 .conteudo .conteudo07 .abas-menu {
-    width: 90%;
+    width: 100%;
     list-style: none;
     padding: 0;
     display: table;
@@ -999,59 +1129,64 @@ html {
 }
 .conteudo .conteudo07 .abas-menu li {
     display: table-cell;
-    text-transform: uppercase;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    border-bottom: 3px solid #101f28;
     border-radius: 1em 1em 0 0;
-    border: 3px solid #cfd2d4;
-    border-bottom-color: #35cbeb
+    vertical-align: bottom
 }
 .conteudo .conteudo07 .abas-menu li a {
-    color: #b3b3b3;
     display: block;
-    padding: 4%
+    border: 3px solid #cfd2d4;
+    border-bottom: 0;
+    border-radius: inherit;
+    line-height: 2em;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    padding-top: 10px
 }
 .conteudo .conteudo07 .abas-menu li a:hover,
 .conteudo .conteudo07 .abas-menu li a:focus {
-    color: #35cbeb
+    padding-bottom: 10px;
+    text-decoration: none
 }
 .conteudo .conteudo07 .abas-menu li.ativo {
-    color: #35cbeb;
-    background: #fff;
-    border-color: #35cbeb;
+    border: 3px solid #101f28;
     border-bottom: 0
 }
 .conteudo .conteudo07 .abas-menu li.ativo a {
-    color: #35cbeb
+    padding-bottom: 15px;
+    border: 0;
+    color: #101f28
 }
 .conteudo .conteudo07 .abas {
-    width: 90%;
+    width: 100%;
     list-style: none;
     padding: 4%;
-    border: 3px solid #35cbeb;
-    border-top: 0;
-    background: #fff
+    border: 3px solid #101f28;
+    border-top: 0
 }
-.conteudo .conteudo07 .abas .table {
-    margin-bottom: 5%
+.conteudo .conteudo07 .abas h3 {
+    display: none
+}
+.conteudo .conteudo07 .abas .aba.hide {
+    display: none
 }
 .conteudo .conteudo07 .cell.img {
     text-align: center;
-    width: 30%
+    width: 25%
 }
 .conteudo .conteudo07 .section {
     margin-bottom: 3%
 }
 .conteudo .conteudo19 form.buscacidade {
     margin: 2% auto 2% auto;
-    max-width: 60rem
+    max-width: 80rem
 }
 .conteudo .conteudo19 form.buscacidade .input {
     padding: 2%;
-    color: #b3b3b3;
-    background: #e6e6e6;
-    width: 48%;
-    margin: 1%
+    color: #f2f2f2;
+    background: #ccc
 }
 .conteudo .conteudo19 form.buscacidade .input label,
 .conteudo .conteudo19 form.buscacidade .input select {
@@ -1069,27 +1204,27 @@ html {
     border: 0;
     font-size: 1.3rem;
     width: 100%;
-    background: #f2f2f2
+    background: #d9d9d9
 }
 .conteudo .conteudo19 form.buscacidade .input.estados.ativo {
-    background: #35cbeb
+    background: #101f28
 }
 .conteudo .conteudo19 form.buscacidade .input.estados.ativo label {
     color: #fff
 }
 .conteudo .conteudo19 form.buscacidade .input.estados.ativo select {
     background: #fff;
-    color: #2a97b1
+    color: #101f28
 }
 .conteudo .conteudo19 form.buscacidade .input.cidades.ativo {
-    background: #35cbeb
+    background: #101f28
 }
 .conteudo .conteudo19 form.buscacidade .input.cidades.ativo label {
     color: #fff
 }
 .conteudo .conteudo19 form.buscacidade .input.cidades.ativo select {
     background: #fff;
-    color: #2a97b1
+    color: #101f28
 }
 .conteudo .conteudo19 .carregando {
     color: #666;
@@ -1104,46 +1239,46 @@ html {
     padding: 0
 }
 .conteudo .conteudo19 .resultado ul.card-wrapper li {
-    float: left;
-    width: 31%;
-    margin: 1%;
-    border: 2px solid #f63869
+    padding-right: 1%
 }
-.conteudo .conteudo19 .resultado ul.card-wrapper li h3 {
+.conteudo .conteudo19 .resultado ul.card-wrapper li:last-child {
+    padding-right: 0
+}
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card {
+    border: 4px solid #101f28
+}
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card h3 {
     margin: 0;
-    color: #f63869;
-    border-bottom: 2px solid #f63869;
+    color: #fff;
+    background: #f31338;
+    border-bottom: 2px solid #101f28;
     padding: .5em .8em
 }
-.conteudo .conteudo19 .resultado ul.card-wrapper dl {
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card a {
+    word-break: break-all
+}
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card dl {
     font-size: 1.6rem;
     margin: 1em;
     line-height: 1.8em
 }
-.conteudo .conteudo19 .resultado ul.card-wrapper dl dt {
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card dl dt {
     font-weight: 700
 }
-.conteudo .conteudo19 .resultado ul.card-wrapper dl dd {
+.conteudo .conteudo19 .resultado ul.card-wrapper li div.card dl dd {
     margin-bottom: 1em;
     margin-left: 0
-}
-.conteudo .conteudo19 .resultado ul.card-wrapper dl dd a {
-    color: #35cbeb
-}
-.conteudo .conteudo19 .resultado ul.card-wrapper dl dd a:hover {
-    text-decoration: underline
 }
 .blog .artigo {
     overflow: hidden
 }
-.blog .artigo .bigode {
-    float: left;
-    max-width: 33%
+.blog .artigo .corpo {
+    max-width: 800px;
+    margin: 0 auto
 }
-.blog .artigo p {
-    float: right;
-    max-width: 66%;
-    line-height: 2em
+.blog .artigo .corpo img {
+    margin: 5% 0;
+    display: block
 }
 .hidden {
     display: none!important
@@ -1178,10 +1313,9 @@ html {
 .clearfix:after {
     clear: both
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px) {
     .wrapper {
-        padding: 0;
-        width: 100%
+        padding: 0
     }
     .header .title h1 {
         margin: 0 auto;
@@ -1248,14 +1382,14 @@ html {
         width: calc(25%)
     }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
     .header .title h1 {
         margin: 0 auto;
         width: 100%
     }
     .header .title h1 a {
-        width: 93px;
-        background-position: 45% 0
+        background-size: auto auto;
+        width: 93px
     }
     .header .title .logo-idec {
         display: none
@@ -1278,8 +1412,8 @@ html {
     }
     .header .nav-filter .nav-categories .responsivo-show:hover,
     .header .nav-filter .nav-categories .responsivo-show:focus {
-        background: #6ee3b2;
-        color: #2c5a51
+        background: #238ca9;
+        color: #16404f
     }
     .header .nav-filter .nav-categories .responsivo-show.ativo a {
         color: #888f94;
@@ -1287,7 +1421,7 @@ html {
     }
     .header .nav-filter .nav-categories .menu {
         box-shadow: 0 2px 0 rgba(0, 0, 0, .1), 0 4px 0 rgba(0, 0, 0, .1);
-        background: #ffea55;
+        background: #ffe224;
         display: none;
         z-index: 998;
         position: absolute;
@@ -1308,8 +1442,8 @@ html {
     }
     .header .nav-filter .nav-categories .menu .menu-item a:hover,
     .header .nav-filter .nav-categories .menu .menu-item a:focus {
-        background: #6ee3b2;
-        color: #2c5a51
+        background: #35cbeb;
+        color: #101f28
     }
     .header .nav-filter .nav-categories .menu.open {
         display: block
@@ -1339,6 +1473,54 @@ html {
     }
     .main .cardboard .col .title a {
         position: static
+    }
+    .main .meta p.data .responsivo-hide,
+    .main .meta div.compartilhar h4.responsivo-hide {
+        display: none
+    }
+    .conteudo .conteudo03 .responsivo-hide {
+        display: none
+    }
+    .conteudo .conteudo03 .responsivo-show {
+        display: block
+    }
+    .conteudo .conteudo07 .abas-menu {
+        display: none
+    }
+    .conteudo .conteudo07 .abas {
+        padding: 0;
+        border: 0
+    }
+    .conteudo .conteudo07 .abas .aba {
+        border: 4px solid #101f28;
+        margin-bottom: 3%
+    }
+    .conteudo .conteudo07 .abas .aba h3 {
+        display: block;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2.4rem;
+        margin: 0 0 3% 0;
+        color: #fff;
+        background: #f31338;
+        border-bottom: 2px solid #101f28;
+        padding: .5em .8em
+    }
+    .conteudo .conteudo07 .abas .aba.hide {
+        display: block
+    }
+    .conteudo .conteudo07 .table .cell img,
+    .conteudo .conteudo07 .table .cell img.float-right {
+        margin: 0 auto 5% auto;
+        display: block;
+        float: none
+    }
+    .conteudo .conteudo07 .table .cell p {
+        clear: both;
+        margin: 5% 5% 0 5%
+    }
+    .conteudo .conteudo19 .resultado ul.card-wrapper li {
+        padding-right: 0
     }
     .footer {
         padding-top: 72%;
@@ -1437,6 +1619,7 @@ html {
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
 
 
+
 /*
 * CUSTOM
 */
@@ -1447,6 +1630,13 @@ html {
 }
 
 /* PAGES */
+
+.header .title h1 .logo-home {
+    background: url('img/logotipo_cor-flat.png') no-repeat center center
+}
+.header .title h1 .logo-blog {
+    background: url('img/logotipo_cor-flat-blog.png') no-repeat center center
+}
 
 .content-area {
     width: 80%;

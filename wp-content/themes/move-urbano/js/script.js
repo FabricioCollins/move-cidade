@@ -1,12 +1,8 @@
-var $nav,
-navH,
-$navLat,
-yinit,
-docScrollTop,
-docScrollTopLast,
-docScrollDir;
+var $nav;
 
 $( document ).ready(function() {
+
+	$nav = $(".nav-filter");
 
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
@@ -19,6 +15,7 @@ $( document ).ready(function() {
 	});
 
 	// Controla o componente de cadastro de email	
+	// cadastro
 	$('.cadastro .toggle').click(function(event) {
 		toggleCadastro($(this));
 	});
@@ -34,25 +31,22 @@ $( document ).ready(function() {
 			$(".cardboard").idecCardBoard().filterByContent($(".search-input").val());
 		}, 500);
 	});
-
-
-	$nav = $(".nav-filter");
-	navH = $('.menu-main').innerHeight();
-	yinit = 0; //navH;
-
-	$(window).scroll(function() {
-		// fixar o menu no topo
-		if($(window).scrollTop() > $('.header .title').innerHeight() && $(window).width() > 480) {
-			$nav.parent().addClass('nav-fixed');
-		} else {
-			$nav.parent().removeClass('nav-fixed');
-		}
-
-		// fechar cadastro
-		if(!$('.cadastro .toggle').hasClass('ativo')) toggleCadastro($('.cadastro .toggle'));
-	}); 
-
 });	
+
+$(window).scroll(function() {
+
+	// fixar o menu no topo
+	if($(window).scrollTop() > $('.header .title').innerHeight() && $(window).width() > 480) {
+		$nav.parent().addClass('nav-fixed');
+		$('.nav-main').addClass('ajustar');
+	} else {
+		$nav.parent().removeClass('nav-fixed');
+		$('.nav-main').removeClass('ajustar');
+	}
+
+	// fechar cadastro
+	if(!$('.cadastro .toggle').hasClass('ativo')) toggleCadastro($('.cadastro .toggle'));
+}); 
 
 function getUrlParameter() {
 	var url=document.URL;
@@ -60,6 +54,14 @@ function getUrlParameter() {
 	return url.substring(url.indexOf("#")+1, url.length-1);
 }
 
+function toggleCadastro($this, duration = 300) {
+	$('.cadastro .form-wrapper').animate({
+		opacity: "toggle",
+		height: "toggle",
+		width: "toggle",
+	}, duration);
+	$this.toggleClass('ativo').find('i').toggleClass('fa-times');
+}
 function toggleCadastro($this, duration = 300) {
 	$('.cadastro .form-wrapper').animate({
 		opacity: "toggle",

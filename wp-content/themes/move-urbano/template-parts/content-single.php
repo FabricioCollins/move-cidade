@@ -8,7 +8,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="corpo" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<div class="entry-content">
 		<?php
@@ -29,8 +29,6 @@
 		$loop = new WP_Query( $args );
 	?>	
 
-
-
 	<div class="carousel-items-wrapper">			
 		<ul class="bxslider slideshow responsive carousel-items">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
@@ -47,7 +45,6 @@
 	</div><!-- The Carousel -->
 
 </article><!-- #post-## -->
-
 
 <script>		
 	$('.bxslider').bxSlider({

@@ -12,29 +12,36 @@ get_header(); ?>
 <div id="primary" class="main conteudo wrapper">
 	<main id="main" class="site-main" role="main">
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<div class="section">
 
-		<div class="meta">
-			<div class="compartilhar">
-				<h3>Compartilhar</h3>
-				<ul>
-					<li><a class="addthis_button_email email" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					<li><a class="addthis_button_facebook facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a class="addthis_button_twittertwitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a class="addthis_button_pinterest_share pinterest" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-				</ul>
+		<?php the_title( '<h1>', '</h1>' ); ?>
+
+			<div class="meta">
+				<div class="compartilhar">
+					<h4>Compartilhar</h4>
+					<ul>
+						<li><a class="addthis_button_email email" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+						<li><a class="addthis_button_facebook facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a class="addthis_button_twitter twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a class="addthis_button_pinterest_share pinterest" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
 			</div>
+
+			<div class="resumo">
+				<p><?php echo get_the_excerpt(); ?></p>			
+			</div>
+
+			<?php
+			// Start the loop.
+			while ( have_posts() ) : the_post();
+
+				// Include the single post content template.
+				get_template_part( 'template-parts/content', 'single' );
+
+			endwhile;
+			?>
 		</div>
-
-		<?php
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the single post content template.
-			get_template_part( 'template-parts/content', 'single' );
-
-		endwhile;
-		?>
 
 	</main><!-- .site-main -->
 

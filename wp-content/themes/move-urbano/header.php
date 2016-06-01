@@ -71,10 +71,8 @@ else
 			<div class="header">
 
 				<div class="title section">
-					<div class="logo-idec col span_2_of_12">
-						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
-							<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_verde.png">
-						</a>
+					<div class="logo-idec col span_2_of_12">						
+						<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png">						
 					</div>
 
 					<h1 class="col span_8_of_12">
