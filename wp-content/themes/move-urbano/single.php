@@ -14,7 +14,8 @@ get_header(); ?>
 
 		<div class="section">
 
-		<?php the_title( '<h1>', '</h1>' ); ?>
+		<?php the_title( '<h1 class="post-titulo">', '</h1>' ); ?>
+		<h2 class="post-subtitulo"><?php echo get_post_meta(get_the_ID(), 'subtitulo', TRUE); ?></h2>
 
 			<div class="meta">
 				<div class="compartilhar">
@@ -28,7 +29,7 @@ get_header(); ?>
 				</div>
 			</div>
 
-			<div class="resumo">
+			<div class="resumo table">
 				<p><?php echo get_the_excerpt(); ?></p>			
 			</div>
 

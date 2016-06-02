@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
-	<main id="main" class="site-main blog-main" role="main">
+<div id="primary" class="main blog-index content-area">
+	<main id="main" class="blog-index-menu site-main" role="main">
 		<?php
 		
 			// Query on Blog
@@ -28,11 +28,14 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php 
-				echo '<div class="blog-index-item border-bottom">';  
-					echo '<span class="post-date">' . get_the_date() . '</span>';
-					echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-					echo '<p class="description">' . get_the_excerpt() . '</p>';
-				echo '</div>';	
+				echo '<div class="artigo">';
+					echo '<h2 class="title"><a href="blog.html">' . get_the_title() . '</a></h2>';
+					echo '<div class="meta">';
+						echo '<p class="data"><span class="responsivo-hide">Publicado em ' . get_the_date('d/m/Y') . '</p>';
+					echo '</div>';					
+					echo '<p class="descricao">' . get_the_excerpt() . '</p>';
+					echo '<a class="continuarlendo" href="'.get_permalink().'">Continuar lendo <span class="arrow">&xrarr;</span></a>';
+				echo '</div>';
 			?>
 
 		<?php endwhile; ?>

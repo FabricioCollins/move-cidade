@@ -53,6 +53,9 @@ else
 		if(!is_home()) {
 			$actionNav=get_site_url() . '/#';			
 		}
+
+		$page_name="";				
+		$page_name=get_query_var('pagename');		
 	?>
 
 </head>
@@ -78,7 +81,7 @@ else
 					<h1 class="col span_8_of_12">
 						<?php 
 							$logo_name='home';
-							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false) {
+							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false && ($page_name=='blog' || $page_name='') ) {
 								$logo_name='blog';
 							}
 						?>
@@ -138,7 +141,6 @@ else
 
 			</div>
 
-
 			<div class="nav-main">
 				<div class="menu nav-toggle">
 					<div class="menu-item">
@@ -147,11 +149,25 @@ else
 						</a>
 					</div>
 				</div>
+
 				<ul class="menu menu-nav">
-					<li class="menu-item"><a href="<?php echo get_permalink(get_page_by_path('Home'));?>"><i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span></a></li>
-					<li class="menu-item"><a href="<?php echo get_permalink(get_page_by_path('Blog'));?>"><i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span></a></li>
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span></a></li>
+					<li class="menu-item <?php if(is_home()) echo 'ativo'; ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+							<i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span>
+						</a>
+					</li>
+					<li class="menu-item <?php if($page_name=='blog') echo 'ativo'; ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('Blog'));?>">
+							<i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span>
+						</a>
+					</li>
+					<li class="menu-item">
+						<a href="javascript:void(0);">
+							<i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span>
+						</a>
+					</li>
 				</ul>
+
 				<ul class="menu menu-social">
 					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-facebook" aria-hidden="true"></i><span class="descricao">Facebook</span></a></li>
 					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-twitter" aria-hidden="true"></i><span class="descricao">Twitter</span></a></li>

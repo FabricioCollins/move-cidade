@@ -101,9 +101,13 @@ get_header(); ?>
 
 
 					// ########### THE CARD ITEM ###########
+					$post_subtitle=get_post_meta(get_the_ID(), 'subtitulo', TRUE);
+					if($post_subtitle != '')
+						$post_subtitle=': ' . $post_subtitle;
+
 					echo '<div class="card-item col ' . $curr_item_class . '" data-category="' . $posttags . '">';
 						echo '<h2 style="background-image: url('. wp_get_attachment_url(get_post_thumbnail_id())  . ');" class="title">';
-						echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+						echo '<a href="' . get_permalink() . '">' . get_the_title() . $post_subtitle . '</a>';
 						try {
 							if(get_the_category()[0]->cat_name == "Blog")
 								echo '<span class="tag-blog">Blog</span>';
