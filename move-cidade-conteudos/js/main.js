@@ -1,3 +1,5 @@
+$nav;
+
 $(document).ready(function(){
 
 	// conteudo03
