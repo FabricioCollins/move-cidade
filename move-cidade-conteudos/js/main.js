@@ -1,4 +1,4 @@
-$nav;
+var $nav;
 
 $(document).ready(function(){
 

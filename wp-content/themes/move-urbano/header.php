@@ -137,7 +137,17 @@ else
 					</div>
 
 					
-				</div>			
+				</div>
+
+				<div class="cadastro">
+					<div class="form-wrapper">
+						<p>Receba novidades sobre campanhas de mobilidade</p>
+						<?php do_shortcode("[simplenewsletter]"); ?>
+					</div>
+					<div class="toggle">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>	
 
 			</div>
 
@@ -153,12 +163,12 @@ else
 				<ul class="menu menu-nav">
 					<li class="menu-item <?php if(is_home()) echo 'ativo'; ?>">
 						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
-							<i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página incial</span>
+							<i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página inicial</span>
 						</a>
 					</li>
 					<li class="menu-item <?php if($page_name=='blog') echo 'ativo'; ?>">
 						<a href="<?php echo get_permalink(get_page_by_path('Blog'));?>">
-							<i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivo do blog</span>
+							<i class="icon fa fa-newspaper-o" aria-hidden="true"></i><span class="descricao">Arquivos do blog</span>
 						</a>
 					</li>
 					<li class="menu-item">

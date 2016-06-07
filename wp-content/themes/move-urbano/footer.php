@@ -21,16 +21,6 @@
 		</div>
 	</div>
 
-	<div class="cadastro">
-		<div class="form-wrapper">
-			<p>Receba novidades sobre campanhas de mobilidade</p>
-			<?php do_shortcode("[simplenewsletter]"); ?>
-		</div>
-		<div class="toggle">
-			<i class="fa fa-times" aria-hidden="true"></i>
-		</div>
-	</div>
-
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

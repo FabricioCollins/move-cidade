@@ -29,9 +29,16 @@ get_header(); ?>
 				</div>
 			</div>
 
+			<?php
+				$resume=get_the_excerpt();
+				if($resume) {
+			?>
 			<div class="resumo table">
-				<p><?php echo get_the_excerpt(); ?></p>			
+				<p><?php echo $resume ?></p>			
 			</div>
+			<?php
+				}
+			?>
 
 			<?php
 			// Start the loop.
