@@ -34,7 +34,7 @@
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
 				<li>
 					<a href="<?php echo get_permalink();?>">
-						<div class="content">
+					<div class="content" style="background: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>') center no-repeat">
 							<p><?php echo get_the_title();?></p>
 							<!--< ? php twentysixteen_post_thumbnail(); ?> -->
 						</div>				

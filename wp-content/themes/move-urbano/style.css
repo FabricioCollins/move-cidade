@@ -1741,6 +1741,11 @@ html {
     .span_10_of_10 {
         width: 100%
     }
+
+    .bxslider {
+        margin-left: 100px !important;
+        margin-right: 140px !important;
+    }
 }
 @media print {
     *,
@@ -1971,11 +1976,6 @@ html {
 }
 
 /* CAROUSEL */
-.bxslider {
-    margin-left: 100px !important;
-    margin-right: 140px !important;
-}
-
 .carousel-items-wrapper {
     position: relative;
     min-height: 150px;
