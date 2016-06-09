@@ -1971,11 +1971,17 @@ html {
 }
 
 /* CAROUSEL */
+.bxslider {
+    margin-left: 100px !important;
+    margin-right: 140px !important;
+}
+
 .carousel-items-wrapper {
     position: relative;
     min-height: 150px;
     text-align: center;
-    padding-top: 30px;
+    margin-top: 30px;
+    padding: 0 25px 0 15px;
 }
 
 .carousel-items-frame {
