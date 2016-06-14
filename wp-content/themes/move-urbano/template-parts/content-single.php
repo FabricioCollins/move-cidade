@@ -33,16 +33,25 @@
 		<ul class="bxslider slideshow responsive carousel-items">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
 				<li>
-					<a href="<?php echo get_permalink();?>">
-					<div class="content" style="background: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>') center no-repeat">
-							<p><?php echo get_the_title();?></p>
-							<!--< ? php twentysixteen_post_thumbnail(); ?> -->
-						</div>				
-					</a>
+					<h2 class="title" style="background-image: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>')">
+						<a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a>
+					</h2>
 				</li>
 			<?php endwhile ?>
 		</ul>
-	</div><!-- The Carousel -->
+	</div><!-- Carousel -->
+
+	<div class="dock-menu-wrapper">
+		<ul class="dock-menu">
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
+				<li class="menu-item">
+					<h2 class="title" style="background-image: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>')">
+						<a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a>
+					</h2>
+				</li>
+			<?php endwhile ?>
+		</ul>
+	</div><!-- Dock -->
 
 </article><!-- #post-## -->
 
@@ -68,8 +77,13 @@
 		
 	});
 
+	$('.dock-menu-wrapper').dock({
+        'itemWidth': 240,
+        'itemHeight': 110
+    });
+
 	// Distribui cores aleatórias aos cards
-	$('.carousel-items-wrapper .bxslider li').each(function(index, el) {
+	$('.bxslider li, .dock-menu li').each(function(index, el) {
 		$(this).addClass('cor-' + Math.floor((Math.random() * 3) + 1));
 	});	
 </script>

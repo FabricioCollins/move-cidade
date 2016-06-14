@@ -38,10 +38,12 @@ else
 
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/dock.js"></script>
 
 	<!-- CSS LIBS -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
-	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">	
+	<link href="<?php bloginfo('template_url'); ?>/css/dock.css" rel="stylesheet" type="text/css">	
 
 
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>	

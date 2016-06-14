@@ -772,25 +772,43 @@ html {
 .main .cardboard .col.row_span_2_of_2 .title a {
     font-size: 1.8rem
 }
-.main .cardboard .col.cor-1 .title a, .bxslider .cor-1 {
+.main .cardboard .col.cor-1 .title a, 
+.bxslider li.cor-1 .title a,
+.dock-menu li.cor-1 .title a {
     background-color: rgba(53, 203, 235, .8)
 }
-.main .cardboard .col.cor-1 .title:hover a,
-.main .cardboard .col.cor-1 .title:focus a {
+.main .cardboard .col.cor-1 .title:hover a, 
+.main .cardboard .col.cor-1 .title:focus a,
+.bxslider li.cor-1 .title:hover a, 
+.bxslider li.cor-1 .title:focus a,
+.dock-menu li.cor-1 .title:hover a, 
+.dock-menu li.cor-1 .title:focus a {
     background-color: rgba(53, 203, 235, .3)
 }
-.main .cardboard .col.cor-2 .title a, .bxslider .cor-2 {
+.main .cardboard .col.cor-2 .title a, 
+.bxslider li.cor-2 .title a,
+.dock-menu li.cor-2 .title a {
     background-color: rgba(35, 140, 169, .8)
 }
-.main .cardboard .col.cor-2 .title:hover a,
-.main .cardboard .col.cor-2 .title:focus a {
+.main .cardboard .col.cor-2 .title:hover a, 
+.main .cardboard .col.cor-2 .title:focus a, 
+.bxslider li.cor-2 .title:hover a, 
+.bxslider li.cor-2 .title:focus a,
+.dock-menu li.cor-3 .title:hover a, 
+.dock-menu li.cor-3 .title:focus a{
     background-color: rgba(35, 140, 169, .3)
 }
-.main .cardboard .col.cor-3 .title a, .bxslider .cor-3 {
+.main .cardboard .col.cor-3 .title a, 
+.bxslider li.cor-3 .title a,
+.dock-menu li.cor-3 .title a {
     background-color: rgba(243, 19, 56, .8)
 }
-.main .cardboard .col.cor-3 .title:hover a,
-.main .cardboard .col.cor-3 .title:focus a {
+.main .cardboard .col.cor-3 .title:hover a, 
+.main .cardboard .col.cor-3 .title:focus a, 
+.bxslider li.cor-3 .title:hover a, 
+.bxslider li.cor-3 .title:focus a,
+.dock-menu li.cor-3 .title:hover a, 
+.dock-menu li.cor-3 .title:focus a {
     background-color: rgba(243, 19, 56, .3)
 }
 .main .blog-index-menu {
@@ -1553,6 +1571,14 @@ html {
         width: 25%;
         width: calc(25%)
     }
+
+    .carousel-items-wrapper {
+        display: block !important;
+    }
+
+    .dock-menu-wrapper {
+        display: none;
+    }
 }
 @media only screen and (max-width: 600px) {
     .header .title h1 {
@@ -1745,6 +1771,14 @@ html {
     .bxslider {
         margin-left: 100px !important;
         margin-right: 140px !important;
+    }
+
+    .carousel-items-wrapper {
+        display: block !important;
+    }
+
+    .dock-menu-wrapper {
+        display: none;
     }
 }
 @media print {
@@ -1981,7 +2015,8 @@ html {
     min-height: 150px;
     text-align: center;
     margin-top: 30px;
-    padding: 0 25px 0 15px;
+    padding: 0 25px 0 15px;    
+    display: none;
 }
 
 .carousel-items-frame {
@@ -1993,42 +2028,46 @@ html {
 }
 
 .bxslider li {
-    height: 140px;
+    height: 110px;
     width: 180px !important;
 }
 
-.bxslider li a .content {    
-    height: 100%;
-    width: 100%;
-    display: table;
-    transition: opacity 300ms ease-in-out;
-}
-
-.bxslider li .content:hover, .bxslider li > a .content p:hover {    
-    opacity: 0.7;
-    background: #fff;
-    color: #000;    
-}
-
-.bxslider li > a, .bxslider li > a:hover {
-    text-decoration: none !important;
-}
-
-.bxslider li > a .content p {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;     
-    font-size: 12pt;
-    font-weight: bold;
-    color: #fff;
-}
-
-.bxslider li > a .content .post-thumbnail, .bxslider li > a .content .post-thumbnail img {
-    height: 100%;
-    left: 0;
+.bxslider li .title {
     position: absolute;
     top: 0;
-    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0px;
+    transition: all .1s;
+    background-color: #b7bcbf;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+.bxslider li .title a {
+    font-size: 1.4rem;
+    background: rgba(136, 143, 148, .8);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 8%;
+    color: #fff;
+    transition: background .2s;
+    font-weight: bold;  
+    line-height: 1.4em;  
+}
+.bxslider li .title:hover a,
+.bxslider li .title:focus a {
+    background: rgba(136, 143, 148, .3);
+    text-decoration: none;
+    line-height: 1.4em;
 }
 
 .bx-wrapper {

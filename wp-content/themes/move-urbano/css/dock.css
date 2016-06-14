@@ -1,0 +1,67 @@
+.dock-menu-wrapper {
+	list-style: none;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 50px;
+	height: 200px;
+	position: relative;	
+}
+.dock-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+}
+
+.dock-menu li {
+	display: inline-block;
+	width: 240px;
+	height: 110px;
+	margin-top: 30px;
+	overflow: hidden;
+	transition: all 300ms;
+}
+
+.dock-menu li .title {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    transition: all .1s;
+    background-color: #b7bcbf;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+.dock-menu li .title a {
+    font-size: 1.4rem;
+    background: rgba(136, 143, 148, .8);
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8%;
+    color: #fff;
+    transition: background .2s;
+    font-weight: bold;  
+    line-height: 1.4em;  
+    text-align: center;
+}
+.dock-menu li .title:hover a,
+.dock-menu li .title:focus a {
+    background: rgba(136, 143, 148, .3);
+    text-decoration: none;
+    line-height: 1.4em;
+}
