@@ -20,18 +20,32 @@
 		global $posts; 
 		$b = 0;
 
-		$caegory_name='conteudo';
-		if (strpos(get_permalink(), '/'.'blog') !== false) {
-			$caegory_name='blog';
-		}
+		// Query on Notices
+		$args = array(
+		    'category_name' => 'blog',
+		    'orderby' => 'date', 
+		    'order' => 'DESC'
+		);
+		$blog_result = new WP_Query( $args );
 
-		$args = array( 'posts_per_page' => 10, 'category_name' => $caegory_name );
-		$loop = new WP_Query( $args );
+		// Query on fixed content
+		$args = array(
+		    'category_name' => 'conteudo'
+		);
+		$page_result = new WP_Query( $args );
+
+		// Suffle Page Result
+		shuffle($page_result->posts);
+
+		// Do merge on two arrays
+		$merged_queried_post = new WP_Query();
+        $merged_queried_post->posts = array_merge($blog_result->posts,$page_result->posts);
+        $merged_queried_post->post_count = $blog_result->post_count + $page_result->post_count;
 	?>	
 
 	<div class="carousel-items-wrapper">			
 		<ul class="bxslider slideshow responsive carousel-items">
-			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
+			<?php while ( $merged_queried_post->have_posts() ) : $merged_queried_post->the_post(); ?>			
 				<li>
 					<h2 class="title" style="background-image: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>')">
 						<a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a>
@@ -43,7 +57,7 @@
 
 	<div class="dock-menu-wrapper">
 		<ul class="dock-menu">
-			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>			
+			<?php while ( $merged_queried_post->have_posts() ) : $merged_queried_post->the_post(); ?>			
 				<li class="menu-item">
 					<h2 class="title" style="background-image: url('<?php echo wp_get_attachment_url(get_post_thumbnail_id())?>')">
 						<a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a>
@@ -65,7 +79,7 @@
 		moveSlides: 1,
 		maxSlides : 5,
 		slideMargin: 5,
-		infiniteLoop : true,
+		infinitemerged_queried_post : true,
 		speed : 400,
 		pager : false,
 		hideControlOnEnd: false,		
