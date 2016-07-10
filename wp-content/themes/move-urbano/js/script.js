@@ -2,8 +2,6 @@ var $nav;
 
 $( document ).ready(function() {
 
-	$nav = $(".nav-filter");
-
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
 		$('.nav-main').toggleClass('open');
@@ -17,7 +15,7 @@ $( document ).ready(function() {
 	// Controla o componente de cadastro de email	
 	// cadastro
 	$('.cadastro .toggle').click(function(event) {
-		toggleCadastro($(this));
+		toggleCadastro($(this), 300);
 	});
 	if($(window).width() < 1024) 
 		toggleCadastro($('.cadastro .toggle'), 500);
@@ -35,6 +33,8 @@ $( document ).ready(function() {
 
 $(window).scroll(function() {
 
+	$nav = $(".nav-filter");
+
 	// fixar o menu no topo
 	if($(window).scrollTop() > $('.header .title').innerHeight() && $(window).width() > 480) {
 		$nav.parent().addClass('nav-fixed');
@@ -45,7 +45,7 @@ $(window).scroll(function() {
 	}
 
 	// fechar cadastro
-	if(!$('.cadastro .toggle').hasClass('ativo')) toggleCadastro($('.cadastro .toggle'));
+	if(!$('.cadastro .toggle').hasClass('ativo')) toggleCadastro($('.cadastro .toggle'), 300);
 }); 
 
 function getUrlParameter() {
@@ -54,15 +54,7 @@ function getUrlParameter() {
 	return url.substring(url.indexOf("#")+1, url.length-1);
 }
 
-function toggleCadastro($this, duration = 300) {
-	$('.cadastro .form-wrapper').animate({
-		opacity: "toggle",
-		height: "toggle",
-		width: "toggle",
-	}, duration);
-	$this.toggleClass('ativo').find('i').toggleClass('fa-times');
-}
-function toggleCadastro($this, duration = 300) {
+function toggleCadastro($this, duration) {
 	$('.cadastro .form-wrapper').animate({
 		opacity: "toggle",
 		height: "toggle",

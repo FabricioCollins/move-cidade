@@ -475,6 +475,7 @@ html {
     padding: 0;
     width: 1px;
     overflow: hidden;
+    display: block;
     transition: width .3s, background .6s
 }
 .header .nav-filter .search {
