@@ -2,6 +2,8 @@ var $nav;
 
 $( document ).ready(function() {
 
+	$.support.cors = true;
+
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
 		$('.nav-main').toggleClass('open');
@@ -29,6 +31,30 @@ $( document ).ready(function() {
 			$(".cardboard").idecCardBoard().filterByContent($(".search-input").val());
 		}, 500);
 	});
+
+	// Salesforce Integration
+	$("#idec-mailing-form").submit(function(event){
+		event.preventDefault();
+		var form=$(this);		
+		$.ajax({
+			url: form.attr("action"),
+		  	method: form.attr("method"),
+		  	data: JSON.stringify(form.serializeArray()),
+		  	crossDomain: true,
+			beforeSend: function( xhr ) {
+				xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  				xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+				$(".mailing").find(".send").attr("disabled", true).val("Enviando...");
+			},
+		  	error: function() {
+		    	$(".mailing").find(".erro").show("Slide");
+		   	}
+		}).done(function(data) {			
+	  		$(".form-wrapper").html("<p class='info'>Obrigado por se cadastrar no Move Cidade</p>");	  		
+		});
+		$(".mailing").find(".send").attr("disabled", false).val("Enviar"); 
+		return false;
+	});
 });	
 
 $(window).scroll(function() {
@@ -51,7 +77,7 @@ $(window).scroll(function() {
 function getUrlParameter() {
 	var url=document.URL;
 	if(url.indexOf("#") != -1)
-	return url.substring(url.indexOf("#")+1, url.length-1);
+	return url.substring(url.indexOf("#")+1, url.length);
 }
 
 function toggleCadastro($this, duration) {

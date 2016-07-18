@@ -14,10 +14,10 @@
 
 	<div class="footer">
 		<div class="logotipo">
-			<a href="index.html"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-lateral_branco.png"></a>
-			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_branco.png">
-			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-ics-branco.png">
-			<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_led.png">
+			<a href="http://movecidade.com.br"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-lateral_branco.png"></a>
+			<a href="http://www.idec.org.br/"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_branco.png"></a>
+			<a href="http://climaesociedade.org"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-ics-branco.png"></a>
+			<a href="http://www.ledufmg.com.br"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_led.png"></a>
 		</div>
 	</div>
 

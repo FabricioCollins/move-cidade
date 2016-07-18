@@ -17,18 +17,24 @@ if ( !$pagename ) {
 
 if($pagename) {
 	$pagetitle = str_replace("-", " ", $pagename);
-	$pagetitle=$pagetitle." | MOVE CIDADE";
+	$pagetitle=$pagetitle." | Move Cidade";
 }
 else 
-	$pagetitle="MOVE CIDADE";
+	$pagetitle="Move Cidade";
 
 ?><!DOCTYPE html>
+
+<?php header('Access-Control-Allow-Origin: *'); ?>
+<?php header('Access-Control-Allow-Credentials: true'); ?>
+
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 
-	<title><?php echo strtoupper ($pagetitle); ?></title>
+	<title><?php echo ucfirst($pagetitle); ?></title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no" /> 
+	<meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="shortcut icon" href="<?php bloginfo( 'stylesheet_directory' );?>/img/favicon.ico" type="image/x-icon">
 
@@ -39,6 +45,7 @@ else
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/dock.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/contents.js"></script>
 
 	<!-- CSS LIBS -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
@@ -83,7 +90,7 @@ else
 					<h1 class="col span_8_of_12">
 						<?php 
 							$logo_name='home';
-							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false && ($page_name=='blog' || $page_name='') ) {
+							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false || ($page_name=='blog' || $page_name='') ) {
 								$logo_name='blog';
 							}
 						?>
@@ -123,7 +130,7 @@ else
 							</li>
 							<li class="menu-item" data-target="novidades">
 								<a href="<?php echo $actionNav ?>novidades">
-									Novidades
+									<span>Novidades</span>
 								</a>
 							</li>
 						</ul>
@@ -141,13 +148,29 @@ else
 					
 				</div>
 
-				<div class="cadastro">
+				<div class="cadastro mailing">
 					<div class="form-wrapper">
-						<p>Receba novidades sobre campanhas de mobilidade</p>
-						<?php do_shortcode("[simplenewsletter]"); ?>
+						<p class="info">Receba novidades sobre campanhas de mobilidade</p>
+						<form id="idec-mailing-form" method="POST" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8">
+							<!-- Form Fields -->
+							<input id="first_name" class="name" maxlength="40" name="first_name" size="20" type="text" placeholder="Nome" required="required" />
+							<input id="last_name" class="name" maxlength="80" name="last_name" size="20" type="text" placeholder="Sobrenome" required="required" />
+							<input id="email" maxlength="80" name="email" size="20" type="text" placeholder="Email" required="required" />
+							<!-- Request Fields -->
+							<input type=hidden name="oid" value="00D37000000KRmT"> <!-- ID Idec -->
+					   		<input type=hidden id="Campaign_ID" name="Campaign_ID" value="701370000001hB8"> <!-- ID Campanha -->
+							<input type=hidden name="retURL" value="http://movecidade.com.br/"> <!-- Página de sucesso -->
+					   		<input type=hidden id="lead_source" name="lead_source" value="Web"> <!-- Origem do lead -->
+					   		<input type=hidden id="00N37000005jnRO" name="00N37000005jnRO" value="MKT-Movecidade"> <!-- Descrição da Origem do Lead -->
+					   		<input type=hidden id="country_code" name="country_code" value="BR"> <!-- País: Brasil -->
+					   		<input type=hidden id="00N370000059b0X" name="00N370000059b0X" value="Simples"> <!-- Tipo do Form -->
+					   		<input type=hidden id="Access-Control-Allow-Origin" name="Access-Control-Allow-Origin" value="*">					   		
+							<input class="send" type="submit" value="Cadastrar">
+						</form>
+						<p class="erro">Houve um problema ao cadastrar seu email. Tente novamente.</p>
 					</div>
-					<div class="toggle">
-						<i class="fa fa-times" aria-hidden="true"></i>
+					<div class="toggle ativo">
+						<i class="fa" aria-hidden="true"></i>
 					</div>
 				</div>	
 

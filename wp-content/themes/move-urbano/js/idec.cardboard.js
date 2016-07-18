@@ -72,9 +72,18 @@
 
         // Atribui a categoria dos menus aos conteúdos
         this.joinMenuCardCategories = function() {
-            $(config.menuSelector).find("li[data-target]").each(function(index, el){
+            $(config.menuSelector).find("li[data-target]").each(function(index, el){                
                 $(this).click(function() {
-                    self.filterByCategory($(this).data("target"));
+                    $("li[data-target]").not($(this)).removeClass("selected");
+                    if($(this).hasClass("selected")) {
+                        self.resetFilter();
+                        $(this).removeClass("selected");
+                    }
+                    else {
+                        self.filterByCategory($(this).data("target"));
+                        $(this).addClass("selected");
+                    }
+                    $(".responsivo-show.menu-toggle a").click();
                 });
             });
         };

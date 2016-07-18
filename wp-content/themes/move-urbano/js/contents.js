@@ -37,6 +37,10 @@ $(document).ready(function(){
 		$(id).removeClass('hide').siblings().addClass('hide');
 	});
 
+	//conteudo 15
+	$('.conteudo15 .imagens .toggle, .conteudo15 .imagens .vazio').click(function(event) {
+		$(this).parent().find('.texto').toggleClass('hide');
+	});
 
 	// conteudo19
 	$('#cod_estados').change(function(){

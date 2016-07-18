@@ -10,6 +10,7 @@ html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
+    overflow-x: hidden;
 }
 body {
     margin: 0;
@@ -570,10 +571,13 @@ html {
     overflow: hidden
 }
 .header .nav-filter .nav-categories a:hover,
-.header .nav-filter .nav-categories a:focus {
-    background: #35cbeb;
+.header .nav-filter .nav-categories .menu .menu-item.selected a {    
+    background-color: #35cbeb;    
     color: #101f28;
     text-decoration: none;
+}
+.header .nav-filter .nav-categories .menu .menu-item.selected a { 
+    background: url('img/close-16.png') no-repeat 99% 2px #35cbeb;    
 }
 .header .nav-filter .nav-categories .menu {
     text-align: center;
@@ -604,8 +608,8 @@ html {
     position: fixed;
     left: 0;
     top: 0;
-    bottom: 0;
     background: #fff;
+    bottom: 0;
     padding: 0 1rem;
     transition: all ease-out .3s;
     z-index: 998;
@@ -906,7 +910,7 @@ html {
     margin: 4% 0 0 0;
     width: 100%;
     padding-top: 36%;
-    z-index: 1000;
+    z-index: 996;
     background: url('img/rodape-01.png') repeat-x left top;
     -webkit-background-size: 100% auto;
     -moz-background-size: 100% auto;
@@ -934,6 +938,7 @@ html {
 }
 .cadastro .toggle {
     position: absolute;
+    z-index: 1000;
     top: 0;
     right: 0;
     border-radius: 50%;
@@ -956,6 +961,8 @@ html {
 }
 .cadastro .form-wrapper {
     position: absolute;
+    display: none;
+    z-index: 999;
     right: 0;
     top: 0;
     background: #ffe224;
@@ -964,13 +971,26 @@ html {
     margin-right: 1.6rem;
     box-shadow: -2px 2px 0 0 rgba(0, 0, 0, .1), -4px 4px 0 0 rgba(0, 0, 0, .1)
 }
-.cadastro .form-wrapper p {
+.cadastro .form-wrapper p.info {
     font-size: 1.2rem;
     margin: 0 0 .6em 0;
     font-style: italic;
     float: left;
     text-align: left;
     white-space: nowrap
+}
+.cadastro .form-wrapper p.erro {
+    float: left;
+    display: none;
+    margin: .6em 0 0 0;
+    font-size: 1.3rem;
+    background: #f31338;
+    white-space: normal;
+    padding: .6em;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center
 }
 .cadastro .form-wrapper form {
     white-space: nowrap;
@@ -983,7 +1003,12 @@ html {
     line-height: 1.6em
 }
 .cadastro .form-wrapper form input[type="text"] {
-    float: left
+    float: left;
+    margin-right: 2%;
+    max-width: 48%
+}
+.cadastro .form-wrapper form input[type="text"].name {
+    margin-bottom: 5px
 }
 .cadastro .form-wrapper form input[type="submit"] {
     float: left;
@@ -1378,6 +1403,105 @@ html {
 .conteudo .conteudo07 .section {
     margin-bottom: 3%
 }
+
+.conteudo .conteudo15 p {
+    max-width: 80rem;
+    margin: 1.2em auto
+}
+.conteudo .conteudo15 h2,
+.conteudo .conteudo15 h3 {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+.conteudo .conteudo15 .imagens {
+    width: 100%;
+    background: #e6e6e6
+}
+.conteudo .conteudo15 .imagens .col {
+    position: relative;
+    min-height: 100px
+}
+.conteudo .conteudo15 .imagens .col .texto {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    transition: all ease-in-out .8s;
+    width: 100%;
+    height: 100%
+}
+.conteudo .conteudo15 .imagens .col .texto img {    
+    max-height: 100%
+}
+.conteudo .conteudo15 .imagens .col .texto.hide {
+    width: 0
+}
+.conteudo .conteudo15 .imagens .col.toggle,
+.conteudo .conteudo15 .imagens .col.vazio {
+    cursor: pointer
+}
+.conteudo .conteudo15 .imagens .col.vazio {
+    padding-top: 33.3%;
+    position: relative
+}
+@keyframes arrow {
+    from {
+        padding-right: 0
+    }
+    to {
+        padding-right: 4rem
+    }
+}
+.conteudo .conteudo15 .imagens .col.vazio::before {
+    content: '\02192';
+    font-size: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    line-height: 1em;
+    margin-top: -.7em;
+    color: #ccc;
+    animation-name: arrow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out
+}
+.conteudo .conteudo15 .imagens .col.vazio .texto {
+    left: 0;
+    right: auto
+}
+.conteudo .conteudo15 .imagens .col.vazio .texto img {
+    position: absolute;
+    right: 0
+}
+.conteudo .conteudo15 .imagens .col.vazio .texto::after {
+    content: '\000D7';
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    line-height: 1.2rem;
+    margin: 1rem;
+    color: #fff;
+    transition: color .2s;
+    -webkit-transition-delay: .8s;
+    transition-delay: .8s
+}
+.conteudo .conteudo15 .imagens .col.vazio .texto.hide::after {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    color: rgba(255, 255, 255, 0)
+}
+
 .conteudo .conteudo19 form.buscacidade {
     margin: 2% auto 2% auto;
     max-width: 80rem
@@ -1639,9 +1763,8 @@ html {
         background: #101f28;
         color: #cfd2d4
     }
-    .header .nav-filter .nav-categories .menu .menu-item a:hover,
-    .header .nav-filter .nav-categories .menu .menu-item a:focus {
-        background: #35cbeb;
+    .header .nav-filter .nav-categories .menu .menu-item a:hover {
+        background-color: #35cbeb;
         color: #101f28
     }
     .header .nav-filter .nav-categories .menu.open {
@@ -1725,6 +1848,58 @@ html {
         clear: both;
         margin: 5% 5% 0 5%
     }
+
+    .conteudo .conteudo15 .imagens .col {
+        margin: 0
+    }
+    .conteudo .conteudo15 .imagens .col .texto {
+        left: 0;
+        bottom: 0;
+        top: auto;
+        height: 100%
+    }
+    .conteudo .conteudo15 .imagens .col .texto img {
+        max-width: 100%;
+        max-height: none
+    }
+    .conteudo .conteudo15 .imagens .col .texto.hide {
+        width: 100%;
+        height: 0
+    }
+    .conteudo .conteudo15 .imagens .col.vazio {
+        padding-top: 100%
+    }
+    .conteudo .conteudo15 .imagens .col.vazio .texto {
+        top: 0;
+        bottom: auto
+    }
+    @keyframes arrow {
+        from {
+            padding-top: 0
+        }
+        to {
+            padding-top: 2rem
+        }
+    }
+    .conteudo .conteudo15 .imagens .col.vazio::before {
+        content: '\02193';
+        font-size: 6rem;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        line-height: 1em;
+        margin-top: -.7em;
+        color: #ccc;
+        animation-name: arrow;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out
+    }
+
     .conteudo .conteudo19 .resultado ul.card-wrapper li {
         padding-right: 0
     }

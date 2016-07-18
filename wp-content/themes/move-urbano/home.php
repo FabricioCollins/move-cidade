@@ -153,6 +153,8 @@ get_header(); ?>
 
         var urlParam=getUrlParameter();
         cardboard.filterByCategory(urlParam);
+        $("li[data-target='"+urlParam+"']").addClass("selected");
+        console.log(urlParam);
 	});	
 </script>
 
