@@ -1,9 +1,6 @@
 var $nav;
 
 $( document ).ready(function() {
-
-	$.support.cors = true;
-
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
 		$('.nav-main').toggleClass('open');
@@ -36,17 +33,21 @@ $( document ).ready(function() {
 	$("#idec-mailing-form").submit(function(event){
 		event.preventDefault();
 		var form=$(this);		
+		jQuery.support.cors = true;
 		$.ajax({
 			url: form.attr("action"),
 		  	method: form.attr("method"),
-		  	data: JSON.stringify(form.serializeArray()),
-		  	crossDomain: true,
+		  	data: form.serialize(),
+		  	crossDomain: false,
+		  	dataType: 'text/html',
+		  	headers: {'X-Requested-With': 'XMLHttpRequest'},
 			beforeSend: function( xhr ) {
 				xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   				xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 				$(".mailing").find(".send").attr("disabled", true).val("Enviando...");
 			},
-		  	error: function() {
+		  	error: function (request, status, error) {
+        		console.log(request.responseText);
 		    	$(".mailing").find(".erro").show("Slide");
 		   	}
 		}).done(function(data) {			

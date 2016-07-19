@@ -405,6 +405,13 @@ table {
 .center {
     text-align: center
 }
+.desaturate {
+    -webkit-filter: grayscale(1);
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+    filter: grayscale(100%);
+    filter: url(desaturate.svg#greyscale)
+}
 html {
     font-size: 62.5%;
     font-family: 'Open Sans', sans-serif
@@ -1432,7 +1439,7 @@ html {
     bottom: 0;
     transition: all ease-in-out .8s;
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 .conteudo .conteudo15 .imagens .col .texto img {    
     max-height: 100%
@@ -2036,10 +2043,6 @@ html {
 
 .wrapper .site-main article {
     margin: 0 auto;    
-}
-
-.wrapper .site-main article p {    
-    padding-bottom: 5%;
 }
 
 .content-area .site-main article header h1 {

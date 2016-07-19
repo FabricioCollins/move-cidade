@@ -22,10 +22,25 @@ if($pagename) {
 else 
 	$pagetitle="Move Cidade";
 
-?><!DOCTYPE html>
+?>
+<?php
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    //header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Credentials: true');    
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
+}   
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+        header("Access-Control-Allow-Headers:{$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
-<?php header('Access-Control-Allow-Origin: *'); ?>
-<?php header('Access-Control-Allow-Credentials: true'); ?>
+    exit(0);
+} 
+?>
+
+<!DOCTYPE html>
 
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -159,12 +174,11 @@ else
 							<!-- Request Fields -->
 							<input type=hidden name="oid" value="00D37000000KRmT"> <!-- ID Idec -->
 					   		<input type=hidden id="Campaign_ID" name="Campaign_ID" value="701370000001hB8"> <!-- ID Campanha -->
-							<input type=hidden name="retURL" value="http://movecidade.com.br/"> <!-- Página de sucesso -->
+							<input type=hidden name="retURL" value="http://movecidade.com.br"> <!-- Página de sucesso -->
 					   		<input type=hidden id="lead_source" name="lead_source" value="Web"> <!-- Origem do lead -->
 					   		<input type=hidden id="00N37000005jnRO" name="00N37000005jnRO" value="MKT-Movecidade"> <!-- Descrição da Origem do Lead -->
 					   		<input type=hidden id="country_code" name="country_code" value="BR"> <!-- País: Brasil -->
-					   		<input type=hidden id="00N370000059b0X" name="00N370000059b0X" value="Simples"> <!-- Tipo do Form -->
-					   		<input type=hidden id="Access-Control-Allow-Origin" name="Access-Control-Allow-Origin" value="*">					   		
+					   		<input type=hidden id="00N370000059b0X" name="00N370000059b0X" value="Simples"> <!-- Tipo do Form -->				   		
 							<input class="send" type="submit" value="Cadastrar">
 						</form>
 						<p class="erro">Houve um problema ao cadastrar seu email. Tente novamente.</p>
