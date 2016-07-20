@@ -30,8 +30,8 @@ get_header(); ?>
 			</div>
 
 			<?php
-				$resume=get_the_excerpt();
-				if($resume) {
+				$resume=get_the_excerpt();				
+				if('' != $resume) {
 			?>
 			<div class="resumo table">
 				<p><?php echo $resume ?></p>			

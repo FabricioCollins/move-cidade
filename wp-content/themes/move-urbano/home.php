@@ -32,7 +32,8 @@ get_header(); ?>
 
 		// Query on fixed content
 		$args = array(
-		    'category_name' => 'conteudo'
+		    'category_name' => 'conteudo',
+		    'posts_per_page' => -1
 		);
 		$page_result = new WP_Query( $args );
 

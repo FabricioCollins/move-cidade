@@ -218,9 +218,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 				</ul>
 
 				<ul class="menu menu-social">
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-facebook" aria-hidden="true"></i><span class="descricao">Facebook</span></a></li>
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-twitter" aria-hidden="true"></i><span class="descricao">Twitter</span></a></li>
-					<li class="menu-item"><a href="javascript:void(0);"><i class="icon fa fa-youtube" aria-hidden="true"></i><span class="descricao">Youtube</span></a></li>
+					<li class="menu-item">
+						<a href="https://pt-br.facebook.com/idecbr/" target="_blank">
+						<i class="icon fa fa-facebook" aria-hidden="true"></i>
+						<span class="descricao">Facebook</span></a>
+					</li>
+					<li class="menu-item">
+						<a href="https://twitter.com/idec" target="_blank">
+						<i class="icon fa fa-twitter" aria-hidden="true"></i>
+						<span class="descricao">Twitter</span></a>
+					</li>
+					<li class="menu-item">
+						<a href="https://www.youtube.com/user/defesadoconsumidor" target="_blank">
+						<i class="icon fa fa-youtube" aria-hidden="true"></i>
+						<span class="descricao">Youtube</span></a>
+					</li>
 				</ul>
 			</div>
 

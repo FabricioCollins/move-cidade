@@ -23,14 +23,16 @@
 		// Query on Notices
 		$args = array(
 		    'category_name' => 'blog',
+		    'posts_per_page' => 3,
 		    'orderby' => 'date', 
-		    'order' => 'DESC'
+		    'order' => 'DESC'		    
 		);
 		$blog_result = new WP_Query( $args );
 
 		// Query on fixed content
 		$args = array(
-		    'category_name' => 'conteudo'
+		    'category_name' => 'conteudo',
+		    'posts_per_page' => -1
 		);
 		$page_result = new WP_Query( $args );
 
