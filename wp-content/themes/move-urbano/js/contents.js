@@ -58,7 +58,7 @@ $(document).ready(function(){
 	});
 	$('.conteudo09 .imagem-legenda-interativa .next').click(function(event) {
 		event.preventDefault();
-		var $visible = $(this).parent().find('.imagem-destaque.visible');
+		var $visible = $(this).parent().parent().find('.imagem-destaque.visible');
 		if($visible.next().length > 0) {
 			$visible.removeClass('visible').next().addClass('visible');
 		} else {
@@ -69,7 +69,7 @@ $(document).ready(function(){
 
 	$('.conteudo09 .imagem-legenda-interativa .prev').click(function(event) {
 		event.preventDefault();
-		var $visible = $(this).parent().find('.imagem-destaque.visible');
+		var $visible = $(this).parent().parent().find('.imagem-destaque.visible');
 		if($visible.prev().length > 0) {
 			$visible.removeClass('visible').prev().addClass('visible');
 		} else {
@@ -77,20 +77,10 @@ $(document).ready(function(){
 		}
 		desaturate($(this));
 	});
-	function desaturate($this) {
-		$visible = $this.parent().find('.imagem-destaque.visible');
-		$imagembase = $this.closest('.imagem-legenda-interativa').find('.imagem-base');
-		if($visible.hasClass('vazio')) {
-			$imagembase.removeClass('desaturate');
-		} else {
-			$imagembase.addClass('desaturate');
-		}
-	}
-
 
 	//conteudo 15
 	$('.conteudo15 .imagens .toggle, .conteudo15 .imagens .vazio').click(function(event) {
-		$(this).parent().find('.texto').toggleClass('hide');
+		$(this).parent().find('.texto').toggleClass('c15hide');
 	});
 
 	// conteudo19
@@ -105,7 +95,7 @@ $(document).ready(function(){
 			$('.cidades').addClass('ativo');
 		} else {
 			$('.resultado').hide();
-			$('#cod_cidades').html('<option value="">– Escolha um estado –</option>');
+			$('#cod_cidades').html('<option value="">–- Escolha um estado –-</option>');
 			$('.cidades').removeClass('ativo');
 		}
 	});
@@ -118,3 +108,13 @@ $(document).ready(function(){
 	});
 
 });
+
+function desaturate($this) {
+	$visible = $this.parent().find('.imagem-destaque.visible');
+	$imagembase = $this.closest('.imagem-legenda-interativa').find('.imagem-base');
+	if($visible.hasClass('vazio')) {
+		$imagembase.removeClass('desaturate');
+	} else {
+		$imagembase.addClass('desaturate');
+	}
+}

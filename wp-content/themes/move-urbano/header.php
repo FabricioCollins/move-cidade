@@ -105,11 +105,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 					<h1 class="col span_8_of_12">
 						<?php 
 							$logo_name='home';
-							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false || ($page_name=='blog' || $page_name='') ) {
+							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false || ($page_name=='blog' || $page_name='') && !is_home() ) {
 								$logo_name='blog';
 							}
 						?>
-						<a class="logo-<?php echo $logo_name ?>" href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+						<a class="logo-<?php echo $logo_name ?>" href="http://movecidade.org.br<?php if($logo_name=='blog') echo '/blog'?>">
 							<span class="visuallyhidden">Move Cidade</span>
 						</a>
 					</h1>

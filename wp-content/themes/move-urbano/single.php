@@ -40,6 +40,8 @@ get_header(); ?>
 				}
 			?>
 
+			<br/><br/>
+
 			<?php
 			// Start the loop.
 			while ( have_posts() ) : the_post();

@@ -57,7 +57,7 @@
 		</ul>
 	</div><!-- Carousel -->
 
-	<div class="dock-menu-wrapper">
+	<div class="dock-menu-wrapper">		
 		<ul class="dock-menu">
 			<?php while ( $merged_queried_post->have_posts() ) : $merged_queried_post->the_post(); ?>			
 				<li class="menu-item">
@@ -67,6 +67,8 @@
 				</li>
 			<?php endwhile ?>
 		</ul>
+		<img class="dock-nav-left" src="<?php bloginfo( 'stylesheet_directory' );?>/img/nav_left-32.png">
+		<img class="dock-nav-right" src="<?php bloginfo( 'stylesheet_directory' );?>/img/nav_right-32.png">
 	</div><!-- Dock -->
 
 </article><!-- #post-## -->
