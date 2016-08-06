@@ -62,7 +62,7 @@ $(document).ready(function(){
 		if($visible.next().length > 0) {
 			$visible.removeClass('visible').next().addClass('visible');
 		} else {
-			$visible.removeClass('visible').parent().find('.imagem-destaque:first-child').addClass('visible');
+			$visible.removeClass('visible').parent().parent().find('.imagem-destaque:first-child').addClass('visible');
 		}
 		desaturate($(this));
 	});
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		if($visible.prev().length > 0) {
 			$visible.removeClass('visible').prev().addClass('visible');
 		} else {
-			$visible.removeClass('visible').parent().find('.imagem-destaque:last-child').addClass('visible');
+			$visible.removeClass('visible').parent().parent().find('.imagem-destaque:last-child').addClass('visible');
 		}
 		desaturate($(this));
 	});
@@ -84,7 +84,7 @@ $(document).ready(function(){
 	});
 
 	// conteudo19
-	$('#cod_estados').change(function(){
+	/*$('#cod_estados').change(function(){
 		if( $(this).val() ) {
 			$('#cod_cidades').hide();
 			$('.carregando').show();
@@ -105,12 +105,12 @@ $(document).ready(function(){
 		} else {
 			$('.resultado').hide();
 		}
-	});
+	});*/
 
 });
 
 function desaturate($this) {
-	$visible = $this.parent().find('.imagem-destaque.visible');
+	$visible = $this.parent().parent().find('.imagem-destaque.visible');
 	$imagembase = $this.closest('.imagem-legenda-interativa').find('.imagem-base');
 	if($visible.hasClass('vazio')) {
 		$imagembase.removeClass('desaturate');

@@ -2194,16 +2194,16 @@ html {
         width: 100%;
         background: transparent
     }
-    .main .index-menu .col {
+    .main, .col {
+        padding-top: 0 !important;
+    }
+    .main .cardboard .col.row_span_2_of_2 {
         padding-top: 0
     }
-    .main .index-menu .col.row_span_2_of_2 {
-        padding-top: 0
-    }
-    .main .index-menu .col .title {
+    .main .cardboard .col .title {
         position: static
     }
-    .main .index-menu .col .title a {
+    .main .cardboard .col .title a {
         position: static
     }
     .main .meta p.data .responsivo-hide,
@@ -2280,7 +2280,7 @@ html {
         height: 0
     }
     .conteudo .conteudo15 .imagens .col.vazio {
-        padding-top: 100%
+        padding-top: 100% !important;
     }
     .conteudo .conteudo15 .imagens .col.vazio .texto {
         top: 0;

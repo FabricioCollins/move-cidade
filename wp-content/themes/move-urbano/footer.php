@@ -13,11 +13,12 @@
 </div><!-- .site -->
 
 	<div class="footer">
-		<div class="logotipo">
+		<div class="logotipo">			
 			<a href="http://movecidade.org.br" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-lateral_branco.png" target="_blank"></a>
 			<a href="http://www.idec.org.br/" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo_branco.png"></a>
 			<a href="http://climaesociedade.org" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logotipo-ics-branco.png"></a>
 			<a href="http://www.ledufmg.com.br" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/logo_led.png"></a>
+			<a href="https://creativecommons.org/licenses/by-nc/3.0/br/" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' );?>/img/cc.png" target="_blank"></a>
 		</div>
 	</div>
 

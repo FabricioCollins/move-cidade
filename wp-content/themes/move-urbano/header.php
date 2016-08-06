@@ -17,10 +17,10 @@ if ( !$pagename ) {
 
 if($pagename) {
 	$pagetitle = str_replace("-", " ", $pagename);
-	$pagetitle=$pagetitle." | Move Cidade";
+	$pagetitle=$pagetitle." | MoveCidade";
 }
 else 
-	$pagetitle="Move Cidade";
+	$pagetitle="MoveCidade";
 
 ?>
 <?php
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 							<!-- Request Fields -->
 							<input type=hidden name="oid" value="00D37000000KRmT"> <!-- ID Idec -->
 					   		<input type=hidden id="Campaign_ID" name="Campaign_ID" value="701370000001hB8"> <!-- ID Campanha -->
-							<input type=hidden name="retURL" value="http://movecidade.com.br"> <!-- Página de sucesso -->
+							<input type=hidden name="retURL" value="http://movecidade.org.br"> <!-- Página de sucesso -->
 					   		<input type=hidden id="lead_source" name="lead_source" value="Web"> <!-- Origem do lead -->
 					   		<input type=hidden id="00N37000005jnRO" name="00N37000005jnRO" value="MKT-Movecidade"> <!-- Descrição da Origem do Lead -->
 					   		<input type=hidden id="country_code" name="country_code" value="BR"> <!-- País: Brasil -->
@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 						</a>
 					</li>
 					<li class="menu-item">
-						<a href="javascript:void(0);">
+						<a href="http://movecidade.org.br/conteudo/quem-somos/">
 							<i class="icon fa fa-info-circle" aria-hidden="true"></i><span class="descricao">Sobre</span>
 						</a>
 					</li>
