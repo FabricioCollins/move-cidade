@@ -774,7 +774,7 @@ html {
     margin: 0;
     padding: 0
 }
-.header .title h1 a {
+.header .title h1 a.index-link {
     margin: 0 auto;
     max-width: 508px;
     width: 90%;
@@ -783,9 +783,32 @@ html {
     background: url('img/logotipo_cor-flat.png') no-repeat center center;
     background-size: 100% auto
 }
-.header .title h1.blog a {
-    background: url('img/logotipo_cor-flat-blog.png') no-repeat center center
+
+.header .title h1.blog .blog-link-wrapper {
+    display: block;
+    height: 20px;
+    margin: 0 auto;
+    max-width: 508px;
+    position: relative;
+    width: 90%;
 }
+.header .title h1.blog .blog-link-wrapper a.blog-link {
+    background: #f31338 none repeat scroll 0 0;
+    border-radius: 10px;
+    bottom: 0;
+    color: #fff;
+    font-size: 1.6rem;
+    padding: 0.3em 0.5em;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+.header .title h1.blog .blog-link-wrapper a.blog-link:hover {
+    background: #f9899c none repeat scroll 0 0;
+    text-decoration: none;
+}
+
 .header .nav-filter {
     display: table;
     width: 100%;
@@ -905,7 +928,7 @@ html {
 .header .nav-filter .nav-categories a {
     text-transform: uppercase;
     font-weight: 700;
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Open Sans",sans-serif;
     color: #888126;
     display: block;
     outline: 0;
@@ -1908,7 +1931,7 @@ html {
 }
 .conteudo .conteudo19 form.buscacidade {
     margin: 2% auto 2% auto;
-    max-width: 80rem
+    max-width: 60rem
 }
 .conteudo .conteudo19 form.buscacidade .input {
     padding: 2%;
@@ -1948,7 +1971,7 @@ html {
     display: none
 }
 .conteudo .conteudo19 .resultado {
-    display: none
+
 }
 .conteudo .conteudo19 .resultado ul.card-wrapper {
     list-style: none;
@@ -1956,10 +1979,7 @@ html {
     padding: 0
 }
 .conteudo .conteudo19 .resultado ul.card-wrapper li {
-    padding-right: 1%
-}
-.conteudo .conteudo19 .resultado ul.card-wrapper li:last-child {
-    padding-right: 0
+    padding: 1%;
 }
 .conteudo .conteudo19 .resultado ul.card-wrapper li div.card {
     border: 4px solid #238ca9
@@ -1969,7 +1989,8 @@ html {
     color: #fff;
     background: #238ca9;
     padding: .5em .8em;
-    font-size: 1.6rem
+    font-size: 1.6rem;
+    min-height: 55px;
 }
 .conteudo .conteudo19 .resultado ul.card-wrapper li div.card a {
     word-break: break-all
@@ -2119,7 +2140,7 @@ html {
         margin: 0 auto;
         width: 60%
     }
-    .header .title h1 a {
+    .header .title h1 a.index-link {
         background-size: auto auto;
         width: 93px
     }
@@ -2324,10 +2345,7 @@ html {
     }
     .footer .logotipo {
         text-align: left
-    }
-    .cadastro {
-        display: none
-    }
+    }    
     .col {
         margin: 1% 0 1% 0
     }
@@ -2486,6 +2504,12 @@ html {
     margin-right: 10px;
     font-size: 14pt;
     font-weight: bold;
+}
+
+
+/* Blog */
+.more-link {
+    display: none;
 }
 
 
@@ -2722,5 +2746,17 @@ html {
     float: left;
     border: none;
 }
+
+/* POST BLOG */
+article.corpo .blog-container {
+    max-width: 70%;
+    margin-left: 15%;
+    text-align: justify;
+}
+
+article.corpo .blog-container p {
+    margin-bottom: 30px;
+}
+/**/
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

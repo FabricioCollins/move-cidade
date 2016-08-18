@@ -21,23 +21,6 @@ if($pagename) {
 }
 else 
 	$pagetitle="MoveCidade";
-
-?>
-<?php
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-    //header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-    header("Access-Control-Allow-Origin: *");
-    header('Access-Control-Allow-Credentials: true');    
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
-}   
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers:{$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-    exit(0);
-} 
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/dock.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/contents.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/c19.js"></script>
 
 	<!-- CSS LIBS -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
@@ -79,7 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 		}
 
 		$page_name="";				
-		$page_name=get_query_var('pagename');		
+		$page_name=get_query_var('pagename');	
+
+		$logo_name='home';
+		if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false || ($page_name=='blog' || $page_name='') && !is_home() ) {
+			$logo_name='blog';
+		}	
 	?>
 
 </head>
@@ -102,16 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 						<img src="<?php bloginfo( 'stylesheet_directory' );?>/img/idec_logo.png">						
 					</div>
 
-					<h1 class="col span_8_of_12">
-						<?php 
-							$logo_name='home';
-							if (strpos(get_permalink(), get_permalink(get_page_by_path('Blog')) ) !== false || ($page_name=='blog' || $page_name='') && !is_home() ) {
-								$logo_name='blog';
+					<h1 class="col span_8_of_12 <?php echo $logo_name ?>">					
+						<a class="index-link" href="http://movecidade.org.br">
+						<span class="visuallyhidden">Move Cidade</span></a>
+						<?php
+							if($logo_name=="blog") {							
+						?>
+						<span class="blog-link-wrapper"><a class="blog-link" href="http://movecidade.org.br/blog">Blog</a></span>
+						<?php
+
 							}
 						?>
-						<a class="logo-<?php echo $logo_name ?>" href="http://movecidade.org.br<?php if($logo_name=='blog') echo '/blog'?>">
-							<span class="visuallyhidden">Move Cidade</span>
-						</a>
 					</h1>
 				</div>
 
@@ -128,24 +118,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 									<span class="responsivo-hide">Mobilidade e </span>cidade</a>
 								</a>
 							</li>
-							<li class="menu-item" data-target="mobilidade_e_cotidiano">
-								<a href="<?php echo $actionNav ?>mobilidade_e_cotidiano">
-									<span class="responsivo-hide">Mobilidade e </span>cotidiano</a>
+							<li class="menu-item" data-target="os_modais_de_transporte">
+								<a href="<?php echo $actionNav ?>os_modais_de_transporte">
+									<span class="responsivo-hide">Os modais de </span>transporte</a>
 								</a>
 							</li>
 							<li class="menu-item" data-target="entenda_seus_direitos">
 								<a href="<?php echo $actionNav ?>entenda_seus_direitos">
-									<span class="responsivo-hide">Entenda </span>seus direitos</a>
+									<span class="responsivo-hide">Entenda seus</span>direitos</a>
 								</a>
 							</li>
-							<li class="menu-item" data-target="sem_carro_pela_cidade">
-								<a href="<?php echo $actionNav ?>sem_carro_pela_cidade">
-									Sem carro<span class="responsivo-hide"> pela cidade</span></a>
-								</a>
-							</li>
-							<li class="menu-item" data-target="novidades">
-								<a href="<?php echo $actionNav ?>novidades">
-									<span>Novidades</span>
+							<li class="menu-item" data-target="faca_sua_parte">
+								<a href="<?php echo $actionNav ?>faca_sua_parte">
+									<span class="responsivo-hide">Faça </span>sua parte</a>
 								</a>
 							</li>
 						</ul>
@@ -201,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 				<ul class="menu menu-nav">
 					<li class="menu-item <?php if(is_home()) echo 'ativo'; ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('Home'));?>">
+						<a href="<?php echo get_site_url();?>">
 							<i class="icon fa fa-home" aria-hidden="true"></i><span class="descricao">Página inicial</span>
 						</a>
 					</li>

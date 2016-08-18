@@ -58,6 +58,7 @@
     font-weight: bold;  
     line-height: 1.4em;  
     text-align: center;
+    white-space: normal;
 }
 .dock-menu li .title:hover a,
 .dock-menu li .title:focus a {
