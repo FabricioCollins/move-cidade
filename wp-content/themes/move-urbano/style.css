@@ -1093,7 +1093,7 @@ html {
     background-size: cover
 }
 .main .cardboard .col .title a {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     background: rgba(136, 143, 148, .8);
     display: block;
     position: absolute;
@@ -1104,6 +1104,7 @@ html {
     padding: 8%;
     color: #fff;
     transition: background .2s;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     font-weight: bold;  
     line-height: 1.4em;  
 }
@@ -1133,13 +1134,13 @@ html {
     line-height: 1.4em;
 }
 .main .cardboard .col.span_4_of_10 .title a {
-    font-size: 1.6rem
+    font-size: 1.8rem
 }
 .main .cardboard .col.row_span_2_of_2 {
     padding-top: 31.984%
 }
 .main .cardboard .col.row_span_2_of_2 .title a {
-    font-size: 1.8rem
+    font-size: 2rem
 }
 .main .cardboard .col.cor-1 .title a, 
 .bxslider li.cor-1 .title a,
@@ -1724,6 +1725,7 @@ html {
 .conteudo .conteudo07 .box {
     background: #ffe224;
     max-width: 800px;
+    box-shadow: 4px 4px 0 0 #cfd2d4;
     margin: 0 auto 2% auto
 }
 .conteudo .conteudo07 .box p {
@@ -1789,8 +1791,7 @@ html {
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda {
     display: table-cell;
     position: relative;
-    vertical-align: top;
-    padding-bottom: 4rem
+    vertical-align: top
 }
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .imagem-destaque-wrapper {
     list-style: none;
@@ -1803,7 +1804,12 @@ html {
     padding: 5%
 }
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .imagem-destaque-wrapper .imagem-destaque img {
-    max-height: 140px
+    max-height: 140px;
+    max-width: 70%
+}
+.conteudo .conteudo09 .imagem-legenda-interativa .legenda .imagem-destaque-wrapper .imagem-destaque h3 {
+    margin: 0 5rem;
+    font-size: 1.8rem
 }
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .imagem-destaque-wrapper .visible {
     display: block
@@ -1816,8 +1822,8 @@ html {
 }
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .nav {
     position: absolute;
-    bottom: 2%;
-    font-size: 4rem;
+    top: 2%;
+    font-size: 3.5rem;
     color: #f31338
 }
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .nav.next {
@@ -2084,6 +2090,12 @@ html {
         left: 0;
         width: 100%
     }
+    .header .title .logo-idec img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 15%;
+    }
     .nav-main {
         position: absolute;
         padding: 0
@@ -2152,6 +2164,9 @@ html {
     }
     .header .nav-filter .logo {
         display: none
+    }
+    .header .title .logo-idec img {
+        width: 20%;
     }
     .header .nav-filter .search,
     .header .nav-filter .nav-categories {
@@ -2748,13 +2763,13 @@ html {
 }
 
 /* POST BLOG */
-article.corpo .blog-container {
+article.corpo .blog-custom {
     max-width: 70%;
     margin-left: 15%;
     text-align: justify;
 }
 
-article.corpo .blog-container p {
+article.corpo .blog-custom p {
     margin-bottom: 30px;
 }
 /**/

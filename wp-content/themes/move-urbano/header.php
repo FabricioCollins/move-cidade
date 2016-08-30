@@ -133,6 +133,11 @@ else
 									<span class="responsivo-hide">Faça </span>sua parte</a>
 								</a>
 							</li>
+							<li class="menu-item" data-target="novidades">
+								<a href="<?php echo $actionNav ?>novidades">
+									<span class="responsivo-hide">Novidades</a>
+								</a>
+							</li>
 						</ul>
 					</div>
 

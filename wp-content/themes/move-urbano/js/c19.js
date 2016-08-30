@@ -20,14 +20,15 @@ $( document ).ready(function() {
 		}
 	});
 
-	$("#cod_cidades").change(function() {
+	$("#cod_cidades").change(function() {      
 		var item=$(this);
 		var resultContainer=$(".card-wrapper");
 		resultContainer.empty();
 		var uf=c19.findUfById($("#cod_estados").val());
-		var city=c19.findByName(uf.cities, item.val());
-		if(city)
+		var city=c19.findByName(uf.cities, item.val());      
+		if(city) {         
 			c19.renderResult(city.contents,resultContainer);
+      }
 	});
 });
 
@@ -58,7 +59,7 @@ var C19=function() {
 
 	this.renderResult=function(contents, element) {
 		$.each(contents, function (i, item) {
-			var card=self.buildResultItem(item);
+			var card=self.buildResultItem(item);         
 			element.append(card);
 		});
 	};
