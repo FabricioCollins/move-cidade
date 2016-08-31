@@ -2762,10 +2762,19 @@ html {
     border: none;
 }
 
-/* POST BLOG */
+
+
+/* WORDPRESS CUSTOM */
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+.alignright {float:right; }
+.alignleft {float:left; }
+.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
 article.corpo .blog-custom {
-    max-width: 70%;
-    margin-left: 15%;
+    max-width: 80%;
+    margin-left: 10%;
     text-align: justify;
 }
 

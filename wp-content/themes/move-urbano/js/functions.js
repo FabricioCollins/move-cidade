@@ -146,7 +146,7 @@
 				elementPosTop        = elementPos.top,
 				entryFooter          = element.closest( 'article' ).find( '.entry-footer' ),
 				entryFooterPos       = entryFooter.offset(),
-				entryFooterPosBottom = entryFooterPos.top + ( entryFooter.height() + 28 ),
+				entryFooterPosBottom = (entryFooterPos!=null)? entryFooterPos.top + ( entryFooter.height() + 28 ) : 0,
 				caption              = element.closest( 'figure' ),
 				newImg;
 
