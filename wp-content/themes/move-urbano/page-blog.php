@@ -29,7 +29,7 @@ get_header(); ?>
 
 			<?php 
 				echo '<div class="artigo">';
-					echo '<h2 class="title"><a href="blog.html">' . get_the_title() . '</a></h2>';
+					echo '<h2 class="title"><a href="'.get_permalink().'">' . get_the_title() . '</a></h2>';
 					echo '<div class="meta">';
 						echo '<p class="data"><span class="responsivo-hide">Publicado em ' . get_the_date('d/m/Y') . '</p>';
 					echo '</div>';					
@@ -51,24 +51,6 @@ get_header(); ?>
 		<?php endif; ?>
 
 
-
-
-
-		<?php
-		/*if ( $blog_result->have_posts() ) {
-
-			while ( $blog_result->have_posts() ) {
-				$blog_result->the_post();	
-
-				echo '<div class="blog-index-item border-bottom">';  
-					echo '<span class="post-date">' . get_the_date() . '</span>';
-					echo '<h2 class="title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-					echo '<p class="description">' . get_the_excerpt() . '</p>';
-				echo '</div>';			
-			}
-		}*/
-
-		?>
 
 	</main><!-- .site-main -->
 

@@ -16,9 +16,7 @@ $( document ).ready(function() {
 	$('.cadastro .toggle').click(function(event) {
 		toggleCadastro($(this), 300);
 	});
-	if($(window).width() < 1024) 
-		toggleCadastro($('.cadastro .toggle'), 500);
-
+	
 	// Make search on key press after 0.5 second
 	var searchEventContainer=null;
 	$(".search-input").keyup(function(){

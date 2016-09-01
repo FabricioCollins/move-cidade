@@ -7,12 +7,13 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
-    font-family: sans-serif;
+    font-family: "Open Sans",sans-serif !important;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
     overflow-x: hidden;
 }
 body {
+    font-family: "Open Sans",sans-serif !important;
     margin: 0;
     overflow-x: hidden;
 }
@@ -344,7 +345,7 @@ textarea,
 select,
 option {
     font-size: 1em;
-    font-family: 'Open Sans', sans-serif
+    font-family: "Open Sans",sans-serif !important;
 }
 *,
 :before,
@@ -363,7 +364,7 @@ embed,/* HTML5 display definitions
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
-    font-family: sans-serif;
+    font-family: "Open Sans",sans-serif
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
@@ -726,7 +727,7 @@ dt,
 td,
 th,
 legend {
-    font-size: 1.6rem
+    font-size: 1.7rem
 }
 dt,
 legend,
@@ -2146,6 +2147,7 @@ html {
         width: 25%;
         width: calc(25%)
     }
+
 }
 @media only screen and (max-width: 600px) {
     .header .title h1 {
@@ -2407,6 +2409,24 @@ html {
     .dock-menu-wrapper .dock-nav-left, 
     .dock-menu-wrapper .dock-nav-right {
         display: none;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe,  
+    .video-container object,  
+    .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 }
 @media print {
@@ -2765,21 +2785,78 @@ html {
 
 
 /* WORDPRESS CUSTOM */
-img.alignright {float:right; margin:0 0 1em 1em}
-img.alignleft {float:left; margin:0 1em 1em 0}
-img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-.alignright {float:right; }
-.alignleft {float:left; }
-.aligncenter {display: block; margin-left: auto; margin-right: auto}
-
-article.corpo .blog-custom {
-    max-width: 80%;
-    margin-left: 10%;
-    text-align: justify;
+img.alignright,
+figure.alignright img {
+    float:right; margin:0 0 1em 1em
+}
+img.alignleft,
+figure.alignleft img {
+    float:left; margin:0 1em 1em 0
+}
+.aligncenter,
+img.aligncenter,
+figure.aligncenter img {
+    display: block; margin-left: auto; margin-right: auto
 }
 
-article.corpo .blog-custom p {
-    margin-bottom: 30px;
+.alignright {
+    float:right; 
+}
+.alignleft {
+    float:left; 
+}
+
+
+article.corpo .entry-content.blog p,
+article.corpo .entry-content.blog h1,
+article.corpo .entry-content.blog h2,
+article.corpo .entry-content.blog h3,
+article.corpo .entry-content.blog h4,
+article.corpo .entry-content.blog h5,
+article.corpo .entry-content.blog h6,
+article.corpo .entry-content.institucional p,
+article.corpo .entry-content.sem-categoria p {
+   margin: 1.2em auto;
+   max-width: 80rem;
+   text-align: justify;
+   line-height: 1.9em;
+}
+
+article.corpo .entry-content.blog figure {
+    display: table; 
+}
+article.corpo .entry-content.blog figcaption {
+    display: table-caption;
+    caption-side: bottom
+}
+
+article.corpo .entry-content.blog img,
+figure > img {
+    height: auto !important;
+}
+
+/*.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+}*/
+
+.entry-content iframe, 
+.entry-content object, 
+.entry-content embed {
+        max-width: 100%;
 }
 /**/
 

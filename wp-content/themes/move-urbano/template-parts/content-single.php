@@ -10,7 +10,7 @@
 
 <article class="corpo" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
-	<div class="entry-content">
+	<div class="entry-content <?php echo get_query_var('category_name'); ?>">
 		<?php
 			the_content();
 		?>
