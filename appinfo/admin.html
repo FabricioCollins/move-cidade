@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>App Admin</title>
+		<style type="text/css">
+			.big {
+				border: 2px solid grey;
+				border-radius: 5px;
+				padding: 10px;
+				margin: 10px;
+			}
+
+			.title {
+				font-weight: bold;
+			}
+
+			.error {
+				color: red;
+			}
+
+			.warning {
+				color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="questions" class = "big">
+		<p class="title">
+		Editor de perguntas
+		</p>
+		<button id="buttonAddQuestion">
+		Nova Pergunta
+		</button>
+		</div>-->
+		<div id="excel" class = "big">
+			<p class="title">
+				Enviar Excel com informações GTFS
+			</p>
+			<button id="buttonReload" style="display:none;">
+				Recarregar Arquivo
+			</button>
+			<input type="file" id="file" name="files[]" style="display:none;" accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"/>
+			<p id="info">
+				Loading...
+			</p>
+			<button id="buttonSend" style="display:none;">
+				Enviar
+			</button>
+		</div>
+		<div class="big">
+			<p class="title">
+				Log:
+			</p>
+			<button id="clearLog">
+				Limpar
+			</button>
+			<div id="log"></div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src='plugins/js/sql.js'></script>
+		<script src='js/Debug.js'></script>
+		<script src='js/gtfsGenerator.js'></script>
+	</body>
+</html>

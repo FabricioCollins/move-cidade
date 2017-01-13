@@ -21,6 +21,16 @@ if($pagename) {
 }
 else 
 	$pagetitle="MoveCidade";
+
+
+// Get Dashboard Info
+include_once ('./appinfo/database_access.php');
+$db = new database_access();
+$db->open();	
+$cities = $db->get_cities();
+$modals = $db->get_modals();
+$db->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +49,7 @@ else
 	<!-- JS LIBS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>	
 	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
 
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
@@ -50,6 +61,9 @@ else
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
 	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">	
 	<link href="<?php bloginfo('template_url'); ?>/css/dock.css" rel="stylesheet" type="text/css">	
+
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.7/select2-bootstrap.min.css">
 
 
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>	
@@ -103,6 +117,61 @@ else
 							}
 						?>
 					</h1>
+				</div>
+
+				<div class="dashboard">
+					<div class="table-cell">
+						<h2><a href="./ranking">Ranking</a></h2>
+						<a class="pesquisar-linha" href="./ranking">
+							<div class="icon"><i class="fa fa-search" aria-hidden="true"></i></div>
+							<div class="text">Faça sua pesquisa</div>
+						</a>
+					</div>
+
+					<form class="table-cell">
+						<div class="">
+							<label class="">Cidade</label>
+							<div class="select-wrapper">
+								<select class="ds-filter-select" id="city_name">
+									<option value="">Todos</option>
+									<?php 
+										foreach ($cities as $city) {
+											$selected=($_GET['city_name']==$city)? "selected" : "";
+									?>
+										<option value="<?php echo $city['value'] ?>" <?php echo $selected ?>>
+											<?php echo $city['value'] ?>						
+										</option>
+									<?php 
+										}
+									?>							
+								</select>
+							</div>
+						</div>
+
+						<div class="">
+							<label class="">Modal</label>
+							<div class="select-wrapper">
+								<select class="ds-filter-select" id="modal_id">
+									<option value="">Todos</option>
+									<?php 
+										foreach ($modals as $modal) {
+											$selected=($_GET['modal_id']==$modal)? "selected" : "";
+									?>
+										<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>
+											<?php echo $modal['value'] ?>											
+										</option>
+									<?php 
+										}
+									?>
+								</select>
+							</div>
+						</div>
+					</form>
+
+					<div id="table-ranking">
+						
+					</div>
+
 				</div>
 
 				<div class="nav-filter">					

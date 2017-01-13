@@ -810,6 +810,123 @@ html {
     text-decoration: none;
 }
 
+.header .dashboard {
+    display: table;
+    width: 100%;
+    margin-bottom: .8%;
+    background: #f5f5f5;
+    -webkit-border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    -moz-border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem
+}
+.header .dashboard .table-cell {
+    display: table-cell;
+    padding: 0 1.4% 1.4% 1.4%;
+    border-left: 1px solid #e6e6e6
+}
+.header .dashboard .table-cell:first-child {
+    border: 0
+}
+.header .dashboard h2 {
+    margin: 0;
+    padding: 0
+}
+.header .dashboard h2 a {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #000
+}
+.header .dashboard .pesquisar-linha {
+    color: #f31338;
+    letter-spacing: .05em;
+    font-size: 1.2rem;
+    display: table
+}
+.header .dashboard .pesquisar-linha .fa {
+    display: block;
+    font-size: 2rem;
+    margin: 0 .5em .5em 0;
+    background: #f31338;
+    color: #fff;
+    padding: .7rem;
+    text-align: center;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px
+}
+.header .dashboard .pesquisar-linha .text,
+.header .dashboard .pesquisar-linha .icon {
+    vertical-align: top;
+    display: table-cell
+}
+.header .dashboard .pesquisar-linha:hover,
+.header .dashboard .pesquisar-linha:focus {
+    color: #35cbeb
+}
+.header .dashboard .pesquisar-linha:hover .fa,
+.header .dashboard .pesquisar-linha:focus .fa {
+    background: #35cbeb
+}
+.header .dashboard form label {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    display: block
+}
+.header .dashboard form .select-wrapper {
+    padding-top: .2rem
+}
+.header .dashboard form select {
+    background: transparent;
+    border: 0;
+    font-size: 1.2rem;
+    width: 100%;
+    border-bottom: 1px solid #ccc
+}
+.header .dashboard .ranking {
+    padding-right: 1.4%
+}
+.header .dashboard .ranking h3 {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin: 0 0 .6rem 0;
+    color: #808080
+}
+.header .dashboard .ranking ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+.header .dashboard .ranking ul li {
+    font-size: 1.2rem;
+    display: table;
+    width: 100%;
+    border-bottom: 1px dotted #ccc
+}
+.header .dashboard .ranking ul li:last-child {
+    border-bottom: 0
+}
+.header .dashboard .ranking ul li span {
+    display: table-cell;
+    padding-right: 1rem
+}
+.header .dashboard .ranking ul li span:last-child {
+    padding-right: 0
+}
+.header .dashboard .ranking ul li span.numero {
+    width: 4em;
+    font-weight: 700
+}
+.header .dashboard .ranking ul li span.nota {
+    text-align: right;
+    font-weight: 700
+}
+.header .dashboard .ranking.best ul li span.nota {
+    color: #35cbeb
+}
+.header .dashboard .ranking.worst ul li span.nota {
+    color: #f31338
+}
+
 .header .nav-filter {
     display: table;
     width: 100%;
@@ -1485,6 +1602,7 @@ html {
     background: #e7e9ea;
     color: #101f28;
     overflow: hidden;
+    height: 10px;
     margin: 4rem 0 0 0
 }
 .conteudo .meta .data,
@@ -2033,6 +2151,132 @@ html {
     margin-bottom: 1em;
     margin-left: 0
 }
+
+.conteudo .ranking .filtro {
+    padding: 2rem 0;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 760px
+}
+.conteudo .ranking .filtro .parametro {
+    float: left;
+    font-size: 1.4em;
+    margin-right: 2%;
+    background: #ffe224;
+    padding: 1.2rem;
+    width: 49%
+}
+.conteudo .ranking .filtro .parametro:last-child {
+    margin-right: 0
+}
+.conteudo .ranking .filtro .parametro label {
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    padding-bottom: .4rem;
+    display: block
+}
+.conteudo .ranking .filtro .select-wrapper select {
+    border: 0;
+    width: 100%
+}
+.conteudo .ranking .tip {
+    font-style: italic
+}
+.conteudo .ranking .comparar-add {
+    width: 100%
+}
+.conteudo .ranking .comparar-add .add-line-section {
+    margin-bottom: 1em;
+    display: table;
+    width: 100%;
+    background: #ffe224;
+    padding: .5em
+}
+.conteudo .ranking .comparar-add .table-cell {
+    display: table-cell
+}
+.conteudo .ranking .comparar-add .input {
+    background: #fff
+}
+.conteudo .ranking .comparar-add label {
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    padding-right: 1rem;
+    font-size: 1.2rem;
+    background: #ffe224;
+    padding-left: .5em
+}
+.conteudo .ranking .comparar-add .select2,
+.conteudo .ranking .comparar-add button {
+    font-size: 1.4rem;
+    padding: .4em .6em;
+    line-height: 2.4rem;
+    border: 0
+}
+.conteudo .ranking .comparar-add .select2 {
+    width: 100%
+}
+.conteudo .ranking .comparar-add .select2 .select2-selection__arrow {
+    display: none;
+}
+.conteudo .ranking .comparar-add button {
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    background: #e7cf24;
+    color: #706d26
+}
+.conteudo .ranking .comparar-add button:hover {
+    background: #f31338;
+    color: #fff;
+    border-color: #f31338
+}
+.conteudo .ranking table {
+    border: 0
+}
+.conteudo .ranking table th,
+.conteudo .ranking table td {
+    border-color: #e7e9ea;
+    border-width: 2px 1px
+}
+.conteudo .ranking table th:first-child,
+.conteudo .ranking table td:first-child {
+    border-left: 0
+}
+.conteudo .ranking table th:last-child,
+.conteudo .ranking table td:last-child {
+    border-right: 0
+}
+.conteudo .ranking table .upper-header th {
+    background: #238ca9;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    border-color: #21819c
+}
+.conteudo .ranking table .lower-header th {
+    background: #2ea9c4;
+    color: #fff;
+    font-size: 1.1rem;
+    border-color: #238ca9
+}
+.conteudo .ranking table .lower-header th a {    
+    color: #fff;
+}
+.conteudo .ranking table .lower-header th.active a {    
+    text-decoration: underline;
+}
+.conteudo .ranking table .nota-title,
+.conteudo .ranking table .nota {
+    text-align: center
+}
+.conteudo .ranking table .comparar {
+    background: #fff6bd
+}
+.conteudo .ranking table .comparar td {
+    border-color: #e7cf24
+}
+
 .blog .artigo {
     overflow: hidden
 }

@@ -54,6 +54,51 @@ $( document ).ready(function() {
 		$(".mailing").find(".send").attr("disabled", false).val("Enviar"); 
 		return false;
 	});
+	
+
+	// Dashboard and ranking functions
+
+	$(".filter-select").change(function() {			
+		var url="./?"
+			+"city_name=" + $("#city_name").val()
+			+"&modal_id=" + $("#modal_id").val();
+
+		$(location).attr('href', url);
+	});
+
+	$(".add-line-field").select2({
+		placeholder: "Digite o número ou nome da linha",
+  		allowClear: true
+	});
+
+	$(".btn-add-line").click(function() {
+		var data = $(".add-line-field").val().split(";");
+		var field = "<tr class='comparar'>";
+		var className="";
+		var removeButton="<a href='#' class='btn-remove-line'><i class='fa fa-times-circle' aria-hidden='true'></i></a>";
+			for(var i in data) {
+				if(i>1)
+					className="nota";
+
+				field += ("<td class='"+className+"'>"+removeButton+" "+data[i]+"</td>");
+
+				removeButton="";
+			}
+
+			field += "</tr>";
+
+		$('table > tbody:last tr:eq(1)').after(field);
+	});
+
+	$(".btn-remove-line").click(function() {
+		console.log(this);
+		//$().remove();
+	});
+	
+	$(".ds-filter-select").change(function() {
+		loadDashboard($("#city_name").val(), $("#modal_id").val());
+	});
+	loadDashboard($("#city_name").val(), $("#modal_id").val());
 });	
 
 $(window).scroll(function() {
@@ -86,4 +131,18 @@ function toggleCadastro($this, duration) {
 		width: "toggle",
 	}, duration);
 	$this.toggleClass('ativo').find('i').toggleClass('fa-times');
+}
+
+function loadDashboard(city, modal) {
+	$.ajax({
+	  url: "./api/get_dashboard_info.php",
+	  data:{ 'city_name': city, 'modal_id': modal, 'limit_count': '3'},
+	  beforeSend: function( xhr ) {
+	    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+	    $(".dashboard").hide();
+	  }
+	}).done(function( data ) {
+	    $("#table-ranking").html(data);
+	    $(".dashboard").show();
+  	});
 }
