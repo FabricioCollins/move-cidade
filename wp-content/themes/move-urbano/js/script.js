@@ -72,22 +72,11 @@ $( document ).ready(function() {
 	});
 
 	$(".btn-add-line").click(function() {
-		var data = $(".add-line-field").val().split(";");
-		var field = "<tr class='comparar'>";
-		var className="";
-		var removeButton="<a href='#' class='btn-remove-line'><i class='fa fa-times-circle' aria-hidden='true'></i></a>";
-			for(var i in data) {
-				if(i>1)
-					className="nota";
-
-				field += ("<td class='"+className+"'>"+removeButton+" "+data[i]+"</td>");
-
-				removeButton="";
-			}
-
-			field += "</tr>";
-
-		$('table > tbody:last tr:eq(1)').after(field);
+		var val = $(".add-line-field").val();
+		var cookieValue = Cookies.get("comparable-ranking");
+		var resultant = val + ";" + cookieValue;
+		Cookies.set("comparable-ranking", resultant);
+		updateComparableRankingLine();
 	});
 
 	$(".btn-remove-line").click(function() {
@@ -98,7 +87,8 @@ $( document ).ready(function() {
 	$(".ds-filter-select").change(function() {
 		loadDashboard($("#city_name").val(), $("#modal_id").val());
 	});
-	loadDashboard($("#city_name").val(), $("#modal_id").val());
+		
+	updateComparableRankingLine();
 });	
 
 $(window).scroll(function() {
@@ -145,4 +135,50 @@ function loadDashboard(city, modal) {
 	    $("#table-ranking").html(data);
 	    $(".dashboard").show();
   	});
+}
+
+function removeComparableRankingLine(val) {
+	var cookieValue = Cookies.get("comparable-ranking");
+	var blocks = cookieValue.split(";");
+	var resultant = "";
+
+	for(var i in blocks) {
+		if(blocks[i] != val && blocks[i] != "")
+			resultant += blocks[i]+";";
+	}
+	console.log(resultant);
+	Cookies.set("comparable-ranking", resultant);
+	updateComparableRankingLine();
+}
+
+function updateComparableRankingLine() {
+	var cookieValue = Cookies.get("comparable-ranking");
+	var blocks = cookieValue.split(";");
+	$("tr.comparable-line").remove();
+	
+	for(var i in blocks) {
+		if(blocks[i]=="")
+			continue;
+		var data = blocks[i].split("|");
+		var field = "<tr class='comparar comparable-line' data-line='"+blocks[i]+"'>";
+		var className="";
+		var removeButton="<span class='btn-remove-line'><i class='fa fa-times-circle' aria-hidden='true'></i></span>";
+		for(var i in data) {
+			if(i>1)
+				className="nota";
+			field += ("<td class='"+className+"'>"+removeButton+" "+data[i]+"</td>");
+			removeButton="";
+		}
+		field += "</tr>";
+		$('table > tbody:last tr:eq(1)').after(field);
+	}
+
+	// Bind button remove event
+	$("span.btn-remove-line").each(function(key, value) {
+	  $(value).click(function(){    
+	    var val = $(this).parent().parent().data("line");
+	    removeComparableRankingLine(val);
+	    $(value).parent().parent().remove();
+	  });	    
+	});
 }

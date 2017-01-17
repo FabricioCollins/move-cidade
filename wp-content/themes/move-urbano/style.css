@@ -1515,10 +1515,13 @@ html {
     line-height: 2em
 }
 .conteudo a,
+.conteudo .btn-remove-line,
 .blog a {
-    color: #f31338
+    color: #f31338;
+    cursor: pointer;
 }
 .conteudo a:hover,
+.conteudo .btn-remove-line:hover,
 .blog a:hover {
     text-decoration: underline
 }

@@ -95,14 +95,14 @@ get_header(); ?>
 							<option value=""></option>
 							<?php 
 								foreach ($result as $line) {
-									$line_data=$line["line_name"].";".
-										$line["line_info"].";".
-										($line["seguranca"]==null? '-' : $line["seguranca"]).";".
-										($line["urbanidade"]==null? '-' : $line["urbanidade"]).";".
-										($line["limpeza"]==null? '-' : $line["limpeza"]).";".
-										($line["pontualidade"]==null? '-' : $line["pontualidade"]).";".
-										($line["bilhetagem"]==null? '-' : $line["bilhetagem"]).";".
-										($line["frota"]==null? '-' : $line["frota"]).";".
+									$line_data=$line["line_name"]."|".
+										$line["line_info"]."|".
+										($line["seguranca"]==null? '-' : $line["seguranca"])."|".
+										($line["urbanidade"]==null? '-' : $line["urbanidade"])."|".
+										($line["limpeza"]==null? '-' : $line["limpeza"])."|".
+										($line["pontualidade"]==null? '-' : $line["pontualidade"])."|".
+										($line["bilhetagem"]==null? '-' : $line["bilhetagem"])."|".
+										($line["frota"]==null? '-' : $line["frota"])."|".
 										($line["total"]==null? '-' : $line["total"]);
 							?>
 							<option value="<?=$line_data?>"><?=$line["line_name"]?> - <?=$line["line_info"]?></option>
