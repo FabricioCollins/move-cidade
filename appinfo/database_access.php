@@ -638,8 +638,8 @@ class database_access
 				FROM evaluation ev "
 				." inner join line li on (li.line_name=ev.line_name and li.modal_id=ev.modal_id) "
 			    .$query_filter 			    
-				."GROUP BY ev.line_name "	
-				."ORDER BY ev.total_value DESC"			
+				."GROUP BY ev.line_name, li.line_info  "	
+				."ORDER BY total_value DESC"			
 				.$query_limit;
 
 		$sql_worst = "
@@ -647,8 +647,8 @@ class database_access
 				FROM evaluation ev "
 				." inner join line li on (li.line_name=ev.line_name and li.modal_id=ev.modal_id) "				
 			    .$query_filter 			    
-				."GROUP BY ev.line_name "				
-				."ORDER BY ev.total_value ASC"			
+				."GROUP BY ev.line_name, li.line_info  "				
+				."ORDER BY total_value ASC"			
 				.$query_limit;
 
 		$stmt_best = $this->prepare($sql_best);
@@ -692,30 +692,32 @@ class database_access
 		return $array;
 	}
 
-	public function get_dashboard_info($city_name, $modal_id, $limit_count, $sort_column) {
+	public function get_full_ranking_info() {
+		return $this->get_ranking_info(null, null, null, null);
+	}
+
+	public function get_ranking_info($city_name, $modal_id, $limit_count, $sort_column) {
 		$query_filter="";
 		$query_limit="";
 		$query_sort="";
 
 		// Where
 		if ($city_name != null && $modal_id != null)
-			$query_filter = "where city_name='".$city_name."' and modal_id='".$modal_id."'";
+			$query_filter = "WHERE ev.city_name='".$city_name."' and ev.modal_id='".$modal_id."'";
 		elseif ($city_name == null && $modal_id != null)
-			$query_filter = "where modal_id=?";
+			$query_filter = "WHERE ev.modal_id='".$modal_id."'";
 		elseif ($modal_id == null && $city_name != null)
-			$query_filter = "where city_name='".$city_name."'";
+			$query_filter = "WHERE ev.city_name='".$city_name."'";
 
 		// Order By
 		if($sort_column != null)
-			$query_sort = " order by ". $sort_column . " desc";
+			$query_sort = " ORDER BY ". $sort_column . " desc";
 		else
-			$query_sort = " order by total_value desc";
+			$query_sort = " ORDER BY total_value desc";
 
 		// Limit
 		if($limit_count != null)
-			$query_limit = " limit ".$limit_count;
-		else 
-			$query_limit = " limit 10";
+			$query_limit = " LIMIT ".$limit_count;		
 
 		$sql_info = "
 			SELECT ev.line_name as line_name, 
@@ -730,9 +732,9 @@ class database_access
 			FROM movecidade_app.evaluation as ev 
 			inner join answer ans on ans.evaluation_id=ev.evaluation_id
 			inner join question qst on qst.question_id=ans.question_id 
-			inner join line li on (li.line_name=ev.line_name and li.modal_id=ev.modal_id)"			
+			inner join line li on (li.line_name=ev.line_name and li.modal_id=ev.modal_id) "			
 			.$query_filter 
-			."GROUP BY line_name "
+			." GROUP BY ev.line_name, li.line_info "
 			.$query_sort
 			.$query_limit;
 

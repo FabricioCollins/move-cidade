@@ -19,7 +19,8 @@ get_header(); ?>
 	."&modal_id=".$_GET['modal_id']
 	."&limit_count=".$_GET['limit_count'];
 		
-	$result = $db->get_dashboard_info($_GET['city_name'], $_GET['modal_id'], $_GET['limit_count'], $_GET['sort_column']);
+	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], 10, $_GET['sort_column']);
+	$full_result = $db->get_full_ranking_info();
 	$cities = $db->get_cities();
 	$modals = $db->get_modals();
 
@@ -55,7 +56,7 @@ get_header(); ?>
 							<?php 
 								foreach ($cities as $city) {
 							?>
-								<option value="<?php echo $city['value'] ?>" <?php echo ($_GET['city_name']==$city)? "selected" : "" ?>>
+								<option value="<?php echo $city['value'] ?>" <?php echo ($_GET['city_name']==$city['value'])? "selected" : "" ?>>
 									<?php echo $city['value'] ?>									
 								</option>
 
@@ -74,7 +75,7 @@ get_header(); ?>
 							<?php 
 								foreach ($modals as $modal) {
 							?>
-								<option value="<?php echo $modal['value'] ?>" <?php echo ($_GET['modal_id']==$modal)? "selected" : "" ?>>
+								<option value="<?php echo $modal['value'] ?>" <?php echo ($_GET['modal_id']==$modal['value'])? "selected" : "" ?>>
 									<?php echo $modal['value'] ?>									
 								</option>
 							<?php 
@@ -94,7 +95,7 @@ get_header(); ?>
 						<select class="add-line-field">
 							<option value=""></option>
 							<?php 
-								foreach ($result as $line) {
+								foreach ($full_result as $line) {
 									$line_data=$line["line_name"]."|".
 										$line["line_info"]."|".
 										($line["seguranca"]==null? '-' : $line["seguranca"])."|".

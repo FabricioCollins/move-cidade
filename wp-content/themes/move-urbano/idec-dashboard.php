@@ -7,6 +7,7 @@
 	$db->close();
 ?>
 
+<div class='dashboard-loading'><img src='<?php bloginfo( 'stylesheet_directory' );?>/img/loading-1.gif'></div>
 <div class="dashboard">
 	<div class="table-cell">
 		<h2><a href="./ranking">Ranking</a></h2>
@@ -16,7 +17,7 @@
 		</a>
 	</div>
 
-	<form class="table-cell">
+	<form class="table-cell dashboard-filter-form">
 		<div class="">
 			<label class="">Cidade</label>
 			<div class="select-wrapper">
@@ -55,10 +56,6 @@
 			</div>
 		</div>
 	</form>
-
-	<div id="table-ranking">
-		
-	</div>
 
 </div>
 

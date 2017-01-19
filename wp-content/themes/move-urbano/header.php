@@ -113,8 +113,9 @@ else
 
 				<!-- Include dashboard if page is home -->
 				<?php
-					if(is_home())
-						include_once ('idec-dashboard.php');
+					if(is_home()) {												
+						include_once ('idec-dashboard.php');						
+					}
 				?>
 
 				<div class="nav-filter">					

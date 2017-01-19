@@ -60,8 +60,8 @@ $( document ).ready(function() {
 
 	$(".filter-select").change(function() {			
 		var url="./?"
-			+"city_name=" + $("#city_name").val()
-			+"&modal_id=" + $("#modal_id").val();
+			+"city_name=" 		+ $("#city_name").val()
+			+"&modal_id=" 		+ $("#modal_id").val();
 
 		$(location).attr('href', url);
 	});
@@ -77,11 +77,6 @@ $( document ).ready(function() {
 		var resultant = val + ";" + cookieValue;
 		Cookies.set("comparable-ranking", resultant);
 		updateComparableRankingLine();
-	});
-
-	$(".btn-remove-line").click(function() {
-		console.log(this);
-		//$().remove();
 	});
 	
 	$(".ds-filter-select").change(function() {
@@ -126,14 +121,16 @@ function toggleCadastro($this, duration) {
 function loadDashboard(city, modal) {
 	$.ajax({
 	  url: "./api/get_dashboard_info.php",
-	  data:{ 'city_name': city, 'modal_id': modal, 'limit_count': '3'},
+	  data:{ 'city_name': city, 'modal_id': modal, 'limit_count': '3'},	  
 	  beforeSend: function( xhr ) {
-	    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
-	    $(".dashboard").hide();
+	    xhr.overrideMimeType( "text/plain; charset=UTF-8" );	   
+	    $(".dashboard-loading").show();
 	  }
 	}).done(function( data ) {
-	    $("#table-ranking").html(data);
-	    $(".dashboard").show();
+		$(".table-cell.ranking.best,.table-cell.ranking.worst").remove();
+	    $(".dashboard-filter-form").after(data);	
+	    $(".dashboard").css("display", "table");
+	    $(".dashboard-loading").hide();
   	});
 }
 
