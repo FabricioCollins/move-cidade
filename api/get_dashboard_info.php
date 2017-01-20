@@ -13,8 +13,7 @@ include_once ('../appinfo/database_access.php');
 
 		if (isset($_GET['city_name'], $_GET['modal_id'], $_GET['limit_count']))
 		{
-			$result = $db->get_best_worst($_GET['city_name'], $_GET['modal_id'], $_GET['limit_count']);
-			//JSON_EXIT_ARRAY($result);
+			$result = $db->get_best_worst($_GET['city_name'], $_GET['modal_id'], $_GET['limit_count']);			
 		}		
 		
 		$db->close();
