@@ -37,6 +37,44 @@ get_header(); ?>
 	$db->close();
 ?>
 
+<script type="text/javascript">	
+    var availableTags = [
+    	<?php
+    		foreach ($full_result as $line) {
+				$data_value='"' . $line["line_name"]."|".
+				$line["line_info"]."|".
+				($line["seguranca"]==null? '-' : $line["seguranca"])."|".
+				($line["urbanidade"]==null? '-' : $line["urbanidade"])."|".
+				($line["limpeza"]==null? '-' : $line["limpeza"])."|".
+				($line["pontualidade"]==null? '-' : $line["pontualidade"])."|".
+				($line["bilhetagem"]==null? '-' : $line["bilhetagem"])."|".
+				($line["frota"]==null? '-' : $line["frota"])."|".
+				($line["total"]==null? '-' : $line["total"]). '"';
+
+				$data_label = '"' . $line["line_name"] ." - ". $line["line_info"] . '"';
+								
+				echo "{"
+			    	."label: $data_label,"
+			    	."value: $data_value"
+			    ."},";
+			}			
+    	?>    	
+    ];    
+
+    $( document ).ready(function() {
+    	$( "#add-line-field" ).val("");
+		$( "#add-line-field" ).autocomplete({
+			minLength: 0,
+			source: availableTags,			
+	      	select: function( event, ui ) {
+		    	$( "#add-line-field" ).val( ui.item.label );
+				$( "#add-line-hidden" ).val( ui.item.value ); 
+		        return false;
+			}    
+		});
+	});
+</script>
+
 <div id="primary" class="main blog-index content-area">
 	<div class="main conteudo">
 		
@@ -91,24 +129,9 @@ get_header(); ?>
 			<div class="comparar comparar-add">
 				<div class="add-line-section">
 					<label class="table-cell">Adicionar linha para comparação:</label>
-					<div class="table-cell input">						
-						<select class="add-line-field">
-							<option value=""></option>
-							<?php 
-								foreach ($full_result as $line) {
-									$line_data=$line["line_name"]."|".
-										$line["line_info"]."|".
-										($line["seguranca"]==null? '-' : $line["seguranca"])."|".
-										($line["urbanidade"]==null? '-' : $line["urbanidade"])."|".
-										($line["limpeza"]==null? '-' : $line["limpeza"])."|".
-										($line["pontualidade"]==null? '-' : $line["pontualidade"])."|".
-										($line["bilhetagem"]==null? '-' : $line["bilhetagem"])."|".
-										($line["frota"]==null? '-' : $line["frota"])."|".
-										($line["total"]==null? '-' : $line["total"]);
-							?>
-							<option value="<?=$line_data?>"><?=$line["line_name"]?> - <?=$line["line_info"]?></option>
-							<?php } ?>				  
-						</select>
+					<div class="table-cell input">				
+						<input id="add-line-field" placeholder="Digite o número ou nome da linha" type="text">	
+						<input type="hidden" id="add-line-hidden">							
 					</div>
 					<div class="table-cell submit">
 						<button class="btn-add-line">Adicionar <i class="fa fa-arrow-down" aria-hidden="true"></i></button>

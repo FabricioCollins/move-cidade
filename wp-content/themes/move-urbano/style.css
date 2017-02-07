@@ -2193,7 +2193,7 @@ html {
 .conteudo .ranking .tip {
     font-style: italic
 }
-.conteudo .ranking .comparar-add {
+.conteudo .ranking .comparar-add input[type="text"] {
     width: 100%
 }
 .conteudo .ranking .comparar-add .add-line-section {
@@ -2217,7 +2217,7 @@ html {
     background: #ffe224;
     padding-left: .5em
 }
-.conteudo .ranking .comparar-add .select2,
+.conteudo .ranking .comparar-add input[type="text"],
 .conteudo .ranking .comparar-add button {
     font-size: 1.4rem;
     padding: .4em .6em;

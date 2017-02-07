@@ -39,17 +39,19 @@ else
 
 	<!-- JS LIBS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
 
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/cookies.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/Cookies.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/dock.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/contents.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/c19.js"></script>
 
 	<!-- CSS LIBS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
 	<link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" type="text/css">	
 	<link href="<?php bloginfo('template_url'); ?>/css/dock.css" rel="stylesheet" type="text/css">	

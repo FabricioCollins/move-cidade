@@ -66,13 +66,9 @@ $( document ).ready(function() {
 		$(location).attr('href', url);
 	});
 
-	$(".add-line-field").select2({
-		placeholder: "Digite o número ou nome da linha",
-  		allowClear: true
-	});
-
 	$(".btn-add-line").click(function() {
-		var val = $(".add-line-field").val();
+		var val = $("#add-line-hidden").val();
+		$( "#add-line-field" ).val("");
 		var cookieValue = Cookies.get("comparable-ranking");
 		var resultant = val + ";" + cookieValue;
 		Cookies.set("comparable-ranking", resultant);
@@ -150,13 +146,18 @@ function removeComparableRankingLine(val) {
 
 function updateComparableRankingLine() {
 	var cookieValue = Cookies.get("comparable-ranking");
+	if(cookieValue ==  null)
+		return;
 	var blocks = cookieValue.split(";");
 	$("tr.comparable-line").remove();
 	
+	blocks.reverse();
+
 	for(var i in blocks) {
-		if(blocks[i]=="")
+		if(blocks[i]=="" || !blocks[i].includes("|"))
 			continue;
-		var data = blocks[i].split("|");
+		
+		var data = blocks[i].split("|");		
 		var field = "<tr class='comparar comparable-line' data-line='"+blocks[i]+"'>";
 		var className="";
 		var removeButton="<span class='btn-remove-line'><i class='fa fa-times-circle' aria-hidden='true'></i></span>";
@@ -167,7 +168,7 @@ function updateComparableRankingLine() {
 			removeButton="";
 		}
 		field += "</tr>";
-		$('table > tbody:last tr:eq(1)').after(field);
+		$('.ranking-table > tbody:last tr:eq(1)').after(field);
 	}
 
 	// Bind button remove event
