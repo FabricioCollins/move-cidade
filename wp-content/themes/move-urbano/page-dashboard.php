@@ -14,13 +14,19 @@ get_header(); ?>
 	$db = new database_access();
 	$db->open();
 
+	$limit_rows = 10;
+
+	// Get current page
+	$current_page = isset($_GET["current_page"])? $_GET["current_page"] : 1;	
+	$page_size = $db->get_ranking_size($_GET['city_name'], $_GET['modal_id'], $limit_rows, $_GET['sort_column']);	
+
 	$filter_params = "./?"
 	."city_name=".$_GET['city_name']
 	."&modal_id=".$_GET['modal_id']
 	."&limit_count=".$_GET['limit_count'];
 		
-	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], 10, $_GET['sort_column']);
-	$full_result = $db->get_full_ranking_info();
+	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], $limit_rows, $current_page, $_GET['sort_column']);
+	//$full_result = $db->get_full_ranking_info();
 	$cities = $db->get_cities();
 	$modals = $db->get_modals();
 
@@ -40,7 +46,7 @@ get_header(); ?>
 <script type="text/javascript">	
     var availableTags = [
     	<?php
-    		foreach ($full_result as $line) {
+    		/*foreach ($full_result as $line) {
 				$data_value='"' . $line["line_name"]."|".
 				$line["line_info"]."|".
 				($line["seguranca"]==null? '-' : $line["seguranca"])."|".
@@ -57,7 +63,7 @@ get_header(); ?>
 			    	."label: $data_label,"
 			    	."value: $data_value"
 			    ."},";
-			}			
+			}*/			
     	?>    	
     ];    
 
@@ -174,13 +180,14 @@ get_header(); ?>
 
 			</table>
 
-			<nav class="pagination paginated clearfix">
-				<span class="page-numbers current">1</span>
-				<a class="page-numbers" href="javascript:void(0);">2</a>
-				<span class="page-numbers dots">…</span>
-				<a class="page-numbers" href="javascript:void(0);">4</a>
-				<a class="next page-numbers" href="javascript:void(0);">Próxima</a>
-			</nav>
+			<?php 	
+				// Build Pagination							
+				$url_pagination = $filter_params 
+					. '&sort_column=' . $_GET["sort_column"]
+					. '&current_page='; 
+
+				include('./wp-content/themes/move-urbano/template-parts/pagination.php');
+			?>			
 
 		</div>
 	</div>

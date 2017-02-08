@@ -692,11 +692,16 @@ class database_access
 		return $array;
 	}
 
-	public function get_full_ranking_info() {
-		return $this->get_ranking_info(null, null, null, null);
+	public function get_ranking_size($city_name, $modal_id, $limit, $sort_column) {
+		$size = count($this->get_ranking_info($city_name, $modal_id, null, null, $sort_column));
+		return ($size==0)? 0 : ceil($size/$limit);
 	}
 
-	public function get_ranking_info($city_name, $modal_id, $limit_count, $sort_column) {
+	public function get_full_ranking_info() {
+		return $this->get_ranking_info(null, null, null, null, null);
+	}
+
+	public function get_ranking_info($city_name, $modal_id, $limit_count, $current_page, $sort_column) {
 		$query_filter="";
 		$query_limit="";
 		$query_sort="";
@@ -716,8 +721,14 @@ class database_access
 			$query_sort = " ORDER BY total_value desc";
 
 		// Limit
-		if($limit_count != null)
-			$query_limit = " LIMIT ".$limit_count;		
+		if($limit_count != null) {			
+			if($current_page != null) {
+				$page_node = $limit_count * $current_page;
+				$query_limit = " LIMIT ".$page_node.','.$limit_count;		
+			}
+			else 
+				$query_limit = " LIMIT " . $limit_count;		
+		}
 
 		$sql_info = "
 			SELECT ev.line_name as line_name, 
@@ -757,7 +768,7 @@ class database_access
 			$line_info["total"] = round($row["total_value"], 1);
 
 			array_push($array, $line_info);
-		}
+		}	
 
 		return $array;
 	}

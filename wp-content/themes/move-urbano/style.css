@@ -1397,6 +1397,47 @@ html {
 .main .blog-index-menu .wp-paginate a.page-numbers:focus {
     color: #f31338
 }
+
+.main .pagination {
+    text-align: center;
+    margin-top: 2rem;
+    display: block;
+}
+.main .pagination .page-numbers {
+    font-size: 1.8rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    display: inline-block;
+    line-height: 3rem;
+    width: 3rem;
+    color: #101f28;
+    -webkit-border-radius: 50% 50% 50% 50%;
+    -moz-border-radius: 50% 50% 50% 50%;
+    border-radius: 50% 50% 50% 50%;
+    transition: all .1s
+}
+.main .pagination .page-numbers.current {
+    color: #fff;
+    background: #f31338
+}
+.main .pagination .page-numbers.next,
+.main .pagination .page-numbers.prev {
+    width: auto;
+    font-size: 1.3rem;
+    text-transform: uppercase
+}
+.main .pagination .page-numbers.next {
+    margin-left: 2rem
+}
+.main .pagination .page-numbers.prev {
+    margin-right: 2rem
+}
+.main .pagination a.page-numbers:hover,
+.main .pagination a.page-numbers:focus {
+    color: #f31338
+}
+
+
 .footer {
     position: relative;
     margin: 4% 0 0 0;
