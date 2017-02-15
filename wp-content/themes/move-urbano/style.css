@@ -2386,6 +2386,9 @@ html {
         left: 0;
         width: 100%
     }
+    .header .dashboard .ranking ul li {
+        font-size: 1.1rem
+    }
     .header .title .logo-idec img {
         position: absolute;
         bottom: 0;
@@ -2479,6 +2482,10 @@ html {
     .header .nav-filter .nav-categories .responsivo-show:focus {
         background: #238ca9;
         color: #16404f
+    }
+    .header .dashboard,
+    .dashboard-loading {
+        display: none !important;
     }
     .header .nav-filter .nav-categories .responsivo-show.ativo a {
         color: #888f94;
@@ -2647,6 +2654,10 @@ html {
     }
     .conteudo .conteudo19 .resultado ul.card-wrapper li {
         padding-right: 0
+    }
+    .conteudo .ranking table th,
+    .conteudo .ranking table td {
+        font-size: 1rem
     }
     .footer {
         padding-top: 72%;

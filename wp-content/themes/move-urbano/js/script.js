@@ -138,9 +138,13 @@ function removeComparableRankingLine(val) {
 	for(var i in blocks) {
 		if(blocks[i] != val && blocks[i] != "")
 			resultant += blocks[i]+";";
-	}
-	console.log(resultant);
+	}	
 	Cookies.set("comparable-ranking", resultant);
+	updateComparableRankingLine();
+}
+
+function clearComparableRankingLine() {
+	Cookies.set("comparable-ranking", "");
 	updateComparableRankingLine();
 }
 

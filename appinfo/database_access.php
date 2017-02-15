@@ -685,9 +685,6 @@ class database_access
 			array_push($array["worst"], $line_info);
 		}
 
-		/*$statistics_array = $this->get_statistics($city_name, $modal_id, $line_name);
-		 $array = array_merge($array, $statistics_array);*/
-
 		//Finish
 		return $array;
 	}
@@ -712,13 +709,15 @@ class database_access
 		elseif ($city_name == null && $modal_id != null)
 			$query_filter = "WHERE ev.modal_id='".$modal_id."'";
 		elseif ($modal_id == null && $city_name != null)
-			$query_filter = "WHERE ev.city_name='".$city_name."'";
+			$query_filter = "WHERE ev.city_name='".$city_name."' and ev.modal_id='onibus'";
+		else 
+			$query_filter = "WHERE ev.modal_id='onibus'";
 
 		// Order By
 		if($sort_column != null)
 			$query_sort = " ORDER BY ". $sort_column . " desc";
 		else
-			$query_sort = " ORDER BY total_value desc";
+			$query_sort = " ORDER BY geral desc";
 
 		// Limit
 		if($limit_count != null) {			
@@ -731,21 +730,18 @@ class database_access
 		}
 
 		$sql_info = "
-			SELECT ev.line_name as line_name, 
-			li.line_info as line_info, 
-	(SELECT AVG(rk1.weight) FROM movecidade_app.question rk1 where lower(name) like '%seguran%' and rk1.question_id=qst.question_id) as seguranca,
-	(SELECT AVG(rk2.weight) FROM movecidade_app.question rk2 where lower(name) like '%urbanidade%' and rk2.question_id=qst.question_id) as urbanidade,
-	(SELECT AVG(rk3.weight) FROM movecidade_app.question rk3 where lower(name) like '%limpeza%' and rk3.question_id=qst.question_id) as limpeza,
-	(SELECT AVG(rk4.weight) FROM movecidade_app.question rk4 where lower(name) like '%pontualidade%' and rk4.question_id=qst.question_id) as pontualidade,
-	(SELECT AVG(rk5.weight) FROM movecidade_app.question rk5 where lower(name) like '%bilhetagem%' and rk5.question_id=qst.question_id) as bilhetagem,
-	(SELECT AVG(rk6.weight) FROM movecidade_app.question rk6 where lower(name) like '%frota%' and rk6.question_id=qst.question_id) as frota,
-			AVG(ev.total_value) as total_value 
-			FROM movecidade_app.evaluation as ev 
-			inner join answer ans on ans.evaluation_id=ev.evaluation_id
-			inner join question qst on qst.question_id=ans.question_id 
+			SELECT ev.line_name as line_name, li.line_info as line_info, 
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=7 and a.evaluation_id=ev.evaluation_id)) as pontualidade,
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=9 and a.evaluation_id=ev.evaluation_id)) as lotacao,
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=10 and a.evaluation_id=ev.evaluation_id)) as limpeza,
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=11 and a.evaluation_id=ev.evaluation_id)) as transito,
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=12 and a.evaluation_id=ev.evaluation_id)) as motorista,
+				AVG((SELECT AVG(a.value) AS value FROM answer a where a.question_id=13 and a.evaluation_id=ev.evaluation_id)) as seguranca,
+				AVG(ev.total_value) as geral 
+			FROM movecidade_app.evaluation as ev 			
 			inner join line li on (li.line_name=ev.line_name and li.modal_id=ev.modal_id) "			
 			.$query_filter 
-			." GROUP BY ev.line_name, li.line_info "
+			." GROUP BY ev.line_name "
 			.$query_sort
 			.$query_limit;
 
@@ -758,14 +754,14 @@ class database_access
 			$line_info["line_name"] = $row["line_name"];
 			$line_info["line_info"] = $row["line_info"];
 
-			$line_info["seguranca"] = round($row["seguranca"], 1);
-			$line_info["urbanidade"] = round($row["urbanidade"], 1);
-			$line_info["limpeza"] = round($row["limpeza"], 1);
 			$line_info["pontualidade"] = round($row["pontualidade"], 1);
-			$line_info["bilhetagem"] = round($row["bilhetagem"], 1);
-			$line_info["frota"] = round($row["frota"], 1);
+			$line_info["lotacao"] = round($row["lotacao"], 1);
+			$line_info["limpeza"] = round($row["limpeza"], 1);
+			$line_info["transito"] = round($row["transito"], 1);
+			$line_info["motorista"] = round($row["motorista"], 1);
+			$line_info["seguranca"] = round($row["seguranca"], 1);
 
-			$line_info["total"] = round($row["total_value"], 1);
+			$line_info["geral"] = round($row["geral"], 1);
 
 			array_push($array, $line_info);
 		}	

@@ -17,7 +17,7 @@ get_header(); ?>
 	$limit_rows = 10;
 
 	// Get current page
-	$current_page = isset($_GET["current_page"])? $_GET["current_page"] : 1;	
+	$current_page = isset($_GET["current_page"])? $_GET["current_page"] : 0;	
 	$page_size = $db->get_ranking_size($_GET['city_name'], $_GET['modal_id'], $limit_rows, $_GET['sort_column']);	
 
 	$filter_params = "./?"
@@ -26,19 +26,19 @@ get_header(); ?>
 	."&limit_count=".$_GET['limit_count'];
 		
 	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], $limit_rows, $current_page, $_GET['sort_column']);
-	//$full_result = $db->get_full_ranking_info();
+	$full_result = $db->get_full_ranking_info();
 	$cities = $db->get_cities();
 	$modals = $db->get_modals();
 
 	$status_column1 = ($_GET['sort_column']=="line_name")? ' active' : '';
 	$status_column2 = ($_GET['sort_column']=="line_info")? ' active' : '';
-	$status_column3 = ($_GET['sort_column']=="seguranca")? ' active' : '';
-	$status_column4 = ($_GET['sort_column']=="urbanidade")? ' active' : '';
+	$status_column3 = ($_GET['sort_column']=="pontualidade")? ' active' : '';
+	$status_column4 = ($_GET['sort_column']=="lotacao")? ' active' : '';
 	$status_column5 = ($_GET['sort_column']=="limpeza")? ' active' : '';
-	$status_column6 = ($_GET['sort_column']=="pontualidade")? ' active' : '';
-	$status_column7 = ($_GET['sort_column']=="bilhetagem")? ' active' : '';
-	$status_column8 = ($_GET['sort_column']=="frota")? ' active' : '';
-	$status_column9 = ($_GET['sort_column']=="total_value")? ' active' : '';
+	$status_column6 = ($_GET['sort_column']=="transito")? ' active' : '';
+	$status_column7 = ($_GET['sort_column']=="motorista")? ' active' : '';
+	$status_column8 = ($_GET['sort_column']=="seguranca")? ' active' : '';
+	$status_column9 = ($_GET['sort_column']=="geral")? ' active' : '';
 
 	$db->close();
 ?>
@@ -46,16 +46,16 @@ get_header(); ?>
 <script type="text/javascript">	
     var availableTags = [
     	<?php
-    		/*foreach ($full_result as $line) {
+    		foreach ($full_result as $line) {
 				$data_value='"' . $line["line_name"]."|".
 				$line["line_info"]."|".
-				($line["seguranca"]==null? '-' : $line["seguranca"])."|".
-				($line["urbanidade"]==null? '-' : $line["urbanidade"])."|".
-				($line["limpeza"]==null? '-' : $line["limpeza"])."|".
 				($line["pontualidade"]==null? '-' : $line["pontualidade"])."|".
-				($line["bilhetagem"]==null? '-' : $line["bilhetagem"])."|".
-				($line["frota"]==null? '-' : $line["frota"])."|".
-				($line["total"]==null? '-' : $line["total"]). '"';
+				($line["lotacao"]==null? '-' : $line["lotacao"])."|".
+				($line["limpeza"]==null? '-' : $line["limpeza"])."|".
+				($line["transito"]==null? '-' : $line["transito"])."|".
+				($line["motorista"]==null? '-' : $line["motorista"])."|".
+				($line["seguranca"]==null? '-' : $line["seguranca"])."|".
+				($line["geral"]==null? '-' : $line["geral"]). '"';
 
 				$data_label = '"' . $line["line_name"] ." - ". $line["line_info"] . '"';
 								
@@ -63,7 +63,7 @@ get_header(); ?>
 			    	."label: $data_label,"
 			    	."value: $data_value"
 			    ."},";
-			}*/			
+			}
     	?>    	
     ];    
 
@@ -78,6 +78,14 @@ get_header(); ?>
 		        return false;
 			}    
 		});
+
+
+		<?php 
+			if($_GET['sort_column']==null) {
+				echo "clearComparableRankingLine();";
+			}
+		?>
+
 	});
 </script>
 
@@ -101,7 +109,7 @@ get_header(); ?>
 								foreach ($cities as $city) {
 							?>
 								<option value="<?php echo $city['value'] ?>" <?php echo ($_GET['city_name']==$city['value'])? "selected" : "" ?>>
-									<?php echo $city['value'] ?>									
+									<?php echo $city['value'] ?>
 								</option>
 
 							<?php 
@@ -114,13 +122,14 @@ get_header(); ?>
 				<div class="parametro">
 					<label class="">Modal</label>
 					<div class="select-wrapper">
-						<select class="filter-select" id="modal_id">
-							<option value="">Todos</option>
+						<select class="filter-select" id="modal_id">							
 							<?php 
 								foreach ($modals as $modal) {
+									$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']=="onibus")? 
+									"selected='selected'" : "";
 							?>
-								<option value="<?php echo $modal['value'] ?>" <?php echo ($_GET['modal_id']==$modal['value'])? "selected" : "" ?>>
-									<?php echo $modal['value'] ?>									
+								<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>
+									<?php echo ucfirst(str_replace("_", " ", $modal['value'])) ?>									
 								</option>
 							<?php 
 								}
@@ -153,13 +162,13 @@ get_header(); ?>
 				<tr class="lower-header">
 					<th class="<?php echo $status_column1 ?>"><a href="<?php echo $filter_params . '&sort_column=line_name' ?>">Número</a></th>
 					<th class="<?php echo $status_column2 ?>"><a href="<?php echo $filter_params . '&sort_column=line_info' ?>">Origem/Destino</th>
-					<th class="nota-title <?php echo $status_column3 ?>"><a href="<?php echo $filter_params . '&sort_column=seguranca' ?>">Segurança</th>
-					<th class="nota-title <?php echo $status_column4 ?>"><a href="<?php echo $filter_params . '&sort_column=urbanidade' ?>">Urbanidade</th>
+					<th class="nota-title <?php echo $status_column3 ?>"><a href="<?php echo $filter_params . '&sort_column=pontualidade' ?>">Pontualidade</th>
+					<th class="nota-title <?php echo $status_column4 ?>"><a href="<?php echo $filter_params . '&sort_column=lotacao' ?>">Lotação</th>
 					<th class="nota-title <?php echo $status_column5 ?>"><a href="<?php echo $filter_params . '&sort_column=limpeza' ?>">Limpeza</th>
-					<th class="nota-title <?php echo $status_column6 ?>"><a href="<?php echo $filter_params . '&sort_column=pontualidade' ?>">Pontualidade</th>
-					<th class="nota-title <?php echo $status_column7 ?>"><a href="<?php echo $filter_params . '&sort_column=bilhetagem' ?>">Bilhetagem</th>
-					<th class="nota-title <?php echo $status_column8 ?>"><a href="<?php echo $filter_params . '&sort_column=frota' ?>">Frota</th>
-					<th class="nota-title <?php echo $status_column9 ?>"><a href="<?php echo $filter_params . '&sort_column=total_value' ?>">Geral</th>
+					<th class="nota-title <?php echo $status_column6 ?>"><a href="<?php echo $filter_params . '&sort_column=transito' ?>">Trânsito</th>
+					<th class="nota-title <?php echo $status_column7 ?>"><a href="<?php echo $filter_params . '&sort_column=motorista' ?>">Motorista</th>
+					<th class="nota-title <?php echo $status_column8 ?>"><a href="<?php echo $filter_params . '&sort_column=seguranca' ?>">Segurança</th>
+					<th class="nota-title <?php echo $status_column9 ?>"><a href="<?php echo $filter_params . '&sort_column=geral' ?>">Geral</th>
 				</tr>	
 				
 				<?php 
@@ -168,13 +177,13 @@ get_header(); ?>
 				<tr>
 					<td><?=$line["line_name"]?></td>
 					<td><?=$line["line_info"]?></td>
-					<td class="nota"><?=($line["seguranca"]==null? '-' : $line["seguranca"])?></td>
-					<td class="nota"><?=($line["urbanidade"]==null? '-' : $line["urbanidade"])?></td>
-					<td class="nota"><?=($line["limpeza"]==null? '-' : $line["limpeza"])?></td>
 					<td class="nota"><?=($line["pontualidade"]==null? '-' : $line["pontualidade"])?></td>
-					<td class="nota"><?=($line["bilhetagem"]==null? '-' : $line["bilhetagem"])?></td>
-					<td class="nota"><?=($line["frota"]==null? '-' : $line["frota"])?></td>
-					<td class="nota"><?=($line["total"]==null? '-' : $line["total"])?></td>
+					<td class="nota"><?=($line["lotacao"]==null? '-' : $line["lotacao"])?></td>
+					<td class="nota"><?=($line["limpeza"]==null? '-' : $line["limpeza"])?></td>
+					<td class="nota"><?=($line["transito"]==null? '-' : $line["transito"])?></td>
+					<td class="nota"><?=($line["motorista"]==null? '-' : $line["motorista"])?></td>
+					<td class="nota"><?=($line["seguranca"]==null? '-' : $line["seguranca"])?></td>
+					<td class="nota"><?=($line["geral"]==null? '-' : $line["geral"])?></td>
 				</tr>	
 				<?php } ?>
 

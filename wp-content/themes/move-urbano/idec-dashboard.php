@@ -40,14 +40,14 @@
 		<div class="">
 			<label class="">Modal</label>
 			<div class="select-wrapper">
-				<select class="ds-filter-select" id="modal_id">
-					<option value="">Todos</option>
+				<select class="ds-filter-select" id="modal_id">					
 					<?php 
 						foreach ($modals as $modal) {
-							$selected=($_GET['modal_id']==$modal)? "selected" : "";
+							$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']=="onibus")? 
+							"selected='selected'" : "";
 					?>
-						<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>
-							<?php echo $modal['value'] ?>											
+						<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>							
+							<?php echo ucfirst(str_replace("_", " ", $modal['value'])) ?>
 						</option>
 					<?php 
 						}
