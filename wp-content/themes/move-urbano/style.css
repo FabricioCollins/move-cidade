@@ -2309,7 +2309,8 @@ html {
     background: #2ea9c4;
     color: #fff;
     font-size: 1.1rem;
-    border-color: #238ca9
+    border-color: #238ca9;
+    min-width: 40px;
 }
 .conteudo .ranking table .lower-header th a {    
     color: #fff;
