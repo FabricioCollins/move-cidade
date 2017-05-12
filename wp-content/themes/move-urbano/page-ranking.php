@@ -16,6 +16,11 @@ get_header(); ?>
 
 	$limit_rows = 10;
 
+	$default_modal = "onibus";
+	$default_city = "São Paulo";
+	$current_city = ($_GET['city_name']==null)? $default_city : $_GET['city_name'];
+	$current_modal = ($_GET['modal_id']==null)? $default_modal : $_GET['modal_id'];
+
 	// Get current page
 	$current_page = isset($_GET["current_page"])? $_GET["current_page"] : 0;	
 	$page_size = $db->get_ranking_size($_GET['city_name'], $_GET['modal_id'], $limit_rows, $_GET['sort_column']);	
@@ -26,9 +31,9 @@ get_header(); ?>
 	."&limit_count=".$_GET['limit_count'];
 		
 	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], $limit_rows, $current_page, $_GET['sort_column']);
-	$full_result = $db->get_full_ranking_info();
+	$full_result = $db->get_full_ranking_info($current_city, $current_modal);
 	$cities = $db->get_cities();
-	$modals = $db->get_modals();
+	$modals = $db->get_modals_by_city($current_city);	
 
 	$status_column1 = ($_GET['sort_column']=="line_name")? ' active' : '';
 	$status_column2 = ($_GET['sort_column']=="line_info")? ' active' : '';
@@ -71,7 +76,11 @@ get_header(); ?>
     	$( "#add-line-field" ).val("");
 		$( "#add-line-field" ).autocomplete({
 			minLength: 0,
-			source: availableTags,			
+			maxResults: 10,			
+			source: function(request, response) {
+		        var results = $.ui.autocomplete.filter(availableTags, request.term);		        
+		        response(results.slice(0, this.options.maxResults));
+		    },		
 	      	select: function( event, ui ) {
 		    	$( "#add-line-field" ).val( ui.item.label );
 				$( "#add-line-hidden" ).val( ui.item.value ); 
@@ -107,11 +116,12 @@ get_header(); ?>
 							<option value="">Todos</option>
 							<?php 
 								foreach ($cities as $city) {
+									$selected=($_GET['city_name']==$city['value'] || $_GET['city_name']==null &&  $city['value']==$default_city)? 
+									"selected='selected'" : "";
 							?>
-								<option value="<?php echo $city['value'] ?>" <?php echo ($_GET['city_name']==$city['value'])? "selected" : "" ?>>
-									<?php echo $city['value'] ?>
+								<option value="<?php echo $city['value'] ?>" <?php echo $selected ?>>
+									<?php echo ucfirst($city['value']) ?>
 								</option>
-
 							<?php 
 								}
 							?>							
@@ -125,7 +135,7 @@ get_header(); ?>
 						<select class="filter-select" id="modal_id">							
 							<?php 
 								foreach ($modals as $modal) {
-									$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']=="onibus")? 
+									$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']==$default_modal)? 
 									"selected='selected'" : "";
 							?>
 								<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>

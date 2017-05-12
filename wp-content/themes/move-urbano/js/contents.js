@@ -78,6 +78,10 @@ $(document).ready(function(){
 		desaturate($(this));
 	});
 
+	// Conteudo 14
+	new FlipGallery("#flip-gallery-1");
+	new FlipGallery("#flip-gallery-2");
+
 	//conteudo 15
 	$('.conteudo15 .imagens .toggle, .conteudo15 .imagens .vazio').click(function(event) {
 		$(this).parent().find('.texto').toggleClass('c15hide');
@@ -117,4 +121,54 @@ function desaturate($this) {
 	} else {
 		$imagembase.addClass('desaturate');
 	}
+}
+
+function FlipGallery(containerId) {
+	var self = this;
+	this.container = $(containerId + " .flip-content");
+	this.elements = this.container.find("img");
+	this.current = this.elements.first();
+
+	this.registerFlipAction = function(component, side) {				
+		$(component).click(function() {
+			self.flip(side);
+		});
+	};
+
+	this.flip = function(side) {		
+		var nextElement = null;
+
+		if(side == 'left') {
+			nextElement = self.current.prev("img");
+			if(nextElement.length==0)
+				nextElement=self.elements.last("img");
+		}
+		else if(side == 'right') {
+			nextElement = self.current.next("img");
+			if(nextElement.length==0)
+				nextElement=self.elements.first("img");
+		}
+
+		self.current.hide();
+		nextElement.show();
+
+		self.current=nextElement;
+	};
+
+	this.hideAllWithoutFirst = function() {
+		var first = true;
+		self.elements.each(function(el) {
+			if(!first)
+				$(this).hide();
+			first = false;
+		});
+	};
+
+	this.init = function() {
+		this.hideAllWithoutFirst();
+		this.registerFlipAction(containerId + " #flip-left", "left");
+		this.registerFlipAction(containerId + " #flip-right", "right");
+	};
+
+	this.init();
 }

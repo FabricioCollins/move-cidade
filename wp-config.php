@@ -26,6 +26,7 @@ define('DB_PASSWORD', 'rootroot');
 
 /** nome do host do MySQL */
 define('DB_HOST', 'localhost');
+//define('DB_HOST', 'idec-rds.ce3sh7nhzali.us-west-2.rds.amazonaws.com');
 
 /** Conjunto de caracteres do banco de dados a ser usado na criação das tabelas. */
 define('DB_CHARSET', 'utf8');

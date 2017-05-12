@@ -3,8 +3,11 @@
 	$db = new database_access();
 	$db->open();
 	$cities = $db->get_cities();
-	$modals = $db->get_modals();
+	$modals = $db->get_modals_by_city($current_city);
 	$db->close();
+
+	$default_modal = "onibus";
+	$default_city = "São Paulo";
 ?>
 
 <div class='dashboard-loading'><img src='<?php bloginfo( 'stylesheet_directory' );?>/img/loading-1.gif'></div>
@@ -24,8 +27,9 @@
 				<select class="ds-filter-select" id="city_name">
 					<option value="">Todos</option>
 					<?php 
-						foreach ($cities as $city) {
-							$selected=($_GET['city_name']==$city)? "selected" : "";
+						foreach ($cities as $city) {							
+							$selected=($_GET['city_name']==$city['value'] || $_GET['city_name']==null &&  $city['value']==$default_city)?
+							"selected='selected'" : "";
 					?>
 						<option value="<?php echo $city['value'] ?>" <?php echo $selected ?>>
 							<?php echo $city['value'] ?>						
@@ -43,7 +47,7 @@
 				<select class="ds-filter-select" id="modal_id">					
 					<?php 
 						foreach ($modals as $modal) {
-							$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']=="onibus")? 
+							$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']==$default_modal)? 
 							"selected='selected'" : "";
 					?>
 						<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>							

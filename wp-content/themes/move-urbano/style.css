@@ -1653,7 +1653,7 @@ html {
     background: #e7e9ea;
     color: #101f28;
     overflow: hidden;
-    height: 10px;
+    /*height: 10px;*/
     margin: 4rem 0 0 0
 }
 .conteudo .meta .data,
@@ -2006,6 +2006,41 @@ html {
 .conteudo .conteudo09 .imagem-legenda-interativa .legenda .nav:focus {
     color: #f9899c
 }
+
+/* CONTEUDO 14 */
+.conteudo .conteudo14 .flip-gallery {    
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.conteudo .conteudo14 .flip-gallery img {
+    position: relative;
+    width: 90%;
+    left: 5%;
+}
+
+.conteudo .conteudo14 .flip-gallery .flip-button {
+    position: absolute;
+    cursor: pointer;
+    font-size: 3.5rem;
+    top: 50%;
+}
+
+.conteudo .conteudo14 .flip-gallery .flip-button#flip-left {
+    left: 1%;
+}
+
+.conteudo .conteudo14 .flip-gallery .flip-button#flip-right {
+    right: 1%;
+}
+
+
+/* CONTEUDO 15 */
 .conteudo .conteudo15 p {
     max-width: 80rem;
     margin: 1.2em auto

@@ -694,8 +694,8 @@ class database_access
 		return ($size==0)? 0 : ceil($size/$limit);
 	}
 
-	public function get_full_ranking_info() {
-		return $this->get_ranking_info(null, null, null, null, null);
+	public function get_full_ranking_info($city_name, $modal_id) {
+		return $this->get_ranking_info($city_name, $modal_id, null, null, null);
 	}
 
 	public function get_ranking_info($city_name, $modal_id, $limit_count, $current_page, $sort_column) {
@@ -920,8 +920,15 @@ class database_access
 		return $array;
 	}
 
-	public function get_modals() {
-		$query = "SELECT distinct(modal_id) as value FROM evaluation";		
+	public function get_modal() {
+		get_modals_by_city(null);
+	}
+
+	public function get_modals_by_city($city) {
+		if($city == null)
+			$query = "SELECT distinct(modal_id) as value FROM evaluation";
+		else
+			$query = "SELECT distinct(modal_id) as value FROM evaluation where city_name='" . $city . "'";
 
 		$result = $this->single_query($query);
 		$array = [];

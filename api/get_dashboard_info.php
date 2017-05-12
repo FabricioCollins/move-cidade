@@ -42,7 +42,8 @@ include_once ('../appinfo/database_access.php');
 	<h3>Piores</h3>
 	<ul>
 		<?php 
-			foreach ($result['worst'] as $item) {			
+			$wrost = array_reverse($result['worst']);
+			foreach ($wrost as $item) {			
 		?>
 		<li>
 			<span class="numero"><?php echo $item["line_id"] ?></span>
