@@ -114,19 +114,27 @@ function toggleCadastro($this, duration) {
 	$this.toggleClass('ativo').find('i').toggleClass('fa-times');
 }
 
-function loadDashboard(city, modal) {
+function loadDashboard(city) {
 	$.ajax({
 	  url: "./api/get_dashboard_info.php",
-	  data:{ 'city_name': city, 'modal_id': modal, 'limit_count': '3'},	  
+	  data:{ 'city_name': city },	  
 	  beforeSend: function( xhr ) {
 	    xhr.overrideMimeType( "text/plain; charset=UTF-8" );	   
 	    $(".dashboard-loading").show();
 	  }
 	}).done(function( data ) {
-		$(".table-cell.ranking.best,.table-cell.ranking.worst").remove();
+		$(".table-cell.ranking,.table-cell.ranking.best,.table-cell.ranking.worst").remove();
 	    $(".dashboard-filter-form").after(data);	
 	    $(".dashboard").css("display", "table");
 	    $(".dashboard-loading").hide();
+
+	    // Animate bars
+	    $(".ranking.bars ul li").each(function() {
+	    	var bar = $(this).find(".bar");
+	    	var rank = bar.data("rank");
+	    	bar.animate({ width: rank }, 1500);
+	    	bar.tooltip();
+	    });
   	});
 }
 

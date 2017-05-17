@@ -532,6 +532,38 @@ class database_access
 		return $array;
 	}
 
+	public function get_modal_ranking($city_name) {
+		$query = "SELECT modal_id as modal_name, AVG(total_value) AS modal_rank 
+			FROM evaluation 
+			WHERE 
+				city_name = ?
+			GROUP BY modal_id
+			ORDER BY modal_id";
+
+		$stmt_ranking = $this->prepare($query);
+
+		$stmt_ranking->bind_param("s", array(				
+			&$city_name
+		));
+
+		$resul = $stmt_ranking->execute();
+
+		$array = [];
+		while ($row = array_shift($resul))
+		{
+			$modal_name = $row["modal_name"];
+			$modal_rank = $row["modal_rank"];
+
+			$line_info["modal_name"] = $modal_name;
+			$line_info["modal_rank"] = round($modal_rank, 1);
+
+			array_push($array, $line_info);
+		}
+
+		//Finish
+		return $array;
+	}
+
 	/**
 	 * Returns array with $limit_count best and worst evaluations
 	 * ["best"]	=> [""]

@@ -15,8 +15,8 @@
 	<div class="table-cell">
 		<h2><a href="./ranking">Ranking</a></h2>
 		<a class="pesquisar-linha" href="./ranking">
-			<div class="icon"><i class="fa fa-search" aria-hidden="true"></i></div>
-			<div class="text">Faça sua pesquisa</div>
+			<div class="icon"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+			<div class="text">Ver ranking completo</div>
 		</a>
 	</div>
 
@@ -41,28 +41,28 @@
 			</div>
 		</div>
 
-		<div class="">
+		<!--<div class="">
 			<label class="">Modal</label>
 			<div class="select-wrapper">
 				<select class="ds-filter-select" id="modal_id">					
-					<?php 
+					< ?php 
 						foreach ($modals as $modal) {
 							$selected=($_GET['modal_id']==$modal['value'] || $_GET['modal_id']==null &&  $modal['value']==$default_modal)? 
 							"selected='selected'" : "";
 					?>
-						<option value="<?php echo $modal['value'] ?>" <?php echo $selected ?>>							
-							<?php echo ucfirst(str_replace("_", " ", $modal['value'])) ?>
+						<option value="< ?php echo $modal['value'] ?>" < ?php echo $selected ?>>							
+							< ?php echo ucfirst(str_replace("_", " ", $modal['value'])) ?>
 						</option>
-					<?php 
+					< ?php 
 						}
 					?>
 				</select>
 			</div>
-		</div>
+		</div>-->
 	</form>
 
 </div>
 
 <script type="text/javascript">
-	loadDashboard($("#city_name").val(), $("#modal_id").val());	
+	loadDashboard($("#city_name").val());	
 </script>

@@ -936,6 +936,31 @@ html {
     color: #f31338
 }
 
+.header .dashboard .ranking.grade, .header .dashboard .ranking.bars {
+    width: 30%;
+}
+.header .dashboard .ranking.bars ul li div.bar {
+    height: 13px; 
+    width: 0px;
+    margin-top: 4px;    
+}
+.header .dashboard .ranking.bars ul li div.bar.good {
+    background-color: #35D6EE;
+}
+.header .dashboard .ranking.bars ul li div.bar.bad {
+    background-color: #F31338;
+}
+.header .dashboard .ranking.grade ul li span.nota.good {
+    color: #35D6EE;
+}
+.header .dashboard .ranking.grade ul li span.nota.bad {
+    color: #F31338;
+}
+.header .dashboard .ranking.bars {
+    border-left: none;
+}
+
+
 .header .nav-filter {
     display: table;
     width: 100%;
