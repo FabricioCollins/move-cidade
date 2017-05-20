@@ -532,6 +532,24 @@ class database_access
 		return $array;
 	}
 
+	public function get_general_average($city_name, $modal_id) {
+		$query = "SELECT AVG(total_value) AS average 
+			FROM evaluation 
+			WHERE 
+				city_name = '" . $city_name . "'"
+				." and modal_id = '" . $modal_id . "'";
+
+		$result = $this->single_query($query);
+
+		$general_average = 0;
+		while ($row = array_shift($result))
+		{
+			$general_average = round($row["average"], 1);		
+		}
+
+		return $general_average;
+	}
+
 	public function get_modal_ranking($city_name) {
 		$query = "SELECT modal_id as modal_name, AVG(total_value) AS modal_rank 
 			FROM evaluation 

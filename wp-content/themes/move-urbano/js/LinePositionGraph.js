@@ -1,0 +1,104 @@
+function LinePositionGraph(elementId) {
+	var self=this;
+
+	this.selectedLines = [];
+	this.graphContainer = "";
+	this.generalAverage = 50;
+	
+	this.addLine = function(object) {
+		if(this.selectedLines.length < 2) {
+			this.selectedLines.push(object);
+			this.renderComparitionLine(object);
+		}
+		else {
+			//alert("Apenas 2 linhas podem ser adicionadas por vez.");
+		}
+	};
+
+	this.removeLine = function(name) {
+		var items = this.selectedLines;
+		for (var i = 0; i < items.length; i++) {
+	    	if (items[i].name && items[i].name === name) { 
+	       		items.splice(i, 1);
+	       		self.graphContainer.find("[data-name='"+name+"']").remove();
+	        	break;
+	        }
+	    }
+	};
+
+	this.addAverageLine = function(value) {			
+		var graphPosition = (100-value);
+		this.generalAverage	= graphPosition;
+		var line='<div class="average-criteria-line" style="bottom: 0%; display: none;" data-percent="'+graphPosition+'" title="'+graphPosition+'%"><div class="description">Média Geral</div></div>';
+		this.graphContainer.append(line);
+
+		setTimeout(function() {
+			self.graphContainer.find(".average-criteria-line").each(function() {	
+				$(this).tooltip();			
+				$(this).show().animate({bottom: graphPosition+"%"}, 1000, function() {
+					self.graphContainer.find(".description").fadeIn("slow");
+				});
+			});
+		}, 1000);
+	};
+
+	this.clearGraphComparisonLines = function() {
+		this.graphContainer.find(".stick.comparison-line").remove();
+	};
+
+	this.clearComparisonLines = function() {
+		this.selectedLines = [];
+		this.clearGraphComparisonLines();
+	};
+
+	this.renderComparitionLine = function(object) {		
+		var position = object.position;
+		var name = object.name;
+		var description = object.description;
+		var cssClass = (position < this.generalAverage)? "bad" : "good";
+		var lineTitle = name+': '+description + "(" + position + "%)";
+		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position-1)+'%;" data-percent="'+position+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div></div>';
+		this.graphContainer.append(html_stick);
+
+		setTimeout(function() {
+			self.graphContainer.find("[data-name='"+name+"']").each(function() {
+				var item = $(this);
+				item.tooltip();
+				var h=item.data("percent");
+				item.animate({height: h+"%"}, 500, function(){
+					item.find(".line-name").show("explode");
+				});
+			});
+		}, 1000);		
+	};
+
+	this.renderComparitionLines = function() {
+		for(var i in this.selectedLines) {
+			this.renderComparitionLine(this.selectedLines[i]);
+		}
+	};
+
+	this.createGraph = function() {
+		var sticks=100;
+		for(var i = sticks; i > 0; i--) {
+			var mtop=(sticks-i)+1;
+			self.graphContainer.append('<div class="stick" style="height: 0px; top: '+mtop+'%;" title="'+i+'%" data-percent="'+(i-1)+'"></div>');
+		}
+
+		setTimeout(function() {
+			self.graphContainer.find(".stick").each(function() {
+				var value=$(this).data("percent");
+				$(this).animate({height: value+"%"});
+				//$(this).tooltip();
+			});
+		}, 500);
+	};
+
+	this.init = function() {
+		this.graphContainer = $("#"+elementId);
+		if(this.graphContainer)
+			this.createGraph();
+	};
+
+	this.init();
+}

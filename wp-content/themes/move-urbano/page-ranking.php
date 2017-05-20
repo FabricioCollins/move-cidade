@@ -30,11 +30,15 @@ get_header(); ?>
 	."&modal_id=".$_GET['modal_id']
 	."&limit_count=".$_GET['limit_count'];
 		
+	// Load needed infos to build page in database
 	$result = $db->get_ranking_info($_GET['city_name'], $_GET['modal_id'], $limit_rows, $current_page, $_GET['sort_column']);
 	$full_result = $db->get_full_ranking_info($current_city, $current_modal);
 	$cities = $db->get_cities();
 	$modals = $db->get_modals_by_city($current_city);	
+	
+	$general_avg = $db->get_general_average($current_city, $current_modal);	
 
+	// Mount table needed values
 	$status_column1 = ($_GET['sort_column']=="line_name")? ' active' : '';
 	$status_column2 = ($_GET['sort_column']=="line_info")? ' active' : '';
 	$status_column3 = ($_GET['sort_column']=="pontualidade")? ' active' : '';
@@ -206,9 +210,20 @@ get_header(); ?>
 					. '&current_page='; 
 
 				include('./wp-content/themes/move-urbano/template-parts/pagination.php');
-			?>			
+			?>					
 
 		</div>
+
+		<div class="graph-panel">
+			
+			<?php 
+				// Convert o percent
+				$general_avg_percent = ($general_avg * 10);
+				include('./wp-content/themes/move-urbano/template-parts/line-position-graph.php'); 
+			?>
+
+		</div>	
+
 	</div>
 </div>
 

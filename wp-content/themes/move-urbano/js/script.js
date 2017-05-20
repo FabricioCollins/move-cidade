@@ -1,6 +1,11 @@
 var $nav;
+var linePositionGraph;
 
 $( document ).ready(function() {
+	
+	// Gráfico de linhas de comparação
+	linePositionGraph = new LinePositionGraph("internal-rank-graph-01");
+
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
 		$('.nav-main').toggleClass('open');
@@ -70,16 +75,22 @@ $( document ).ready(function() {
 		var val = $("#add-line-hidden").val();
 		$( "#add-line-field" ).val("");
 		var cookieValue = Cookies.get("comparable-ranking");
-		var resultant = val + ";" + cookieValue;
-		Cookies.set("comparable-ranking", resultant);
-		updateComparableRankingLine();
+		var blocks = cookieValue.split(";");
+		if(blocks.length <= 2) {
+			var resultant = val + ";" + cookieValue;
+			Cookies.set("comparable-ranking", resultant);
+			updateComparableRankingLine();
+		}
+		else {
+			alert("Apenas 2 linhas podem ser adicionadas por vez.");
+		}
 	});
 	
 	$(".ds-filter-select").change(function() {
 		loadDashboard($("#city_name").val(), $("#modal_id").val());
 	});
 		
-	updateComparableRankingLine();
+	updateComparableRankingLine();			
 });	
 
 $(window).scroll(function() {
@@ -165,6 +176,8 @@ function updateComparableRankingLine() {
 	
 	blocks.reverse();
 
+	linePositionGraph.clearComparisonLines();
+
 	for(var i in blocks) {
 		if(blocks[i]=="" || !blocks[i].includes("|"))
 			continue;
@@ -181,6 +194,9 @@ function updateComparableRankingLine() {
 		}
 		field += "</tr>";
 		$('.ranking-table > tbody:last tr:eq(1)').after(field);
+
+		var graphPosition = data[8] * 10;
+		linePositionGraph.addLine({name:data[0], description: data[1], position: graphPosition});
 	}
 
 	// Bind button remove event
