@@ -2455,6 +2455,17 @@ div.criteria-graph.container {
     color: #FFF;
 }
 
+.rank-graph .stick.comparison-line .line-rank {
+    position: absolute;
+    text-align: center;
+    display: none;
+    bottom: -15px;
+    left: -7px;
+    width: 20px;
+    color: #666;
+    font-size: 11px;
+}
+
 .rank-graph .stick.comparison-line.good,
 .rank-graph .stick.comparison-line.good .line-name {
     background-color: #35D6EE;
@@ -2463,6 +2474,25 @@ div.criteria-graph.container {
 .rank-graph .stick.comparison-line.bad,
 .rank-graph .stick.comparison-line.bad .line-name {
     background-color: #F31338;
+}
+
+.rank-graph .descripion-line {
+    color: #666;
+    position: absolute;
+    font-size: 14px;
+}
+
+.rank-graph .descripion-line.horz {
+    bottom: -40px;
+    left: 50%;
+}
+
+.rank-graph .descripion-line.vert {
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+    left: -40px;
+    top: 50%;
 }
 
 /* Gráfico de posição dos critérios de avaliação */
@@ -2539,9 +2569,15 @@ div.criteria-graph.container {
 .criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point .line-name {
     position: absolute;
     display: none;
-    top: -14px;
+    left: 15px;
     color: #999;
     font-size: 0.8em;
+}
+
+.graph-filter-label {
+    float: right;
+    color: #666;
+    font-size: 14px;
 }
 
 /* Fim grafico */

@@ -215,6 +215,8 @@ get_header(); ?>
 		</div>
 
 		<div class="graph-panel">
+
+			<div class="graph-filter-label">Analisando <?=ucfirst($current_modal)?> de <?=$current_city?></div>
 			
 			<?php 
 				// Convert o percent

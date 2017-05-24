@@ -30,7 +30,7 @@ function LinePositionGraph(elementId) {
 		var graphPosition = value;
 		console.log(value);
 		this.generalAverage	= graphPosition;
-		var line='<div class="average-criteria-line" style="bottom: 0%; display: none;" data-percent="'+graphPosition+'" title="'+graphPosition+'%"><div class="description">Média Geral</div></div>';
+		var line='<div class="average-criteria-line" style="bottom: 0%; display: none;" data-percent="'+graphPosition+'" title="'+graphPosition+'%"><div class="description">Média Geral ('+graphPosition/10+')</div></div>';
 		this.graphContainer.append(line);
 
 		setTimeout(function() {
@@ -60,7 +60,7 @@ function LinePositionGraph(elementId) {
 		var description = object.description;
 		var cssClass = (position_percent < this.generalAverage)? "bad" : "good";
 		var lineTitle = name+': '+description + "(" + position + ")";
-		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position_percent-1)+'%;" data-percent="'+position_percent+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div></div>';
+		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position_percent-1)+'%;" data-percent="'+position_percent+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div><div class="line-rank">'+position+'</div></div>';
 		this.graphContainer.append(html_stick);
 
 		setTimeout(function() {
@@ -70,6 +70,7 @@ function LinePositionGraph(elementId) {
 				var h=item.data("percent");
 				item.animate({height: h+"%"}, 500, function(){
 					item.find(".line-name").show("explode");
+					item.find(".line-rank").show("explode");
 				});
 			});
 		}, 1000);		
@@ -87,6 +88,9 @@ function LinePositionGraph(elementId) {
 			var mtop=(sticks-i)+1;
 			self.graphContainer.append('<div class="stick" style="height: 0px; top: '+mtop+'%;" title="'+i+'%" data-percent="'+(i-1)+'"></div>');
 		}
+
+		self.graphContainer.append('<div class="descripion-line vert">Notas</div>');
+		self.graphContainer.append('<div class="descripion-line horz">Linhas</div>');
 
 		setTimeout(function() {
 			self.graphContainer.find(".stick").each(function() {
