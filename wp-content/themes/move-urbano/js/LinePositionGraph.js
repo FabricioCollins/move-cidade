@@ -27,15 +27,17 @@ function LinePositionGraph(elementId) {
 	};
 
 	this.addAverageLine = function(value) {			
-		var graphPosition = (100-value);
+		var graphPosition = value;
+		console.log(value);
 		this.generalAverage	= graphPosition;
 		var line='<div class="average-criteria-line" style="bottom: 0%; display: none;" data-percent="'+graphPosition+'" title="'+graphPosition+'%"><div class="description">Média Geral</div></div>';
 		this.graphContainer.append(line);
 
 		setTimeout(function() {
 			self.graphContainer.find(".average-criteria-line").each(function() {	
-				$(this).tooltip();			
-				$(this).show().animate({bottom: graphPosition+"%"}, 1000, function() {
+				$(this).tooltip();
+				var b=$(this).data("percent");	
+				$(this).show().animate({bottom: (b-1)+"%"}, 1000, function() {
 					self.graphContainer.find(".description").fadeIn("slow");
 				});
 			});
@@ -46,18 +48,19 @@ function LinePositionGraph(elementId) {
 		this.graphContainer.find(".stick.comparison-line").remove();
 	};
 
-	this.clearComparisonLines = function() {
+	this.clearLines = function() {
 		this.selectedLines = [];
 		this.clearGraphComparisonLines();
 	};
 
 	this.renderComparitionLine = function(object) {		
 		var position = object.position;
+		var position_percent = (object.position*10);
 		var name = object.name;
 		var description = object.description;
-		var cssClass = (position < this.generalAverage)? "bad" : "good";
-		var lineTitle = name+': '+description + "(" + position + "%)";
-		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position-1)+'%;" data-percent="'+position+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div></div>';
+		var cssClass = (position_percent < this.generalAverage)? "bad" : "good";
+		var lineTitle = name+': '+description + "(" + position + ")";
+		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position_percent-1)+'%;" data-percent="'+position_percent+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div></div>';
 		this.graphContainer.append(html_stick);
 
 		setTimeout(function() {

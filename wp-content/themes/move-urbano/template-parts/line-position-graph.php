@@ -4,6 +4,6 @@
 
 <script type="text/javascript">
 	$(function() {		
-		linePositionGraph.addAverageLine(<?=$general_avg_percent?>);
+		linePositionGraph.addAverageLine(<?=$geral_avg_percent?>);
 	});	
 </script>

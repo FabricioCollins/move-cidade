@@ -532,7 +532,7 @@ class database_access
 		return $array;
 	}
 
-	public function get_general_average($city_name, $modal_id) {
+	/*public function get_general_average($city_name, $modal_id) {
 		$query = "SELECT AVG(total_value) AS average 
 			FROM evaluation 
 			WHERE 
@@ -548,7 +548,7 @@ class database_access
 		}
 
 		return $general_average;
-	}
+	}*/
 
 	public function get_modal_ranking($city_name) {
 		$query = "SELECT modal_id as modal_name, AVG(total_value) AS modal_rank 
@@ -818,6 +818,32 @@ class database_access
 
 		return $array;
 	}
+
+	public function get_general_average($db_result) {
+		$line_length = count($db_result);
+		
+		$pontualidade = 0; $lotacao = 0; $limpeza = 0; $transito = 0; $motorista = 0; $seguranca = 0; $geral = 0;
+
+		foreach ($db_result as $line) {
+			$pontualidade += $line["pontualidade"];
+			$lotacao += $line["lotacao"];
+			$limpeza += $line["limpeza"];
+			$transito += $line["transito"];
+			$motorista += $line["motorista"];
+			$seguranca += $line["seguranca"];
+			$geral += $line["geral"];
+		}
+
+		$general_average["pontualidade"] = round($pontualidade / $line_length, 1);
+		$general_average["lotacao"] = round($lotacao / $line_length, 1);
+		$general_average["limpeza"] = round($limpeza / $line_length, 1);
+		$general_average["transito"] = round($transito / $line_length, 1);
+		$general_average["motorista"] = round($motorista / $line_length, 1);
+		$general_average["seguranca"] = round($seguranca / $line_length, 1);
+		$general_average["geral"] = round($geral / $line_length, 1);
+
+		return $general_average;
+	}	
 
 	/**
 	 * Returns best and worst evaluations for eac quastion for this city and modal

@@ -45,6 +45,7 @@ else
 
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idec.cardboard.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/LinePositionGraph.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/CriteriaPositionGraph.js"></script>	
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/Cookies.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/script.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/dock.js"></script>

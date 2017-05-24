@@ -36,7 +36,7 @@ get_header(); ?>
 	$cities = $db->get_cities();
 	$modals = $db->get_modals_by_city($current_city);	
 	
-	$general_avg = $db->get_general_average($current_city, $current_modal);	
+	$general_avg = $db->get_general_average($full_result);
 
 	// Mount table needed values
 	$status_column1 = ($_GET['sort_column']=="line_name")? ' active' : '';
@@ -218,8 +218,16 @@ get_header(); ?>
 			
 			<?php 
 				// Convert o percent
-				$general_avg_percent = ($general_avg * 10);
+				$pontualidade_avg_percent = ($general_avg['pontualidade'] * 10);
+				$lotacao_avg_percent = ($general_avg['lotacao'] * 10);
+				$limpeza_avg_percent = ($general_avg['limpeza'] * 10);
+				$transito_avg_percent = ($general_avg['transito'] * 10);
+				$motorista_avg_percent = ($general_avg['motorista'] * 10);
+				$seguranca_avg_percent = ($general_avg['seguranca'] * 10);
+				$geral_avg_percent = ($general_avg['geral'] * 10);
+				
 				include('./wp-content/themes/move-urbano/template-parts/line-position-graph.php'); 
+				include('./wp-content/themes/move-urbano/template-parts/criteria-position-graph.php'); 
 			?>
 
 		</div>	

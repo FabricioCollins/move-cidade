@@ -1,10 +1,12 @@
 var $nav;
-var linePositionGraph;
+var linePositionGraph,
+	criteriaPositionGraph = null;
 
 $( document ).ready(function() {
 	
 	// Gráfico de linhas de comparação
 	linePositionGraph = new LinePositionGraph("internal-rank-graph-01");
+	criteriaPositionGraph = new CriteriaPositionGraph("internal-criteria-graph-01");
 
 	// Controle as expansão do menu lateral
 	$('.nav-toggle a').click(function(event) {
@@ -176,7 +178,8 @@ function updateComparableRankingLine() {
 	
 	blocks.reverse();
 
-	linePositionGraph.clearComparisonLines();
+	linePositionGraph.clearLines();
+	criteriaPositionGraph.clearLines();
 
 	for(var i in blocks) {
 		if(blocks[i]=="" || !blocks[i].includes("|"))
@@ -195,8 +198,7 @@ function updateComparableRankingLine() {
 		field += "</tr>";
 		$('.ranking-table > tbody:last tr:eq(1)').after(field);
 
-		var graphPosition = data[8] * 10;
-		linePositionGraph.addLine({name:data[0], description: data[1], position: graphPosition});
+		addGraphItem(data);
 	}
 
 	// Bind button remove event
@@ -206,5 +208,51 @@ function updateComparableRankingLine() {
 	    removeComparableRankingLine(val);
 	    $(value).parent().parent().remove();
 	  });	    
+	});
+}
+
+function addGraphItem(data) {
+	linePositionGraph.addLine({name:data[0], description: data[1], position: data[8]});
+
+	criteriaPositionGraph.addLine({
+		lineName: data[0],
+		lineDescription: data[1],
+		criterias: [
+			{
+				code: 'pontualidade',
+				label: 'Pontualidade',
+				value: data[2]
+			},
+			{
+				code: 'lotacao',
+				label: 'Lotação',
+				value: data[3]
+			},
+			{
+				code: 'limpeza',
+				label: 'Limpeza',
+				value: data[4]
+			},
+			{
+				code: 'transito',
+				label: 'Trânsito',
+				value: data[5]
+			},
+			{
+				code: 'motorista',
+				label: 'Motorista',
+				value: data[6]
+			},
+			{
+				code: 'seguranca',
+				label: 'Segurança',
+				value: data[7]
+			},
+			{
+				code: 'geral',
+				label: 'Geral',
+				value: data[8]
+			}
+		]
 	});
 }

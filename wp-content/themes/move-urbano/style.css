@@ -2391,7 +2391,8 @@ html {
 
 /* Gráfico de posição de linhas de comparação */
 
-div.rank-graph.container {
+div.rank-graph.container,
+div.criteria-graph.container {
     width: auto;
     height: auto;
 }
@@ -2462,6 +2463,85 @@ div.rank-graph.container {
 .rank-graph .stick.comparison-line.bad,
 .rank-graph .stick.comparison-line.bad .line-name {
     background-color: #F31338;
+}
+
+/* Gráfico de posição dos critérios de avaliação */
+.criteria-graph.content {
+    position: relative;     
+    width: 800px;
+    height: 300px;
+    margin: 100px;
+}
+
+.criteria-graph.content .graph-column {
+    position: relative;
+    width: 14.2%;
+    height: 100%;
+    float: left;
+}
+
+.criteria-graph.content .graph-header  {
+    position: relative;
+    width: 100%;        
+    text-align: center;
+    height: 50px;
+    background-color: #ffe224;
+}
+
+.criteria-graph.content .graph-header .graph-column span {
+    position: relative;
+    background-color: #FFF;
+    display: inline-block;
+    line-height: 30px;  
+    width: 80%;
+    height: 30px;
+    top: 10px;
+}
+
+.criteria-graph.content .graph-body {
+    position: relative;
+    width: 100%;        
+    text-align: center;
+    height: 250px;      
+    margin-top: 15px;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar  {
+    background-color: #ffe224;
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar-level {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: #DDC62E;      
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point {
+    position: absolute;
+    border-radius: 100%;
+    width: 14px;
+    height: 14px;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.good {
+    background-color: #35D6EE;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.bad {
+    background-color: #F31338;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point .line-name {
+    position: absolute;
+    display: none;
+    top: -14px;
+    color: #999;
+    font-size: 0.8em;
 }
 
 /* Fim grafico */
