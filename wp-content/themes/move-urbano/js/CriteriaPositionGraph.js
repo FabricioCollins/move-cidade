@@ -30,21 +30,29 @@ function CriteriaPositionGraph(elementId) {
 			var label = criteria.label;
 
 			var position_percent = value*10;
+			var bottom = (position_percent > 94) ? 94 : position_percent;
 
 			var element = this.graphContainer.find(".graph-body .graph-column .graph-bar#" + code);
 			if(element) {				
+				var side = this.getPontSide(element);
 				var averageValue = element.find(".graph-bar-level").data("criteria");
 				var cssClass = (position_percent < averageValue)? "bad" : "good";
+				cssClass = cssClass + ' ' + side;
 				var lineTitle = lineName+': '+lineDescription + "(" + label + ": " + (value) + ")";
-				var html='<div class="criteria-point '+cssClass+'" style="bottom: 0px; left: '+((element.width()/2)-7)+'%;" data-name="'+lineName+'" data-type="point" data-percent="'+position_percent+'" title="'+lineTitle+'"><div class="line-name">'+lineName+'</div></div>';
+				var html='<div class="criteria-point '+cssClass+'" style="bottom: 0px;" data-name="'+lineName+'" data-type="point" data-percent="'+position_percent+'" title="'+lineTitle+'"><div class="line-name">'+lineName+'</div></div>';
 				element.append(html);
-				element.find("[data-type='point'][data-name='"+lineName+"']").animate({bottom: (position_percent)+"%"}, 1000, function(){
+				element.find("[data-type='point'][data-name='"+lineName+"']").animate({bottom: (bottom)+"%"}, 1000, function(){
 					$(this).find(".line-name").fadeIn("slow");
 					$(this).tooltip();
 				});
 			}
 		}
 		
+	};
+
+	this.getPontSide = function(element) {
+		var pointLength = $(element).find(".criteria-point").length;
+		return (pointLength > 0) ? 'right' : 'left';
 	};
 
 	this.clearGraphLines = function() {

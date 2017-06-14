@@ -2568,10 +2568,24 @@ div.criteria-graph.container {
 
 .criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point .line-name {
     position: absolute;
-    display: none;
-    left: 15px;
+    display: none;    
     color: #999;
     font-size: 0.8em;
+    left: 15px;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.left {
+    left: 20px
+}
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.right {
+    right: 20px;
+}
+
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.left .line-name {
+    bottom: 10px;
+}
+.criteria-graph.content .graph-body .graph-column .graph-bar .criteria-point.right .line-name {
+    top: 10px;
 }
 
 .graph-filter-label {

@@ -84,7 +84,8 @@ class safe_mysqli_stmt extends mysqli_stmt
 
 class database_access
 {
-	private $servername = "idec-rds.ce3sh7nhzali.us-west-2.rds.amazonaws.com";
+	private $servername = "localhost";
+	//private $servername = "idec-rds.ce3sh7nhzali.us-west-2.rds.amazonaws.com";	
 	private $username = "root";
 	private $password = "rootroot";
 	private $dbname = "movecidade_app";
