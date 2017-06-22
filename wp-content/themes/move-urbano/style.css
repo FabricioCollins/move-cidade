@@ -2476,6 +2476,10 @@ div.criteria-graph.container {
     background-color: #F31338;
 }
 
+.rank-graph .stick.comparison-line.upper .line-name {
+    top: -120px !important;
+}
+
 .rank-graph .descripion-line {
     color: #666;
     position: absolute;

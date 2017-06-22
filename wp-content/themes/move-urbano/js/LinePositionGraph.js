@@ -59,8 +59,15 @@ function LinePositionGraph(elementId) {
 		var name = object.name;
 		var description = object.description;
 		var cssClass = (position_percent < this.generalAverage)? "bad" : "good";
+		if(this.selectedLines.length > 1) {
+			if(this.selectedLines[0].position == object.position) {
+				cssClass = cssClass + ' upper';
+			}
+		}
+
 		var lineTitle = name+': '+description + "(" + position + ")";
 		var html_stick='<div class="stick comparison-line '+cssClass+'" style="height: 0%; right: '+(position_percent-1)+'%;" data-percent="'+position_percent+'" data-name="'+name+'" title="'+lineTitle+'"><div class="line-name">'+name+'</div><div class="line-rank">'+position+'</div></div>';
+
 		this.graphContainer.append(html_stick);
 
 		setTimeout(function() {
